@@ -14,7 +14,7 @@ function App({}: AppProps) {
   }, [count, setCount]);
   // Return the App component.
   return (
-    <div className="App">
+    <div className="bg-blue-500">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
