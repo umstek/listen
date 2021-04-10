@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build",
+    "start": "NODE_ENV=development snowpack dev",
+    "build": "NODE_ENV=production snowpack build",
     "test": "web-test-runner \"src/**/*.test.tsx\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
@@ -12,6 +12,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@jadex/snowpack-plugin-tailwindcss-jit": "^0.2.0",
     "@snowpack/plugin-dotenv": "^2.1.0",
     "@snowpack/plugin-postcss": "^1.2.2",
     "@snowpack/plugin-react-refresh": "^2.4.2",
