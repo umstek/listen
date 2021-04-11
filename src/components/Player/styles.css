@@ -1,0 +1,11 @@
+.slider {
+  @apply appearance-none h-1 w-full focus:ring-2 focus:ring-offset-1 focus:outline-none bg-blue-100;
+}
+
+.slider::-webkit-slider-thumb {
+  @apply appearance-none h-1 w-2 transition-all bg-blue-600 rounded-full cursor-pointer;
+}
+
+.slider:hover::-webkit-slider-thumb {
+  @apply h-4 w-4;
+}

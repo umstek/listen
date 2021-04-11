@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
 import './App.css';
+import Player from './components/Player';
+import PlayerControls, {
+  PlayStatus,
+  PlayMode,
+} from './components/PlayerControls';
 
 async function getFileSystemEntries(items: DataTransferItemList) {
   const fileSystemEntries = await Promise.all(
@@ -56,7 +61,11 @@ function App({}: AppProps) {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       ></div>
-      <audio controls src={audioSource}></audio>
+      <Player src={audioSource} />
+      <PlayerControls
+        playStatus={PlayStatus.STOPPED}
+        playMode={PlayMode.IN_ORDER}
+      />
       <div id="explorer" className="flex flex-col">
         {directories.map((x) => (
           <div key={x.name} className="flex flex-row">
