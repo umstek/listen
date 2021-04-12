@@ -16,6 +16,7 @@ specifiers:
   '@web/test-runner': 0.12.19
   autoprefixer: 10.2.5
   chai: 4.3.4
+  dexie: ^3.0.3
   postcss: 8.2.9
   prettier: 2.2.1
   react: 17.0.2
@@ -26,6 +27,7 @@ specifiers:
   workbox-cli: 6.1.2
 
 dependencies:
+  dexie: 3.0.3
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
 
@@ -2719,6 +2721,11 @@ packages:
   /devtools-protocol/0.0.818844:
     resolution: {integrity: sha512-AD1hi7iVJ8OD0aMLQU5VK0XH9LDlA1+BcPIgrAxPfaibx2DbWucuyOhc4oyQCbnvDDO68nN6/LcKfqTP343Jjg==}
     dev: true
+
+  /dexie/3.0.3:
+    resolution: {integrity: sha512-BSFhGpngnCl1DOr+8YNwBDobRMH0ziJs2vts69VilwetHYOtEDcLqo7d/XiIphM0tJZ2rPPyAGd31lgH2Ln3nw==}
+    engines: {node: '>=6.0'}
+    dev: false
 
   /didyoumean/1.2.1:
     resolution: {integrity: sha1-6S7f2tplN9SE1zwBcv0eugxJdv8=}
