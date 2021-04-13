@@ -19,23 +19,49 @@ function App({}: IAppProps) {
   const [path, setPath] = useState([] as any);
   const [activeFile, setActiveFile] = useState(-1);
   const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
+  const [playStatus, setPlayStatus] = useState(PlayStatus.STOPPED);
 
   useEffect(() => {
+    if (activeFile < 0) {
+      return;
+    }
+
+    setPlayStatus(PlayStatus.STOPPED);
+
     const f = async () => {
       const fileData: File = await files[activeFile].getFile();
       const source = URL.createObjectURL(fileData);
       setAudioSource(source);
+      setPlayStatus(PlayStatus.PLAYING);
     };
 
     f();
+
+    return () => {
+      audioSource && URL.revokeObjectURL(audioSource);
+    };
   }, [activeFile]);
 
   return (
     <div className="w-[640px] h-[480px]">
-      <Player src={audioSource} />
+      <Player
+        src={audioSource}
+        status={playStatus}
+        onPause={() => setPlayStatus(PlayStatus.PAUSED)}
+        onPlaying={() => setPlayStatus(PlayStatus.PLAYING)}
+        onEnded={() => setActiveFile((activeFile + 1) % files.length)}
+      />
       <PlayerControls
-        playStatus={PlayStatus.STOPPED}
+        playStatus={playStatus}
         playMode={PlayMode.IN_ORDER}
+        onPlayPause={() => {
+          if (playStatus === PlayStatus.PLAYING) {
+            setPlayStatus(PlayStatus.PAUSED);
+          } else {
+            setPlayStatus(PlayStatus.PLAYING);
+          }
+        }}
+        onStop={() => setPlayStatus(PlayStatus.STOPPED)}
         onNext={() => setActiveFile((activeFile + 1) % files.length)}
         onPrevious={() =>
           setActiveFile((activeFile - 1 + files.length) % files.length)
