@@ -1,30 +1,56 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { PlayStatus } from '../PlayerControls';
+import { clamp } from '../../util';
+import { backward, next, pause, play, previous, stop, forward } from './icons';
 
 import './styles.css';
 
-interface IPlayerProps {
-  src?: string;
+export enum PlayStatus {
+  PLAYING,
+  PAUSED,
+  STOPPED,
+}
+
+interface IPlayButtonProps {
   status: PlayStatus;
-  onPause: () => void;
-  onPlaying: () => void;
+  onClick: () => void;
+}
+
+const PlayButton = ({ status, onClick: handleClick }: IPlayButtonProps) => {
+  return (
+    <button
+      className="flex flex-row items-center h-16 w-16 bg-purple-500 control"
+      onClick={handleClick}
+    >
+      <span className="mx-auto">
+        {status === PlayStatus.PLAYING ? pause : play}
+      </span>
+    </button>
+  );
+};
+
+interface IPlayerControlsProps {
+  src?: string;
+  autoplay?: boolean;
+  onPrevious: () => void;
+  onNext: () => void;
   onEnded: () => void;
 }
 
-const Player = ({
+const PlayerControls = ({
   src,
-  status,
-  onPause: handlePause,
-  onPlaying: handlePlaying,
+  autoplay = true,
+  onPrevious: handlePrevious,
+  onNext: handleNext,
   onEnded: handleEnded,
-}: IPlayerProps) => {
+}: IPlayerControlsProps) => {
   const [position, setPosition] = useState(0);
   const [seeking, setSeeking] = useState(false);
+  const [playStatus, setPlayStatus] = useState(PlayStatus.STOPPED);
   const audioElement = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    switch (status) {
+    switch (playStatus) {
       case PlayStatus.PAUSED:
         audioElement.current?.pause();
         break;
@@ -38,12 +64,36 @@ const Player = ({
       default:
         break;
     }
-  }, [status]);
+  }, [playStatus]);
+
+  useEffect(() => {
+    setPosition(0);
+    audioElement.current && (audioElement.current.currentTime = 0);
+    if (autoplay && src) {
+      audioElement.current?.play();
+    }
+  }, [src]);
 
   const percentage = (position * 100) / (audioElement.current?.duration || 0);
 
+  const clamp1 = clamp(0, audioElement.current?.duration || 0);
+
+  const handleBackward = () => {
+    audioElement.current &&
+      (audioElement.current.currentTime = clamp1(
+        audioElement.current.currentTime - 10,
+      ));
+  };
+
+  const handleForward = () => {
+    audioElement.current &&
+      (audioElement.current.currentTime = clamp1(
+        audioElement.current.currentTime + 10,
+      ));
+  };
+
   return (
-    <div>
+    <div className="flex flex-row justify-center items-center">
       <input
         className="slider"
         style={{
@@ -73,15 +123,51 @@ const Player = ({
       <audio
         ref={audioElement}
         src={src}
-        onTimeUpdate={(ev) => {
+        onTimeUpdate={() => {
           !seeking && setPosition(audioElement.current?.currentTime || 0);
         }}
-        onPause={handlePause}
-        onPlaying={handlePlaying}
+        onPause={() => setPlayStatus(PlayStatus.PAUSED)}
+        onPlaying={() => setPlayStatus(PlayStatus.PLAYING)}
         onEnded={handleEnded}
       ></audio>
+      <div className="flex flex-row justify-center items-center transition-all hover:bg-purple-50 bg-purple-100 rounded-full p-2">
+        <button className="control" onClick={handlePrevious}>
+          {previous}
+        </button>
+        <div className="flex flex-col items-center">
+          <div className="flex flex-row justify-between">
+            <button className="control m-1" onClick={handleBackward}>
+              {backward}
+            </button>
+            <button className="control m-1" onClick={handleForward}>
+              {forward}
+            </button>
+          </div>
+          <PlayButton
+            status={playStatus}
+            onClick={() => {
+              if (playStatus === PlayStatus.PLAYING) {
+                setPlayStatus(PlayStatus.PAUSED);
+              } else {
+                setPlayStatus(PlayStatus.PLAYING);
+              }
+            }}
+          />
+          <div className="flex flex-row justify-center mt-2">
+            <button
+              className="control"
+              onClick={() => setPlayStatus(PlayStatus.STOPPED)}
+            >
+              {stop}
+            </button>
+          </div>
+        </div>
+        <button className="control" onClick={handleNext}>
+          {next}
+        </button>
+      </div>
     </div>
   );
 };
 
-export default Player;
+export default PlayerControls;
