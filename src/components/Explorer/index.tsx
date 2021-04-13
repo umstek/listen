@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { file, folder, home, up } from './icons';
-import { getFileSystemEntries, iterateDirectory } from './util';
+import { getFileSystemEntries } from '../../util';
 
 interface IExplorerProps {
-  onFileOpen: (path: string) => void;
+  files: any[];
+  folders: any[];
+  activeFile: number;
+  onFileOpen: (file: any, index: number) => void;
+  onFolderOpen: (folder: any) => void;
+  onNavigateUp: () => void;
+  onNavigateHome: () => void;
+  onFileFolderDrop: (files: any, folders: any) => void;
 }
 
-const Explorer = ({ onFileOpen }: IExplorerProps) => {
-  const [rootFiles, setRootFiles] = useState([] as any[]);
-  const [rootDirectories, setRootDirectories] = useState([] as any[]);
-  const [path, setPath] = useState([] as any);
-  const [files, setFiles] = useState([] as any[]);
-  const [directories, setDirectories] = useState([] as any[]);
-
+const Explorer = ({
+  files,
+  folders,
+  activeFile,
+  onFileOpen: handleFileOpen,
+  onFolderOpen: handleFolderOpen,
+  onNavigateHome: handleNavigateHome,
+  onNavigateUp: handleNavigateUp,
+  onFileFolderDrop: handleFileFolderDrop,
+}: IExplorerProps) => {
   const handleDrop: React.DragEventHandler<HTMLDivElement> = async (ev) => {
     ev.preventDefault();
 
@@ -22,10 +32,7 @@ const Explorer = ({ onFileOpen }: IExplorerProps) => {
         ev.dataTransfer.items,
       );
 
-      setRootFiles(files);
-      setRootDirectories(directories);
-      setFiles(files);
-      setDirectories(directories);
+      handleFileFolderDrop(files, directories);
     } else {
       // Use DataTransfer interface to access the file(s)
       for (var i = 0; i < ev.dataTransfer.files.length; i++) {
@@ -35,8 +42,7 @@ const Explorer = ({ onFileOpen }: IExplorerProps) => {
   };
 
   const handleDragOver: React.DragEventHandler<HTMLDivElement> = (ev) => {
-    // console.log(ev);
-
+    ev.dataTransfer.dropEffect = 'link';
     ev.preventDefault();
   };
 
@@ -47,67 +53,31 @@ const Explorer = ({ onFileOpen }: IExplorerProps) => {
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <button
-        onClick={async () => {
-          setPath([]);
-          setFiles(rootFiles);
-          setDirectories(rootDirectories);
-        }}
-      >
+      <button onClick={handleNavigateHome}>
         {home}
         Home
       </button>
-      <button
-        onClick={async () => {
-          const backPath = [...path];
-          backPath.pop();
-          setPath(backPath);
-          if (backPath.length === 0) {
-            setFiles(rootFiles);
-            setDirectories(rootDirectories);
-          } else {
-            const { directories, files } = await iterateDirectory(
-              backPath[backPath.length - 1],
-            );
-            setFiles(files);
-            setDirectories(directories);
-          }
-        }}
-      >
+      <button onClick={handleNavigateUp}>
         {up}
         Up
       </button>
-      {directories.map((x) => (
+      {folders.map((x) => (
         <div key={x.name} className="flex flex-row">
-          <button
-            onClick={async () => {
-              setPath([...path, x]);
-              const { directories, files } = await iterateDirectory(x);
-
-              setFiles(files);
-              setDirectories(directories);
-            }}
-          >
-            {folder}
-          </button>
-
+          <button onClick={() => handleFolderOpen(x)}>{folder}</button>
           {x.name}
         </div>
       ))}
-      {files.map((x) => (
+      {files.map((x, i) => (
         <div
           key={x.name}
-          className="hover:bg-blue-100 flex flex-row content-center"
+          className={[
+            `hover:bg-blue-100 flex flex-row content-center`,
+            i === activeFile && 'bg-blue-300',
+          ]
+            .filter(Boolean)
+            .join(' ')}
         >
-          <button
-            onClick={async () => {
-              const fileData: File = await x.getFile();
-              const source = URL.createObjectURL(fileData);
-              onFileOpen(source);
-            }}
-          >
-            {file}
-          </button>
+          <button onClick={() => handleFileOpen(x, i)}>{file}</button>
           <div>{x.name}</div>
         </div>
       ))}
