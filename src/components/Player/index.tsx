@@ -19,7 +19,7 @@ interface IPlayButtonProps {
 const PlayButton = ({ status, onClick: handleClick }: IPlayButtonProps) => {
   return (
     <button
-      className="flex flex-row items-center h-16 w-16 bg-purple-500 control"
+      className="flex flex-row items-center h-16 w-16 text-white bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 control"
       onClick={handleClick}
     >
       <span className="mx-auto">
@@ -98,11 +98,11 @@ const PlayerControls = ({
         className="slider"
         style={{
           backgroundImage:
-            'linear-gradient(to right, #DB2777 0%, #7C3AED ' +
+            'linear-gradient(to right, #EC4899 0%, #F59E0B ' +
             percentage +
-            '%, #FCE7F3 ' +
+            '%, #FEE2E2 ' +
             percentage +
-            '%, #FCE7F3 100%)',
+            '%, #FEF3C7 100%)',
         }}
         type="range"
         min={0}
@@ -130,7 +130,7 @@ const PlayerControls = ({
         onPlaying={() => setPlayStatus(PlayStatus.PLAYING)}
         onEnded={handleEnded}
       ></audio>
-      <div className="flex flex-row justify-center items-center transition-all hover:bg-purple-50 bg-purple-100 rounded-full p-2">
+      <div className="flex flex-row justify-center items-center transition-all bg-gradient-to-r from-pink-100 via-red-100 to-yellow-100 rounded-full p-2">
         <button className="control" onClick={handlePrevious}>
           {previous}
         </button>

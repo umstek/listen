@@ -71,8 +71,9 @@ const Explorer = ({
         <div
           key={x.name}
           className={[
-            `hover:bg-blue-100 flex flex-row content-center`,
-            i === activeFile && 'bg-blue-300',
+            `hover:bg-purple-100 flex flex-row content-center rounded-md p-2 m-1`,
+            i === activeFile &&
+              'text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500',
           ]
             .filter(Boolean)
             .join(' ')}
