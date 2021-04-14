@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { file, folder, home, up } from './icons';
+import { file, folder, home, open, save, up } from './icons';
 import { getFileSystemEntries } from '../../util';
 
 interface IExplorerProps {
@@ -12,6 +12,8 @@ interface IExplorerProps {
   onNavigateUp: () => void;
   onNavigateHome: () => void;
   onFileFolderDrop: (files: any, folders: any) => void;
+  onCollectionOpen: () => void;
+  onCollectionSave: () => void;
 }
 
 const Explorer = ({
@@ -23,6 +25,8 @@ const Explorer = ({
   onNavigateHome: handleNavigateHome,
   onNavigateUp: handleNavigateUp,
   onFileFolderDrop: handleFileFolderDrop,
+  onCollectionOpen: handleOpen,
+  onCollectionSave: handleSave,
 }: IExplorerProps) => {
   const handleDrop: React.DragEventHandler<HTMLDivElement> = async (ev) => {
     ev.preventDefault();
@@ -53,14 +57,12 @@ const Explorer = ({
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <button onClick={handleNavigateHome}>
-        {home}
-        Home
-      </button>
-      <button onClick={handleNavigateUp}>
-        {up}
-        Up
-      </button>
+      <div className="flex flex-row">
+        <button onClick={handleNavigateHome}>{home}</button>
+        <button onClick={handleNavigateUp}>{up}</button>
+        <button onClick={handleSave}>{save}</button>
+        <button onClick={handleOpen}>{open}</button>
+      </div>
       {folders.map((x) => (
         <div key={x.name} className="flex flex-row">
           <button onClick={() => handleFolderOpen(x)}>{folder}</button>

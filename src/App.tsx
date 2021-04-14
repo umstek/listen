@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import Explorer from './components/Explorer';
-import PlayerControls from './components/Player';
+import Player from './components/Player';
 import { iterateDirectory } from './util';
+import { db } from './util/persistence';
 
 import './App.css';
 
@@ -23,7 +24,15 @@ function App({}: IAppProps) {
     }
 
     const f = async () => {
-      const fileData: File = await files[activeFile].getFile();
+      const fileHandle = files[activeFile];
+      if (
+        (await fileHandle.queryPermission({ mode: 'read' })) !== 'granted' &&
+        (await fileHandle.requestPermission({ mode: 'read' })) !== 'granted'
+      ) {
+        return;
+      }
+
+      const fileData: File = await fileHandle.getFile();
       const source = URL.createObjectURL(fileData);
       setAudioSource(source);
     };
@@ -32,13 +41,12 @@ function App({}: IAppProps) {
 
     return () => {
       audioSource && URL.revokeObjectURL(audioSource);
-      console.log('revoked');
     };
   }, [activeFile]);
 
   return (
     <div className="w-[640px] h-[480px]">
-      <PlayerControls
+      <Player
         src={audioSource}
         onEnded={() => setActiveFile((activeFile + 1) % files.length)}
         onNext={() => setActiveFile((activeFile + 1) % files.length)}
@@ -85,6 +93,19 @@ function App({}: IAppProps) {
           setRootFolders(folders);
           setFiles(files);
           setFolders(folders);
+        }}
+        onCollectionSave={async () =>
+          await db.collections.put({ name: 'test1', files, folders }, 'test1')
+        }
+        onCollectionOpen={async () => {
+          const obj = await db.collections.get('test1');
+          if (obj) {
+            const { files, folders } = obj;
+            setRootFiles(files);
+            setRootFolders(folders);
+            setFiles(files);
+            setFolders(folders);
+          }
         }}
       />
     </div>
