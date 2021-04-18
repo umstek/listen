@@ -36,6 +36,7 @@ const OpenCollectionDialog = ({
     >
       {collectionNames.map((name) => (
         <RadioGroup.Option
+          key={name}
           className="outline-none focus:outline-none focus:ring-offset-1 focus:ring-2 focus:ring-yellow-500 rounded-lg"
           value={name}
         >
