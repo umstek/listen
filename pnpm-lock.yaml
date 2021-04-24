@@ -24,7 +24,7 @@ specifiers:
   react: 17.0.2
   react-dom: 17.0.2
   snowpack: 3.2.2
-  tailwindcss: 2.1.1
+  tailwindcss: 2.1.2
   typescript: 4.2.4
   workbox-cli: 6.1.2
 
@@ -36,7 +36,7 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
 
 devDependencies:
-  '@jadex/snowpack-plugin-tailwindcss-jit': 0.2.0_snowpack@3.2.2+tailwindcss@2.1.1
+  '@jadex/snowpack-plugin-tailwindcss-jit': 0.2.0_snowpack@3.2.2+tailwindcss@2.1.2
   '@snowpack/plugin-dotenv': 2.1.0
   '@snowpack/plugin-postcss': 1.2.2_postcss@8.2.9
   '@snowpack/plugin-react-refresh': 2.4.2_react-dom@17.0.2+react@17.0.2
@@ -54,7 +54,7 @@ devDependencies:
   postcss: 8.2.9
   prettier: 2.2.1
   snowpack: 3.2.2
-  tailwindcss: 2.1.1_0bca15301caac8bc71ea0ad94045571f
+  tailwindcss: 2.1.2_0bca15301caac8bc71ea0ad94045571f
   typescript: 4.2.4
   workbox-cli: 6.1.2
 
@@ -1092,7 +1092,7 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@jadex/snowpack-plugin-tailwindcss-jit/0.2.0_snowpack@3.2.2+tailwindcss@2.1.1:
+  /@jadex/snowpack-plugin-tailwindcss-jit/0.2.0_snowpack@3.2.2+tailwindcss@2.1.2:
     resolution: {integrity: sha512-iZfHqtLZzsFKAgMBVCGFJdQWWnXoLhWr7m98DJalu772SSMGXrWryW4nC/Hyk/1RDiL861BAVzXO6aZT3KLtgw==}
     peerDependencies:
       snowpack: ^3.2.2
@@ -1102,7 +1102,7 @@ packages:
       micromatch: 4.0.4
       path: 0.12.7
       snowpack: 3.2.2
-      tailwindcss: 2.1.1_0bca15301caac8bc71ea0ad94045571f
+      tailwindcss: 2.1.2_0bca15301caac8bc71ea0ad94045571f
     dev: true
 
   /@jest/types/26.6.2:
@@ -5468,8 +5468,8 @@ packages:
       wordwrapjs: 4.0.1
     dev: true
 
-  /tailwindcss/2.1.1_0bca15301caac8bc71ea0ad94045571f:
-    resolution: {integrity: sha512-zZ6axGqpSZOCBS7wITm/WNHkBzDt5CIZlDlx0eCVldwTxFPELCVGbgh7Xpb3/kZp3cUxOmK7bZUjqhuMrbN6xQ==}
+  /tailwindcss/2.1.2_0bca15301caac8bc71ea0ad94045571f:
+    resolution: {integrity: sha512-T5t+wwd+/hsOyRw2HJuFuv0LTUm3MUdHm2DJ94GPVgzqwPPFa9XxX0KlwLWupUuiOUj6uiKURCzYPHFcuPch/w==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     peerDependencies:
