@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { clamp } from '../../util';
+import { clamp } from '../../util/math';
 import { backward, next, pause, play, previous, stop, forward } from './icons';
 
 import './styles.css';

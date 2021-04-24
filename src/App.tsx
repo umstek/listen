@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 
 import { db } from './util/persistence';
-import { iterateDirectory } from './util';
+import { iterateDirectory, separateFileSystemEntries } from './util/fileSystem';
 import Explorer from './components/Explorer';
 import Player from './components/Player';
 import SaveCollectionDialog from './components/modals/SaveCollectionDialog';
@@ -109,10 +109,12 @@ function App({}: IAppProps) {
         activeFile={activeFile}
         onFolderOpen={async (folderHandle) => {
           setPath([...path, folderHandle]);
-          const { directories, files } = await iterateDirectory(folderHandle);
+          const { folders, files } = separateFileSystemEntries(
+            await iterateDirectory(folderHandle),
+          );
 
           setFiles(files);
-          setFolders(directories);
+          setFolders(folders);
         }}
         onFileOpen={(fileHandle, i) => {
           setActiveFile(i);
@@ -125,11 +127,11 @@ function App({}: IAppProps) {
             setFiles(rootFiles);
             setFolders(rootFolders);
           } else {
-            const { directories, files } = await iterateDirectory(
-              backPath[backPath.length - 1],
+            const { folders, files } = separateFileSystemEntries(
+              await iterateDirectory(backPath[backPath.length - 1]),
             );
             setFiles(files);
-            setFolders(directories);
+            setFolders(folders);
           }
         }}
         onNavigateHome={async () => {
@@ -139,11 +141,19 @@ function App({}: IAppProps) {
         }}
         files={files}
         folders={folders}
-        onFileFolderDrop={(files, folders) => {
-          setRootFiles(files);
-          setRootFolders(folders);
-          setFiles(files);
-          setFolders(folders);
+        onFileFolderDrop={(box, filesNew, foldersNew) => {
+          if (box === 'new') {
+            setRootFiles(filesNew);
+            setRootFolders(foldersNew);
+            setFiles(filesNew);
+            setFolders(foldersNew);
+          } else if (box === 'existing') {
+            setRootFiles([...files, ...filesNew]);
+            setRootFolders([...folders, ...foldersNew]);
+            setFiles([...files, ...filesNew]);
+            setFolders([...folders, ...foldersNew]);
+          } else if (box === 'scan') {
+          }
         }}
         onCollectionSave={() => setSaveDialogOpen(true)}
         onCollectionOpen={() => setOpenDialogOpen(true)}

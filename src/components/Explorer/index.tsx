@@ -1,7 +1,10 @@
 import React, { useReducer, useState } from 'react';
 
 import { DropBox } from './DropBox';
-import { getFileSystemEntries } from '../../util';
+import {
+  getFileSystemEntries,
+  separateFileSystemEntries,
+} from '../../util/fileSystem';
 import {
   addToPlaylist,
   file,
@@ -22,7 +25,7 @@ interface IExplorerProps {
   onFolderOpen: (folder: any) => void;
   onNavigateUp: () => void;
   onNavigateHome: () => void;
-  onFileFolderDrop: (files: any, folders: any) => void;
+  onFileFolderDrop: (box: string, files: any, folders: any) => void;
   onCollectionOpen: () => void;
   onCollectionSave: () => void;
 }
@@ -67,13 +70,15 @@ const Explorer = ({
     return false;
   };
 
-  const handleDrop: React.DragEventHandler<HTMLDivElement> = async (ev) => {
+  const createDropHandler = (
+    box: string,
+  ): React.DragEventHandler<HTMLDivElement> => async (ev) => {
     if (ev.dataTransfer.items) {
-      const { directories, files } = await getFileSystemEntries(
-        ev.dataTransfer.items,
+      const { folders, files } = separateFileSystemEntries(
+        await getFileSystemEntries(ev.dataTransfer.items),
       );
 
-      handleFileFolderDrop(files, directories);
+      handleFileFolderDrop(box, files, folders);
     } else {
       // Use DataTransfer interface to access the file(s)
       for (var i = 0; i < ev.dataTransfer.files.length; i++) {
@@ -124,21 +129,21 @@ const Explorer = ({
             name="new"
             icon={newPlaylist}
             description="Make a new playlist"
-            onDrop={handleDrop}
+            onDrop={createDropHandler('new')}
           />
 
           <DropBox
             name="existing"
             icon={addToPlaylist}
             description="Add to current playlist"
-            onDrop={handleDrop}
+            onDrop={createDropHandler('existing')}
           />
 
           <DropBox
             name="scan"
             icon={scan}
             description="Scan folder and make playlists automatically"
-            onDrop={handleDrop}
+            onDrop={createDropHandler('scan')}
           />
         </div>
       )}
