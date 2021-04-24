@@ -25,7 +25,7 @@ interface IExplorerProps {
   onFolderOpen: (folder: any) => void;
   onNavigateUp: () => void;
   onNavigateHome: () => void;
-  onFileFolderDrop: (box: string, files: any, folders: any) => void;
+  onFileFolderDrop: (box: string, items: any[]) => void;
   onCollectionOpen: () => void;
   onCollectionSave: () => void;
 }
@@ -74,11 +74,10 @@ const Explorer = ({
     box: string,
   ): React.DragEventHandler<HTMLDivElement> => async (ev) => {
     if (ev.dataTransfer.items) {
-      const { folders, files } = separateFileSystemEntries(
+      handleFileFolderDrop(
+        box,
         await getFileSystemEntries(ev.dataTransfer.items),
       );
-
-      handleFileFolderDrop(box, files, folders);
     } else {
       // Use DataTransfer interface to access the file(s)
       for (var i = 0; i < ev.dataTransfer.files.length; i++) {
@@ -90,7 +89,7 @@ const Explorer = ({
   return (
     <div
       id="explorer"
-      className="flex flex-col"
+      className="flex flex-col h-full"
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
     >

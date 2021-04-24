@@ -1,4 +1,5 @@
 import config from '../config';
+import type { ICollection } from './persistence';
 
 export async function getFileSystemEntries(items: DataTransferItemList) {
   return await Promise.all(
@@ -29,7 +30,7 @@ export async function iterateDirectory(directoryHandle: any) {
       break;
     }
 
-    entries.push(result.value);
+    entries.push(result.value[1]);
   }
 
   return entries;
@@ -59,10 +60,9 @@ export async function scanEntries(queue: any[]) {
   return collections;
 }
 
-export async function scan(items: DataTransferItemList) {
-  const collections: { name: string; files: any[]; folders: any[] }[] = [];
+export async function scanDroppedItems(entries: any[]) {
+  const collections: ICollection[] = [];
 
-  const entries = await getFileSystemEntries(items);
   const { files: rootFiles, folders: rootFolders } = separateFileSystemEntries(
     entries,
   );
@@ -77,6 +77,5 @@ export async function scan(items: DataTransferItemList) {
   }
 
   collections.push(...(await scanEntries(rootFolders)));
-
   return collections;
 }

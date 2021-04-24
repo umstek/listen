@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 
 import { db } from './util/persistence';
-import { iterateDirectory, separateFileSystemEntries } from './util/fileSystem';
+import {
+  iterateDirectory,
+  scanDroppedItems,
+  separateFileSystemEntries,
+} from './util/fileSystem';
 import Explorer from './components/Explorer';
 import Player from './components/Player';
 import SaveCollectionDialog from './components/modals/SaveCollectionDialog';
@@ -141,18 +145,28 @@ function App({}: IAppProps) {
         }}
         files={files}
         folders={folders}
-        onFileFolderDrop={(box, filesNew, foldersNew) => {
+        onFileFolderDrop={async (box, items) => {
           if (box === 'new') {
+            const {
+              files: filesNew,
+              folders: foldersNew,
+            } = separateFileSystemEntries(items);
             setRootFiles(filesNew);
             setRootFolders(foldersNew);
             setFiles(filesNew);
             setFolders(foldersNew);
           } else if (box === 'existing') {
+            const {
+              files: filesNew,
+              folders: foldersNew,
+            } = separateFileSystemEntries(items);
             setRootFiles([...files, ...filesNew]);
             setRootFolders([...folders, ...foldersNew]);
             setFiles([...files, ...filesNew]);
             setFolders([...folders, ...foldersNew]);
           } else if (box === 'scan') {
+            const collections = await scanDroppedItems(items);
+            await db.collections.bulkPut(collections);
           }
         }}
         onCollectionSave={() => setSaveDialogOpen(true)}
