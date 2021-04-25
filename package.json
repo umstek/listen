@@ -30,7 +30,7 @@
     "@web/test-runner": "0.13.2",
     "autoprefixer": "10.2.5",
     "chai": "4.3.4",
-    "postcss": "8.2.9",
+    "postcss": "8.2.12",
     "prettier": "2.2.1",
     "snowpack": "3.3.5",
     "tailwindcss": "2.1.2",
