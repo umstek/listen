@@ -17,7 +17,7 @@ specifiers:
   '@web/test-runner': 0.13.2
   autoprefixer: 10.2.5
   chai: 4.3.4
-  dexie: 3.1.0-alpha.8
+  dexie: 3.1.0-alpha.9
   dexie-react-hooks: 1.0.6
   postcss: 8.2.9
   prettier: 2.2.1
@@ -30,8 +30,8 @@ specifiers:
 
 dependencies:
   '@headlessui/react': 1.0.0_react@17.0.2
-  dexie: 3.1.0-alpha.8
-  dexie-react-hooks: 1.0.6_1da07a1d1596a58b2c63b50b4a722cdd
+  dexie: 3.1.0-alpha.9
+  dexie-react-hooks: 1.0.6_8f3e5e519491419ed0739ddd7413e253
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
 
@@ -2739,7 +2739,7 @@ packages:
     resolution: {integrity: sha512-xd4D8kHQtB0KtWW0c9xBZD5LVtm9chkMOfs/3Yn01RhT/sFIsVtzTtypfKoFfWBaL+7xCYLxjOLkhwPXaX/Kcg==}
     dev: true
 
-  /dexie-react-hooks/1.0.6_1da07a1d1596a58b2c63b50b4a722cdd:
+  /dexie-react-hooks/1.0.6_8f3e5e519491419ed0739ddd7413e253:
     resolution: {integrity: sha512-OFoOBC4BQzkVGicuWl/cIMtlPp0wTAnUXwUJzq+l/zp0XVGmwEWkemRFq7JbudJLT0DINFVVzgVhGV7KOUK7uA==}
     peerDependencies:
       '@types/react': '>=16'
@@ -2747,12 +2747,12 @@ packages:
       react: '>=16'
     dependencies:
       '@types/react': 17.0.3
-      dexie: 3.1.0-alpha.8
+      dexie: 3.1.0-alpha.9
       react: 17.0.2
     dev: false
 
-  /dexie/3.1.0-alpha.8:
-    resolution: {integrity: sha512-7LGEXCJPfsMkgRrLMNqeCxt32CnZrrFyRU5kt6v5+bVXW43d7C2hU4WHORKYaP3BWumBg4A+YIaBYKV9EhX9CQ==}
+  /dexie/3.1.0-alpha.9:
+    resolution: {integrity: sha512-H4cqgKTtdw23/3f+HjxqrmidfytHAWjOFwcpy9z6fYQZI/DM6Keo0nRGGNPokHIElYeShS8TOUkVLoZoLSAhCw==}
     engines: {node: '>=6.0'}
     dev: false
 
