@@ -4,8 +4,10 @@ import { DropBox } from './DropBox';
 import { getFileSystemEntries } from '../../util/fileSystem';
 import {
   addToPlaylist,
+  erase,
   file,
   folder,
+  hide,
   home,
   newPlaylist,
   open,
@@ -17,9 +19,12 @@ import {
 interface IExplorerProps {
   files: any[];
   folders: any[];
-  activeFile: number;
+  hidden: string[];
+  activeFile: any;
   onFileOpen: (file: any, index: number) => void;
   onFolderOpen: (folder: any) => void;
+  onEntryHide: (entry: any, index: number) => void;
+  onEntryDelete: (entry: any, index: number) => void;
   onNavigateUp: () => void;
   onNavigateHome: () => void;
   onFileFolderDrop: (box: string, items: any[]) => void;
@@ -30,9 +35,12 @@ interface IExplorerProps {
 const Explorer = ({
   files,
   folders,
+  hidden,
   activeFile,
   onFileOpen: handleFileOpen,
   onFolderOpen: handleFolderOpen,
+  onEntryHide: handleEntryHide,
+  onEntryDelete: handleEntryDelete,
   onNavigateHome: handleNavigateHome,
   onNavigateUp: handleNavigateUp,
   onFileFolderDrop: handleFileFolderDrop,
@@ -144,27 +152,81 @@ const Explorer = ({
         </div>
       )}
 
-      {folders.map((x) => (
-        <div key={x.name} className="flex flex-row">
-          <button onClick={() => handleFolderOpen(x)}>{folder}</button>
-          {x.name}
-        </div>
-      ))}
-      {files.map((x, i) => (
-        <div
-          key={x.name}
-          className={[
-            `hover:bg-purple-100 flex flex-row content-center rounded-md p-2 m-1`,
-            i === activeFile &&
-              'text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500',
-          ]
-            .filter(Boolean)
-            .join(' ')}
-        >
-          <button onClick={() => handleFileOpen(x, i)}>{file}</button>
-          <div>{x.name}</div>
-        </div>
-      ))}
+      {folders
+        .filter((x) => !hidden.includes(x.name))
+        .map((x, i) => (
+          <div
+            key={x.name}
+            className={[
+              `transition-all group`,
+              `hover:bg-gray-100 hover:text-gray-900 flex flex-row items-center justify-between rounded-lg p-3 m-1`,
+            ]
+              .filter(Boolean)
+              .join(' ')}
+          >
+            <div className="flex flex-row cursor-default items-center">
+              <button
+                className="pushable outline-none rounded-full p-1"
+                onClick={() => handleFolderOpen(x)}
+              >
+                {folder}
+              </button>
+              <div className="mx-2">{x.name}</div>
+            </div>
+            <div className="flex flex-row invisible group-hover:visible items-center">
+              <button
+                className="pushable outline-none rounded-full p-1 ml-2"
+                onClick={() => handleEntryHide(x, i)}
+              >
+                {hide}
+              </button>
+              <button
+                className="pushable outline-none rounded-full p-1 ml-2 text-red-600"
+                onClick={() => handleEntryDelete(x, i)}
+              >
+                {erase}
+              </button>
+            </div>
+          </div>
+        ))}
+      {files
+        .filter((x) => !hidden.includes(x.name))
+        .map((x, i) => (
+          <div
+            key={x.name}
+            className={[
+              `transition-all group`,
+              `hover:bg-gray-100 hover:text-gray-900 flex flex-row items-center justify-between rounded-lg p-3 m-1`,
+              x === activeFile && 'primary shadow-md',
+            ]
+              .filter(Boolean)
+              .join(' ')}
+          >
+            <div className="flex flex-row cursor-default items-center">
+              <button
+                className="pushable outline-none rounded-full p-1"
+                onClick={() => handleFileOpen(x, i)}
+              >
+                {file}
+              </button>
+              <div className="mx-2">{x.name}</div>
+            </div>
+            <div className="flex flex-row invisible group-hover:visible items-center">
+              <button
+                className="pushable outline-none rounded-full p-1 ml-2"
+                onClick={() => handleEntryHide(x, i)}
+              >
+                {hide}
+              </button>
+              <button
+                className="pushable outline-none rounded-full p-1 ml-2 text-red-600"
+                onClick={() => handleEntryDelete(x, i)}
+              >
+                {erase}
+              </button>
+            </div>
+          </div>
+        ))}
     </div>
   );
 };

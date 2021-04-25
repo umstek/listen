@@ -4,6 +4,7 @@ export interface ICollection {
   name: string;
   folders: any[];
   files: any[];
+  hidden: { [path: string]: string[] };
 }
 
 class MainDatabase extends Dexie {
@@ -12,7 +13,7 @@ class MainDatabase extends Dexie {
   constructor() {
     super('main');
     this.version(1).stores({
-      collections: '++name,folders,files',
+      collections: '++name,folders,files,hidden',
     });
 
     this.collections = this.table('collections');

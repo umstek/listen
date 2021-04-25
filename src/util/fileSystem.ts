@@ -1,5 +1,6 @@
-import config from '../config';
 import type { ICollection } from './persistence';
+
+import config from '../config';
 
 export async function getFileSystemEntries(items: DataTransferItemList) {
   return await Promise.all(
@@ -41,7 +42,7 @@ export function filterAudioFiles(files: any[]) {
 }
 
 export async function scanEntries(queue: any[]) {
-  const collections: { name: string; files: any[]; folders: any[] }[] = [];
+  const collections: ICollection[] = [];
 
   while (queue.length > 0) {
     const directory = queue.shift();
@@ -51,7 +52,12 @@ export async function scanEntries(queue: any[]) {
 
     const audioFiles = filterAudioFiles(files);
     if (audioFiles.length > 0) {
-      collections.push({ name: directory.name, files: audioFiles, folders });
+      collections.push({
+        name: directory.name,
+        files: audioFiles,
+        folders,
+        hidden: {},
+      });
     }
 
     queue.push(...folders);
@@ -73,6 +79,7 @@ export async function scanDroppedItems(entries: any[]) {
       name: 'root',
       files: rootAudioFiles,
       folders: rootFolders,
+      hidden: {},
     });
   }
 

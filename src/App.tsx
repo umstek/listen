@@ -18,12 +18,13 @@ import './App.css';
 interface IAppProps {}
 
 function App({}: IAppProps) {
-  const [rootFiles, setRootFiles] = useState([] as any[]);
-  const [rootFolders, setRootFolders] = useState([] as any[]);
-  const [files, setFiles] = useState([] as any[]);
-  const [folders, setFolders] = useState([] as any[]);
-  const [path, setPath] = useState([] as any);
-  const [activeFile, setActiveFile] = useState(-1);
+  const [rootFiles, setRootFiles] = useState<any[]>([]);
+  const [rootFolders, setRootFolders] = useState<any[]>([]);
+  const [files, setFiles] = useState<any[]>([]);
+  const [folders, setFolders] = useState<any[]>([]);
+  const [hidden, setHidden] = useState<{ [path: string]: string[] }>({});
+  const [path, setPath] = useState<any[]>([]);
+  const [activeFile, setActiveFile] = useState<any>(undefined);
   const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
 
   const [isSaveDialogOpen, setSaveDialogOpen] = useState(false);
@@ -38,21 +39,48 @@ function App({}: IAppProps) {
   const [isOpenDialogOpen, setOpenDialogOpen] = useState(false);
   const [openCollectionName, setOpenCollectionName] = useState('');
 
+  const handleNext = () => {
+    const hiddenItems = hidden[path.map((f) => f.name).join('/') || '_'] || [];
+    const currentIndex = files.indexOf(activeFile);
+
+    let nextIndex = (currentIndex + 1) % files.length;
+    while (
+      hiddenItems.includes(files[nextIndex].name) &&
+      currentIndex !== nextIndex
+    ) {
+      nextIndex = (nextIndex + 1) % files.length;
+    }
+    setActiveFile(files[nextIndex]);
+  };
+
+  const handlePrevious = () => {
+    const hiddenItems = hidden[path.map((f) => f.name).join('/') || '_'] || [];
+    const currentIndex = files.indexOf(activeFile);
+
+    let prevIndex = (currentIndex - 1 + files.length) % files.length;
+    while (
+      hiddenItems.includes(files[prevIndex].name) &&
+      currentIndex !== prevIndex
+    ) {
+      prevIndex = (prevIndex - 1 + files.length) % files.length;
+    }
+    setActiveFile(files[prevIndex]);
+  };
+
   useEffect(() => {
-    if (activeFile < 0) {
+    if (activeFile === undefined) {
       return;
     }
 
     const f = async () => {
-      const fileHandle = files[activeFile];
       if (
-        (await fileHandle.queryPermission({ mode: 'read' })) !== 'granted' &&
-        (await fileHandle.requestPermission({ mode: 'read' })) !== 'granted'
+        (await activeFile.queryPermission({ mode: 'read' })) !== 'granted' &&
+        (await activeFile.requestPermission({ mode: 'read' })) !== 'granted'
       ) {
         return;
       }
 
-      const fileData: File = await fileHandle.getFile();
+      const fileData: File = await activeFile.getFile();
       const source = URL.createObjectURL(fileData);
       setAudioSource(source);
     };
@@ -72,7 +100,7 @@ function App({}: IAppProps) {
         onCollectionNameChange={setSaveCollectionName}
         onSave={async () => {
           await db.collections.put(
-            { name: saveCollectionName, folders, files },
+            { name: saveCollectionName, folders, files, hidden },
             saveCollectionName,
           );
           setSaveDialogOpen(false);
@@ -90,24 +118,24 @@ function App({}: IAppProps) {
         onOpen={async () => {
           const obj = await db.collections.get(openCollectionName);
           if (obj) {
-            const { files, folders } = obj;
+            const { files, folders, hidden } = obj;
             setRootFiles(files);
             setRootFolders(folders);
             setFiles(filterAudioFiles(files));
             setFolders(folders);
+            setHidden(hidden || {});
           }
           setOpenDialogOpen(false);
+          setSaveCollectionName(openCollectionName);
         }}
         onCancel={() => setOpenDialogOpen(false)}
       />
 
       <Player
         src={audioSource}
-        onEnded={() => setActiveFile((activeFile + 1) % files.length)}
-        onNext={() => setActiveFile((activeFile + 1) % files.length)}
-        onPrevious={() =>
-          setActiveFile((activeFile - 1 + files.length) % files.length)
-        }
+        onEnded={handleNext}
+        onNext={handleNext}
+        onPrevious={handlePrevious}
       />
 
       <Explorer
@@ -121,9 +149,20 @@ function App({}: IAppProps) {
           setFiles(filterAudioFiles(files));
           setFolders(folders);
         }}
-        onFileOpen={(fileHandle, i) => {
-          setActiveFile(i);
+        onFileOpen={(fileHandle) => {
+          setActiveFile(fileHandle);
         }}
+        onEntryHide={(entryHandle) => {
+          const pathStr = path.map((f) => f.name).join('/') || '_';
+
+          setHidden({
+            ...hidden,
+            [pathStr]: [
+              ...new Set([...(hidden[pathStr] || []), entryHandle.name]),
+            ],
+          });
+        }}
+        onEntryDelete={(entryHandle, i) => {}}
         onNavigateUp={async () => {
           const backPath = [...path];
           backPath.pop();
@@ -146,6 +185,7 @@ function App({}: IAppProps) {
         }}
         files={files}
         folders={folders}
+        hidden={hidden[path.map((f) => f.name).join('/') || '_'] || []}
         onFileFolderDrop={async (box, items) => {
           if (box === 'new') {
             const {
