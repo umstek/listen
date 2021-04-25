@@ -1,10 +1,7 @@
-import React, { useReducer, useState } from 'react';
+import React, { useState } from 'react';
 
 import { DropBox } from './DropBox';
-import {
-  getFileSystemEntries,
-  separateFileSystemEntries,
-} from '../../util/fileSystem';
+import { getFileSystemEntries } from '../../util/fileSystem';
 import {
   addToPlaylist,
   file,

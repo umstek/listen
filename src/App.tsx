@@ -3,6 +3,7 @@ import { useLiveQuery } from 'dexie-react-hooks';
 
 import { db } from './util/persistence';
 import {
+  filterAudioFiles,
   iterateDirectory,
   scanDroppedItems,
   separateFileSystemEntries,
@@ -92,7 +93,7 @@ function App({}: IAppProps) {
             const { files, folders } = obj;
             setRootFiles(files);
             setRootFolders(folders);
-            setFiles(files);
+            setFiles(filterAudioFiles(files));
             setFolders(folders);
           }
           setOpenDialogOpen(false);
@@ -117,7 +118,7 @@ function App({}: IAppProps) {
             await iterateDirectory(folderHandle),
           );
 
-          setFiles(files);
+          setFiles(filterAudioFiles(files));
           setFolders(folders);
         }}
         onFileOpen={(fileHandle, i) => {
@@ -128,19 +129,19 @@ function App({}: IAppProps) {
           backPath.pop();
           setPath(backPath);
           if (backPath.length === 0) {
-            setFiles(rootFiles);
+            setFiles(filterAudioFiles(rootFiles));
             setFolders(rootFolders);
           } else {
             const { folders, files } = separateFileSystemEntries(
               await iterateDirectory(backPath[backPath.length - 1]),
             );
-            setFiles(files);
+            setFiles(filterAudioFiles(files));
             setFolders(folders);
           }
         }}
         onNavigateHome={async () => {
           setPath([]);
-          setFiles(rootFiles);
+          setFiles(filterAudioFiles(rootFiles));
           setFolders(rootFolders);
         }}
         files={files}
@@ -151,18 +152,16 @@ function App({}: IAppProps) {
               files: filesNew,
               folders: foldersNew,
             } = separateFileSystemEntries(items);
-            setRootFiles(filesNew);
+            setRootFiles(filterAudioFiles(filesNew));
             setRootFolders(foldersNew);
-            setFiles(filesNew);
+            setFiles(filterAudioFiles(filesNew));
             setFolders(foldersNew);
           } else if (box === 'existing') {
             const {
               files: filesNew,
               folders: foldersNew,
             } = separateFileSystemEntries(items);
-            setRootFiles([...files, ...filesNew]);
-            setRootFolders([...folders, ...foldersNew]);
-            setFiles([...files, ...filesNew]);
+            setFiles([...files, ...filterAudioFiles(filesNew)]);
             setFolders([...folders, ...foldersNew]);
           } else if (box === 'scan') {
             const collections = await scanDroppedItems(items);
