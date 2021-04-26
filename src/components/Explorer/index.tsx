@@ -4,10 +4,6 @@ import { DropBox } from './DropBox';
 import { getFileSystemEntries } from '../../util/fileSystem';
 import {
   addToPlaylist,
-  erase,
-  file,
-  folder,
-  hide,
   home,
   newPlaylist,
   open,
@@ -15,16 +11,17 @@ import {
   scan,
   up,
 } from './icons';
+import { FileTile } from './FileTile';
 
 interface IExplorerProps {
   files: any[];
   folders: any[];
   hidden: string[];
   activeFile: any;
-  onFileOpen: (file: any, index: number) => void;
+  onFileOpen: (file: any) => void;
   onFolderOpen: (folder: any) => void;
-  onEntryHide: (entry: any, index: number) => void;
-  onEntryDelete: (entry: any, index: number) => void;
+  onEntryHide: (entry: any) => void;
+  onEntryDelete: (entry: any) => void;
   onNavigateUp: () => void;
   onNavigateHome: () => void;
   onFileFolderDrop: (box: string, items: any[]) => void;
@@ -154,78 +151,24 @@ const Explorer = ({
 
       {folders
         .filter((x) => !hidden.includes(x.name))
-        .map((x, i) => (
-          <div
-            key={x.name}
-            className={[
-              `transition-all group`,
-              `hover:bg-gray-100 hover:text-gray-900 flex flex-row items-center justify-between rounded-lg p-3 m-1`,
-            ]
-              .filter(Boolean)
-              .join(' ')}
-          >
-            <div className="flex flex-row cursor-default items-center">
-              <button
-                className="pushable outline-none rounded-full p-1"
-                onClick={() => handleFolderOpen(x)}
-              >
-                {folder}
-              </button>
-              <div className="mx-2">{x.name}</div>
-            </div>
-            <div className="flex flex-row invisible group-hover:visible items-center">
-              <button
-                className="pushable outline-none rounded-full p-1 ml-2"
-                onClick={() => handleEntryHide(x, i)}
-              >
-                {hide}
-              </button>
-              <button
-                className="pushable outline-none rounded-full p-1 ml-2 text-red-600"
-                onClick={() => handleEntryDelete(x, i)}
-              >
-                {erase}
-              </button>
-            </div>
-          </div>
+        .map((x) => (
+          <FileTile
+            file={x}
+            onOpen={handleFolderOpen}
+            onHide={handleEntryHide}
+            onDelete={handleEntryDelete}
+          />
         ))}
       {files
         .filter((x) => !hidden.includes(x.name))
-        .map((x, i) => (
-          <div
-            key={x.name}
-            className={[
-              `transition-all group`,
-              `hover:bg-gray-100 hover:text-gray-900 flex flex-row items-center justify-between rounded-lg p-3 m-1`,
-              x === activeFile && 'primary shadow-md',
-            ]
-              .filter(Boolean)
-              .join(' ')}
-          >
-            <div className="flex flex-row cursor-default items-center">
-              <button
-                className="pushable outline-none rounded-full p-1"
-                onClick={() => handleFileOpen(x, i)}
-              >
-                {file}
-              </button>
-              <div className="mx-2">{x.name}</div>
-            </div>
-            <div className="flex flex-row invisible group-hover:visible items-center">
-              <button
-                className="pushable outline-none rounded-full p-1 ml-2"
-                onClick={() => handleEntryHide(x, i)}
-              >
-                {hide}
-              </button>
-              <button
-                className="pushable outline-none rounded-full p-1 ml-2 text-red-600"
-                onClick={() => handleEntryDelete(x, i)}
-              >
-                {erase}
-              </button>
-            </div>
-          </div>
+        .map((x) => (
+          <FileTile
+            file={x}
+            isActiveFile={x === activeFile}
+            onOpen={handleFileOpen}
+            onHide={handleEntryHide}
+            onDelete={handleEntryDelete}
+          />
         ))}
     </div>
   );
