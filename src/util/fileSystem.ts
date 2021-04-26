@@ -86,3 +86,15 @@ export async function scanDroppedItems(entries: any[]) {
   collections.push(...(await scanEntries(rootFolders)));
   return collections;
 }
+
+export async function requestPermission(entry: any, mode: string) {
+  let currentStatus = await entry.queryPermission({ mode });
+  if (currentStatus !== 'granted') {
+    currentStatus = await entry.requestPermission({ mode });
+  }
+  return currentStatus;
+}
+
+export async function deleteEntry(folder: any, entry: any) {
+  await folder.removeEntry(entry.name, entry.kind === 'directory');
+}

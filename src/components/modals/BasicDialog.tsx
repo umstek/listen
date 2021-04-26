@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 
 interface IBasicProps {
   isOpen: boolean;
+  isDangerousAction?: boolean;
   title: string;
   children: JSX.Element[] | JSX.Element;
   actions: { label: string; action: () => void }[];
@@ -11,6 +12,7 @@ interface IBasicProps {
 
 const BasicDialog = ({
   isOpen,
+  isDangerousAction,
   title,
   children,
   actions,
@@ -68,7 +70,7 @@ const BasicDialog = ({
                   type="button"
                   className={[
                     'pushable rounded px-4 py-2 mx-2 text-sm font-medium',
-                    i === 0 && 'primary',
+                    i === 0 && (isDangerousAction ? 'danger' : 'primary'),
                   ]
                     .filter(Boolean)
                     .join(' ')}

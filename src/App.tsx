@@ -3,8 +3,10 @@ import { useLiveQuery } from 'dexie-react-hooks';
 
 import { db } from './util/persistence';
 import {
+  deleteEntry,
   filterAudioFiles,
   iterateDirectory,
+  requestPermission,
   scanDroppedItems,
   separateFileSystemEntries,
 } from './util/fileSystem';
@@ -14,6 +16,7 @@ import SaveCollectionDialog from './components/modals/SaveCollectionDialog';
 import OpenCollectionDialog from './components/modals/OpenCollectionDialog';
 
 import './App.css';
+import DeleteFSEntryDialog from './components/modals/DeleteFSEntryDialog';
 
 interface IAppProps {}
 
@@ -25,6 +28,9 @@ function App({}: IAppProps) {
   const [hidden, setHidden] = useState<{ [path: string]: string[] }>({});
   const [path, setPath] = useState<any[]>([]);
   const [activeFile, setActiveFile] = useState<any>(undefined);
+  const [deleteRequestedEntry, setDeleteRequestedEntry] = useState<any>(
+    undefined,
+  );
   const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
 
   const [isSaveDialogOpen, setSaveDialogOpen] = useState(false);
@@ -73,10 +79,7 @@ function App({}: IAppProps) {
     }
 
     const f = async () => {
-      if (
-        (await activeFile.queryPermission({ mode: 'read' })) !== 'granted' &&
-        (await activeFile.requestPermission({ mode: 'read' })) !== 'granted'
-      ) {
+      if ((await requestPermission(activeFile, 'read')) !== 'granted') {
         return;
       }
 
@@ -131,6 +134,24 @@ function App({}: IAppProps) {
         onCancel={() => setOpenDialogOpen(false)}
       />
 
+      <DeleteFSEntryDialog
+        entryName={deleteRequestedEntry?.name}
+        isOpen={Boolean(deleteRequestedEntry)}
+        isFolder={deleteRequestedEntry?.kind === 'directory'}
+        onCancel={() => setDeleteRequestedEntry(undefined)}
+        onDelete={async () => {
+          if (
+            !path[path.length - 1] ||
+            (await requestPermission(path[path.length - 1], 'readwrite'))
+          ) {
+            return;
+          }
+
+          await deleteEntry(path[path.length - 1], deleteRequestedEntry);
+          setDeleteRequestedEntry(undefined);
+        }}
+      />
+
       <Player
         src={audioSource}
         onEnded={handleNext}
@@ -162,7 +183,9 @@ function App({}: IAppProps) {
             ],
           });
         }}
-        onEntryDelete={(entryHandle, i) => {}}
+        onEntryDelete={(entryHandle) => {
+          setDeleteRequestedEntry(entryHandle);
+        }}
         onNavigateUp={async () => {
           const backPath = [...path];
           backPath.pop();
