@@ -1,4 +1,6 @@
 # New Project
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fumstek%2Flisten.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fumstek%2Flisten?ref=badge_shield)
+
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
@@ -23,3 +25,7 @@ Your app is ready to be deployed!
 
 Launches the application test runner.
 Run with the `--watch` flag (`npm test -- --watch`) to run in interactive watch mode.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fumstek%2Flisten.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fumstek%2Flisten?ref=badge_large)
