@@ -12,7 +12,7 @@ specifiers:
   '@types/chai': 4.2.17
   '@types/mocha': 8.2.2
   '@types/react': 17.0.4
-  '@types/react-beautiful-dnd': ^13.0.0
+  '@types/react-beautiful-dnd': 13.0.0
   '@types/react-dom': 17.0.3
   '@types/snowpack-env': 2.3.3
   '@web/test-runner': 0.13.3
@@ -23,7 +23,7 @@ specifiers:
   postcss: 8.2.13
   prettier: 2.2.1
   react: 17.0.2
-  react-beautiful-dnd: ^13.1.0
+  react-beautiful-dnd: 13.1.0
   react-dom: 17.0.2
   snowpack: 3.3.5
   tailwindcss: 2.1.2
@@ -1455,7 +1455,7 @@ packages:
   /@types/hoist-non-react-statics/3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
-      '@types/react': 17.0.3
+      '@types/react': 17.0.4
       hoist-non-react-statics: 3.3.2
     dev: false
 
@@ -1548,7 +1548,7 @@ packages:
   /@types/react-beautiful-dnd/13.0.0:
     resolution: {integrity: sha512-by80tJ8aTTDXT256Gl+RfLRtFjYbUWOnZuEigJgNsJrSEGxvFe5eY6k3g4VIvf0M/6+xoLgfYWoWonlOo6Wqdg==}
     dependencies:
-      '@types/react': 17.0.3
+      '@types/react': 17.0.4
     dev: false
 
   /@types/react-dom/17.0.3:
@@ -1561,7 +1561,7 @@ packages:
     resolution: {integrity: sha512-f/FKzIrZwZk7YEO9E1yoxIuDNRiDducxkFlkw/GNMGEnK9n4K8wJzlJBghpSuOVDgEUHoDkDF7Gi9lHNQR4siw==}
     dependencies:
       '@types/hoist-non-react-statics': 3.3.1
-      '@types/react': 17.0.3
+      '@types/react': 17.0.4
       hoist-non-react-statics: 3.3.2
       redux: 4.1.0
     dev: false
@@ -1572,6 +1572,7 @@ packages:
       '@types/prop-types': 15.7.3
       '@types/scheduler': 0.16.1
       csstype: 3.0.8
+    dev: true
 
   /@types/react/17.0.4:
     resolution: {integrity: sha512-onz2BqScSFMoTRdJUZUDD/7xrusM8hBA2Fktk2qgaTYPCgPvWnDEgkrOs8hhPUf2jfcIXkJ5yK6VfYormJS3Jw==}
@@ -1579,7 +1580,6 @@ packages:
       '@types/prop-types': 15.7.3
       '@types/scheduler': 0.16.1
       csstype: 3.0.8
-    dev: true
 
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
