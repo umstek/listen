@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@headlessui/react': 1.0.0
+  '@headlessui/react': 1.1.1
   '@jadex/snowpack-plugin-tailwindcss-jit': 0.2.0
   '@snowpack/plugin-dotenv': 2.1.0
   '@snowpack/plugin-postcss': 1.2.2
@@ -31,7 +31,7 @@ specifiers:
   workbox-cli: 6.1.5
 
 dependencies:
-  '@headlessui/react': 1.0.0_react@17.0.2
+  '@headlessui/react': 1.1.1_react@17.0.2
   '@types/react-beautiful-dnd': 13.0.0
   dexie: 3.1.0-alpha.9
   dexie-react-hooks: 1.0.6_c71ade0455795aec9ef064263f90c2a3
@@ -1086,8 +1086,8 @@ packages:
       '@hapi/hoek': 8.5.1
     dev: true
 
-  /@headlessui/react/1.0.0_react@17.0.2:
-    resolution: {integrity: sha512-mjqRJrgkbcHQBfAHnqH0yRxO/y/22jYrdltpE7WkurafREKZ+pj5bPBwYHMt935Sdz/n16yRcVmsSCqDFHee9A==}
+  /@headlessui/react/1.1.1_react@17.0.2:
+    resolution: {integrity: sha512-fxNKxRrjNXdNYNMhAVrv1nz0gIMX3JhFizTA9lNrEC8+aY3JR00GZTPhuG785RZGvnHXCdYCGHeAhqw9uRNRrA==}
     engines: {node: '>=10'}
     peerDependencies:
       react: '>=16'
