@@ -11,7 +11,7 @@ specifiers:
   '@testing-library/react': 11.2.6
   '@types/chai': 4.2.16
   '@types/mocha': 8.2.2
-  '@types/react': 17.0.3
+  '@types/react': 17.0.4
   '@types/react-beautiful-dnd': ^13.0.0
   '@types/react-dom': 17.0.3
   '@types/snowpack-env': 2.3.3
@@ -34,7 +34,7 @@ dependencies:
   '@headlessui/react': 1.0.0_react@17.0.2
   '@types/react-beautiful-dnd': 13.0.0
   dexie: 3.1.0-alpha.9
-  dexie-react-hooks: 1.0.6_8f3e5e519491419ed0739ddd7413e253
+  dexie-react-hooks: 1.0.6_c71ade0455795aec9ef064263f90c2a3
   react: 17.0.2
   react-beautiful-dnd: 13.1.0_react-dom@17.0.2+react@17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -49,7 +49,7 @@ devDependencies:
   '@testing-library/react': 11.2.6_react-dom@17.0.2+react@17.0.2
   '@types/chai': 4.2.16
   '@types/mocha': 8.2.2
-  '@types/react': 17.0.3
+  '@types/react': 17.0.4
   '@types/react-dom': 17.0.3
   '@types/snowpack-env': 2.3.3
   '@web/test-runner': 0.13.3
@@ -1573,6 +1573,14 @@ packages:
       '@types/scheduler': 0.16.1
       csstype: 3.0.8
 
+  /@types/react/17.0.4:
+    resolution: {integrity: sha512-onz2BqScSFMoTRdJUZUDD/7xrusM8hBA2Fktk2qgaTYPCgPvWnDEgkrOs8hhPUf2jfcIXkJ5yK6VfYormJS3Jw==}
+    dependencies:
+      '@types/prop-types': 15.7.3
+      '@types/scheduler': 0.16.1
+      csstype: 3.0.8
+    dev: true
+
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
@@ -2967,14 +2975,14 @@ packages:
     resolution: {integrity: sha512-xd4D8kHQtB0KtWW0c9xBZD5LVtm9chkMOfs/3Yn01RhT/sFIsVtzTtypfKoFfWBaL+7xCYLxjOLkhwPXaX/Kcg==}
     dev: true
 
-  /dexie-react-hooks/1.0.6_8f3e5e519491419ed0739ddd7413e253:
+  /dexie-react-hooks/1.0.6_c71ade0455795aec9ef064263f90c2a3:
     resolution: {integrity: sha512-OFoOBC4BQzkVGicuWl/cIMtlPp0wTAnUXwUJzq+l/zp0XVGmwEWkemRFq7JbudJLT0DINFVVzgVhGV7KOUK7uA==}
     peerDependencies:
       '@types/react': '>=16'
       dexie: '>=3.1.0-alpha.1'
       react: '>=16'
     dependencies:
-      '@types/react': 17.0.3
+      '@types/react': 17.0.4
       dexie: 3.1.0-alpha.9
       react: 17.0.2
     dev: false
