@@ -25,7 +25,7 @@ specifiers:
   react: 17.0.2
   react-beautiful-dnd: ^13.1.0
   react-dom: 17.0.2
-  snowpack: 3.3.5
+  snowpack: 3.3.7
   tailwindcss: 2.1.2
   typescript: 4.2.4
   workbox-cli: 6.1.5
@@ -40,12 +40,12 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
 
 devDependencies:
-  '@jadex/snowpack-plugin-tailwindcss-jit': 0.2.0_snowpack@3.3.5+tailwindcss@2.1.2
+  '@jadex/snowpack-plugin-tailwindcss-jit': 0.2.0_snowpack@3.3.7+tailwindcss@2.1.2
   '@snowpack/plugin-dotenv': 2.1.0
   '@snowpack/plugin-postcss': 1.2.2_postcss@8.2.13
   '@snowpack/plugin-react-refresh': 2.5.0_react-dom@17.0.2+react@17.0.2
   '@snowpack/plugin-typescript': 1.2.1_typescript@4.2.4
-  '@snowpack/web-test-runner-plugin': 0.2.2_f6fc39982fd67480bf79d1f2a8dfc0a6
+  '@snowpack/web-test-runner-plugin': 0.2.2_b9d5ba8c9024162eb1c7449028a65eaf
   '@testing-library/react': 11.2.6_react-dom@17.0.2+react@17.0.2
   '@types/chai': 4.2.17
   '@types/mocha': 8.2.2
@@ -57,7 +57,7 @@ devDependencies:
   chai: 4.3.4
   postcss: 8.2.13
   prettier: 2.2.1
-  snowpack: 3.3.5
+  snowpack: 3.3.7
   tailwindcss: 2.1.2_941a81a5c9afb5d3c8bce0db60f786b1
   typescript: 4.2.4
   workbox-cli: 6.1.5
@@ -1095,7 +1095,7 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@jadex/snowpack-plugin-tailwindcss-jit/0.2.0_snowpack@3.3.5+tailwindcss@2.1.2:
+  /@jadex/snowpack-plugin-tailwindcss-jit/0.2.0_snowpack@3.3.7+tailwindcss@2.1.2:
     resolution: {integrity: sha512-iZfHqtLZzsFKAgMBVCGFJdQWWnXoLhWr7m98DJalu772SSMGXrWryW4nC/Hyk/1RDiL861BAVzXO6aZT3KLtgw==}
     peerDependencies:
       snowpack: ^3.2.2
@@ -1104,7 +1104,7 @@ packages:
       fs: 0.0.1-security
       micromatch: 4.0.4
       path: 0.12.7
-      snowpack: 3.3.5
+      snowpack: 3.3.7
       tailwindcss: 2.1.2_941a81a5c9afb5d3c8bce0db60f786b1
     dev: true
 
@@ -1316,14 +1316,14 @@ packages:
       typescript: 4.2.4
     dev: true
 
-  /@snowpack/web-test-runner-plugin/0.2.2_f6fc39982fd67480bf79d1f2a8dfc0a6:
+  /@snowpack/web-test-runner-plugin/0.2.2_b9d5ba8c9024162eb1c7449028a65eaf:
     resolution: {integrity: sha512-I7KC8BAcgRWZAg53w7Uq3UDY9hcn1ZGvmA+MjPqvgQXvKbwXfH0+T1nyPQmKUgYR1If99Vk4GnFscDZtaGbZCg==}
     peerDependencies:
       '@web/test-runner': '>=0.10.0 <1.0.0'
       snowpack: ^3.0.0
     dependencies:
       '@web/test-runner': 0.13.3
-      snowpack: 3.3.5
+      snowpack: 3.3.7
     dev: true
 
   /@surma/rollup-plugin-off-main-thread/1.4.2:
@@ -6083,8 +6083,8 @@ packages:
       use: 3.1.1
     dev: true
 
-  /snowpack/3.3.5:
-    resolution: {integrity: sha512-QI6/PcSud39ZAmrs7IiBSCr3PWXxc4/w2SNJp32+n7XsXxSB4waJ+jpG5rtJAeif5pqRNkX4887PKwWsMzFRCw==}
+  /snowpack/3.3.7:
+    resolution: {integrity: sha512-7I5wznB6wGKq2fi6pxU3UZLEe3R0a5IChO8x+w0iYT7/oERubkbzc/SXTMXm6lVvtYMs2W1AkE+0VHP1KI0IEw==}
     engines: {node: '>=10.19.0'}
     hasBin: true
     dependencies:
