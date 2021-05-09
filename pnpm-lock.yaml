@@ -15,7 +15,7 @@ specifiers:
   '@types/react-beautiful-dnd': 13.0.0
   '@types/react-dom': 17.0.3
   '@types/snowpack-env': 2.3.3
-  '@web/test-runner': 0.13.3
+  '@web/test-runner': 0.13.4
   autoprefixer: 10.2.5
   chai: 4.3.4
   dexie: 3.1.0-alpha.10
@@ -45,14 +45,14 @@ devDependencies:
   '@snowpack/plugin-postcss': 1.2.2_postcss@8.2.14
   '@snowpack/plugin-react-refresh': 2.5.0_react-dom@17.0.2+react@17.0.2
   '@snowpack/plugin-typescript': 1.2.1_typescript@4.2.4
-  '@snowpack/web-test-runner-plugin': 0.2.2_b9d5ba8c9024162eb1c7449028a65eaf
+  '@snowpack/web-test-runner-plugin': 0.2.2_cf1faa0d2bddddb45eec42703ea64c13
   '@testing-library/react': 11.2.6_react-dom@17.0.2+react@17.0.2
   '@types/chai': 4.2.18
   '@types/mocha': 8.2.2
   '@types/react': 17.0.5
   '@types/react-dom': 17.0.3
   '@types/snowpack-env': 2.3.3
-  '@web/test-runner': 0.13.3
+  '@web/test-runner': 0.13.4
   autoprefixer: 10.2.5_postcss@8.2.14
   chai: 4.3.4
   postcss: 8.2.14
@@ -1316,13 +1316,13 @@ packages:
       typescript: 4.2.4
     dev: true
 
-  /@snowpack/web-test-runner-plugin/0.2.2_b9d5ba8c9024162eb1c7449028a65eaf:
+  /@snowpack/web-test-runner-plugin/0.2.2_cf1faa0d2bddddb45eec42703ea64c13:
     resolution: {integrity: sha512-I7KC8BAcgRWZAg53w7Uq3UDY9hcn1ZGvmA+MjPqvgQXvKbwXfH0+T1nyPQmKUgYR1If99Vk4GnFscDZtaGbZCg==}
     peerDependencies:
       '@web/test-runner': '>=0.10.0 <1.0.0'
       snowpack: ^3.0.0
     dependencies:
-      '@web/test-runner': 0.13.3
+      '@web/test-runner': 0.13.4
       snowpack: 3.3.7
     dev: true
 
@@ -1733,7 +1733,7 @@ packages:
     resolution: {integrity: sha512-pCRDkVXznkpHCGwhka8AxMTq7fAufujhknJilNxopXcGXANfy9jkMPUUwWYmkJg2w+zDoz9vnlcHPGPX7j3EkQ==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@web/test-runner-core': 0.10.16
+      '@web/test-runner-core': 0.10.17
       '@web/test-runner-coverage-v8': 0.4.6
       chrome-launcher: 0.13.4
       puppeteer-core: 8.0.0
@@ -1747,7 +1747,7 @@ packages:
     resolution: {integrity: sha512-jbhsS+nZmnbZPj/XL/g4se1c9TRtIgwrlYpaIIcWkHhCu5mKbdipgZ/nlFIhFS9UaVY52NiulmVj6dhAx7w4SA==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@web/test-runner-core': 0.10.16
+      '@web/test-runner-core': 0.10.17
       mkdirp: 1.0.4
     transitivePeerDependencies:
       - bufferutil
@@ -1755,8 +1755,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@web/test-runner-core/0.10.16:
-    resolution: {integrity: sha512-Ml4twNujR/AMqB16Z4MlDsn+q82lMAdIvabTVAjk+a+sxT+qCEupFC42mTRr8VJo8A1EvCpGgf1d16joQ3G7VQ==}
+  /@web/test-runner-core/0.10.17:
+    resolution: {integrity: sha512-T8yLQ6W4tHwREEYlAvAMYXpNkRE4XBynuWQQVq1qf5hf/IFNdYkOVELkgsHevtYLRElxi9/wHeRrn1SkDgj0Ug==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@babel/code-frame': 7.12.13
@@ -1795,7 +1795,7 @@ packages:
     resolution: {integrity: sha512-Mt8hzLUZfMBrpFlo8PYIkM5H77XmnuiF2VrRXvLRRMBz6sZ+WqZmPT5fOznvTEoqOXh92XG9SsW+G0uV6HjdPQ==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@web/test-runner-core': 0.10.16
+      '@web/test-runner-core': 0.10.17
       istanbul-lib-coverage: 3.0.0
       picomatch: 2.2.3
       v8-to-istanbul: 7.1.1
@@ -1810,15 +1810,15 @@ packages:
     engines: {node: '>=12.0.0'}
     dependencies:
       '@types/mocha': 8.2.2
-      '@web/test-runner-core': 0.10.16
+      '@web/test-runner-core': 0.10.17
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - utf-8-validate
     dev: true
 
-  /@web/test-runner/0.13.3:
-    resolution: {integrity: sha512-92UedwA+Hynh03/ArcFmcM4fS6KNANmrMmrgG9gb6QTuwW9FnPXOZDjy7DZTHjbSEpXlSEKIxa1YdzQmrNcuXA==}
+  /@web/test-runner/0.13.4:
+    resolution: {integrity: sha512-TuS8UnW+bdY0K2RoqldyORJime4R1cnARvUtxsXJDbHq78Dcfud2xCgrOepQbbxbniF77OShuEEwCXNULftobw==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -1827,7 +1827,7 @@ packages:
       '@web/dev-server': 0.1.17
       '@web/test-runner-chrome': 0.10.0
       '@web/test-runner-commands': 0.4.5
-      '@web/test-runner-core': 0.10.16
+      '@web/test-runner-core': 0.10.17
       '@web/test-runner-mocha': 0.7.2
       camelcase: 6.2.0
       chalk: 4.1.1
