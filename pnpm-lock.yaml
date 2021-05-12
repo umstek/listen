@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@headlessui/react': 1.2.0
-  '@jadex/snowpack-plugin-tailwindcss-jit': 0.2.0
+  '@jadex/snowpack-plugin-tailwindcss-jit': 0.3.0
   '@snowpack/plugin-dotenv': 2.1.0
   '@snowpack/plugin-postcss': 1.2.2
   '@snowpack/plugin-react-refresh': 2.5.0
@@ -40,7 +40,7 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
 
 devDependencies:
-  '@jadex/snowpack-plugin-tailwindcss-jit': 0.2.0_snowpack@3.3.7+tailwindcss@2.1.2
+  '@jadex/snowpack-plugin-tailwindcss-jit': 0.3.0_snowpack@3.3.7+tailwindcss@2.1.2
   '@snowpack/plugin-dotenv': 2.1.0
   '@snowpack/plugin-postcss': 1.2.2_postcss@8.2.14
   '@snowpack/plugin-react-refresh': 2.5.0_react-dom@17.0.2+react@17.0.2
@@ -1095,11 +1095,11 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@jadex/snowpack-plugin-tailwindcss-jit/0.2.0_snowpack@3.3.7+tailwindcss@2.1.2:
-    resolution: {integrity: sha512-iZfHqtLZzsFKAgMBVCGFJdQWWnXoLhWr7m98DJalu772SSMGXrWryW4nC/Hyk/1RDiL861BAVzXO6aZT3KLtgw==}
+  /@jadex/snowpack-plugin-tailwindcss-jit/0.3.0_snowpack@3.3.7+tailwindcss@2.1.2:
+    resolution: {integrity: sha512-5Nsf57nih8BzReSuWU2hmesOUygpF/OjepRqdB8o0Y/yhOaDuSMCyr/yCMtoQZBuW0lDFVSks7l5XkUcxQ0umQ==}
     peerDependencies:
-      snowpack: ^3.2.2
-      tailwindcss: ^2.1.0
+      snowpack: ^3.3.7
+      tailwindcss: ^2.1.2
     dependencies:
       fs: 0.0.1-security
       micromatch: 4.0.4

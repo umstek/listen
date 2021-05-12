@@ -17,7 +17,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@jadex/snowpack-plugin-tailwindcss-jit": "0.2.0",
+    "@jadex/snowpack-plugin-tailwindcss-jit": "0.3.0",
     "@snowpack/plugin-dotenv": "2.1.0",
     "@snowpack/plugin-postcss": "1.2.2",
     "@snowpack/plugin-react-refresh": "2.5.0",
