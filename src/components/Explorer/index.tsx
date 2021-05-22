@@ -24,7 +24,7 @@ interface IExplorerProps {
   onEntryDelete: (entry: any) => void;
   onNavigateUp: () => void;
   onNavigateHome: () => void;
-  onFileFolderDrop: (box: string, items: any[]) => void;
+  onFileFolderDrop: (box: string, items: FileSystemHandle[]) => void;
   onCollectionOpen: () => void;
   onCollectionSave: () => void;
 }
@@ -153,6 +153,7 @@ const Explorer = ({
         .filter((x) => !hidden.includes(x.name))
         .map((x) => (
           <FileTile
+            key={x.name}
             file={x}
             onOpen={handleFolderOpen}
             onHide={handleEntryHide}
@@ -163,6 +164,7 @@ const Explorer = ({
         .filter((x) => !hidden.includes(x.name))
         .map((x) => (
           <FileTile
+            key={x.name}
             file={x}
             isActiveFile={x === activeFile}
             onOpen={handleFileOpen}
