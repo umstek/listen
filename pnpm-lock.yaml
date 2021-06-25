@@ -19,7 +19,7 @@ specifiers:
   '@web/test-runner': 0.13.12
   autoprefixer: 10.2.6
   chai: 4.3.4
-  dexie: 3.1.0-alpha.10
+  dexie: 3.1.0-beta.13
   dexie-react-hooks: 1.0.6
   music-metadata-browser: ^2.2.6
   postcss: 8.3.5
@@ -36,8 +36,8 @@ dependencies:
   '@headlessui/react': 1.3.0_react-dom@17.0.2+react@17.0.2
   '@types/react-beautiful-dnd': 13.0.0
   '@types/wicg-file-system-access': 2020.9.1
-  dexie: 3.1.0-alpha.10
-  dexie-react-hooks: 1.0.6_c3995be8fdd405f0a1e5fc278a3b9f16
+  dexie: 3.1.0-beta.13
+  dexie-react-hooks: 1.0.6_b28cb5d11798e6e982b9881f13709765
   music-metadata-browser: 2.2.6
   react: 17.0.2
   react-beautiful-dnd: 13.1.0_react-dom@17.0.2+react@17.0.2
@@ -1731,7 +1731,6 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
@@ -3143,7 +3142,7 @@ packages:
     resolution: {integrity: sha512-xd4D8kHQtB0KtWW0c9xBZD5LVtm9chkMOfs/3Yn01RhT/sFIsVtzTtypfKoFfWBaL+7xCYLxjOLkhwPXaX/Kcg==}
     dev: true
 
-  /dexie-react-hooks/1.0.6_c3995be8fdd405f0a1e5fc278a3b9f16:
+  /dexie-react-hooks/1.0.6_b28cb5d11798e6e982b9881f13709765:
     resolution: {integrity: sha512-OFoOBC4BQzkVGicuWl/cIMtlPp0wTAnUXwUJzq+l/zp0XVGmwEWkemRFq7JbudJLT0DINFVVzgVhGV7KOUK7uA==}
     peerDependencies:
       '@types/react': '>=16'
@@ -3151,12 +3150,12 @@ packages:
       react: '>=16'
     dependencies:
       '@types/react': 17.0.11
-      dexie: 3.1.0-alpha.10
+      dexie: 3.1.0-beta.13
       react: 17.0.2
     dev: false
 
-  /dexie/3.1.0-alpha.10:
-    resolution: {integrity: sha512-YOgEa4PUfTtg25lNJ5DGnTYhztnUPCRZK6SlNHeT+VBRh9S2jHO/D7u8rhn5yciiBCi8op4lPp1C/L75wvu42g==}
+  /dexie/3.1.0-beta.13:
+    resolution: {integrity: sha512-pUcX9YyX1VDjF1oMqiOys6N2zoXIA/CeTghB3P4Ee77U8n9q0qa2pmNYoHyyYPKLU58+gzsMJuOc6HLPJDQrQQ==}
     engines: {node: '>=6.0'}
     dev: false
 
