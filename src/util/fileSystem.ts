@@ -1,62 +1,78 @@
 import type { ICollection } from './persistence';
 
 import config from '../config';
+import { getBasicMetadata, BasicMetadata } from './metadata';
 
-export async function getFileSystemEntries(items: DataTransferItemList) {
-  return await Promise.all(
+export async function getFileSystemEntries(
+  items: DataTransferItemList,
+): Promise<FileSystemHandle[]> {
+  const handles = await Promise.all(
     Object.keys(items)
       .map((i) => items[Number(i)])
       .filter((item) => item.kind === 'file') // file or folder, not a string
-      .map((f) => f.getAsFileSystemHandle()),
+      .map((dti) => dti.getAsFileSystemHandle()),
   );
+
+  return handles.filter((h): h is FileSystemHandle => Boolean(h));
 }
 
-export function separateFileSystemEntries(fileSystemEntries: any[]) {
-  const folders = fileSystemEntries.filter(
-    (entry) => entry.kind === 'directory',
+export function separateFileSystemEntries(
+  fileSystemHandles: FileSystemHandle[],
+) {
+  const folders = fileSystemHandles.filter(
+    (entry): entry is FileSystemDirectoryHandle => entry.kind === 'directory',
   );
-  const files = fileSystemEntries.filter((entry) => entry.kind === 'file');
+  const files = fileSystemHandles.filter(
+    (entry): entry is FileSystemFileHandle => entry.kind === 'file',
+  );
 
   return { folders, files };
 }
 
-export async function iterateDirectory(directoryHandle: any) {
-  const iterator = directoryHandle.entries();
-
-  const entries = [];
-
-  while (true) {
-    const result = await iterator.next();
-    if (result.done) {
-      break;
-    }
-
-    entries.push(result.value[1]);
+export async function iterateDirectory(
+  directoryHandle: FileSystemDirectoryHandle,
+) {
+  const values = [];
+  for await (const fileSystemHandle of directoryHandle.values()) {
+    values.push(fileSystemHandle);
   }
 
-  return entries;
+  return values;
 }
 
-export function filterAudioFiles(files: any[]) {
+export function filterAudioFiles(files: FileSystemFileHandle[]) {
   return files.filter((file) => config.recognizedExtensions.exec(file.name));
 }
 
-export async function scanEntries(queue: any[]) {
+export async function scanEntries(queue: FileSystemDirectoryHandle[]) {
   const collections: ICollection[] = [];
 
   while (queue.length > 0) {
-    const directory = queue.shift();
+    const directory = queue.shift()!;
 
     const entries = await iterateDirectory(directory);
     const { files, folders } = separateFileSystemEntries(entries);
 
     const audioFiles = filterAudioFiles(files);
+    const metadata = (
+      await Promise.allSettled(
+        audioFiles.map(async (h) => getBasicMetadata(await h.getFile())),
+      )
+    )
+      .filter(
+        (r): r is PromiseFulfilledResult<BasicMetadata> =>
+          r.status === 'fulfilled',
+      )
+      .map((r) => r.value);
+
     if (audioFiles.length > 0) {
       collections.push({
         name: directory.name,
-        files: audioFiles,
         folders,
+        files: audioFiles,
+        metadata,
         hidden: {},
+        ordered: {},
       });
     }
 
@@ -66,20 +82,31 @@ export async function scanEntries(queue: any[]) {
   return collections;
 }
 
-export async function scanDroppedItems(entries: any[]) {
+export async function scanDroppedItems(handles: FileSystemHandle[]) {
   const collections: ICollection[] = [];
 
-  const { files: rootFiles, folders: rootFolders } = separateFileSystemEntries(
-    entries,
-  );
+  const { files: rootFiles, folders: rootFolders } =
+    separateFileSystemEntries(handles);
 
   const rootAudioFiles = filterAudioFiles(rootFiles);
+  const metadata = (
+    await Promise.allSettled(
+      rootAudioFiles.map(async (h) => getBasicMetadata(await h.getFile())),
+    )
+  )
+    .filter(
+      (r): r is PromiseFulfilledResult<BasicMetadata> =>
+        r.status === 'fulfilled',
+    )
+    .map((r) => r.value);
   if (rootAudioFiles.length > 0) {
     collections.push({
       name: 'root',
-      files: rootAudioFiles,
       folders: rootFolders,
+      files: rootAudioFiles,
+      metadata,
       hidden: {},
+      ordered: {},
     });
   }
 

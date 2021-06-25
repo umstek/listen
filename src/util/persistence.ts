@@ -1,10 +1,13 @@
 import Dexie from 'dexie';
+import type { BasicMetadata } from './metadata';
 
 export interface ICollection {
   name: string;
-  folders: any[];
-  files: any[];
+  folders: FileSystemDirectoryHandle[];
+  files: FileSystemFileHandle[];
+  metadata: BasicMetadata[];
   hidden: { [path: string]: string[] };
+  ordered: { [path: string]: string[] };
 }
 
 class MainDatabase extends Dexie {
@@ -12,8 +15,8 @@ class MainDatabase extends Dexie {
 
   constructor() {
     super('main');
-    this.version(1).stores({
-      collections: '++name,folders,files,hidden',
+    this.version(2).stores({
+      collections: '++name,folders,files,hidden,ordered',
     });
 
     this.collections = this.table('collections');
