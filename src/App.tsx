@@ -30,12 +30,10 @@ function App({}: IAppProps) {
   const [folders, setFolders] = useState<FileSystemDirectoryHandle[]>([]);
   const [hidden, setHidden] = useState<{ [path: string]: string[] }>({});
   const [path, setPath] = useState<any[]>([]);
-  const [activeFile, setActiveFile] = useState<
-    FileSystemFileHandle | undefined
-  >(undefined);
-  const [deleteRequestedEntry, setDeleteRequestedEntry] = useState<any>(
-    undefined,
-  );
+  const [activeFile, setActiveFile] =
+    useState<FileSystemFileHandle | undefined>(undefined);
+  const [deleteRequestedEntry, setDeleteRequestedEntry] =
+    useState<any>(undefined);
   const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
 
   const [isSaveDialogOpen, setSaveDialogOpen] = useState(false);
@@ -120,7 +118,14 @@ function App({}: IAppProps) {
         onCollectionNameChange={setSaveCollectionName}
         onSave={async () => {
           await db.collections.put(
-            { name: saveCollectionName, folders, files, hidden, ordered: {} },
+            {
+              name: saveCollectionName,
+              folders,
+              files,
+              hidden,
+              ordered: {},
+              metadata: [],
+            },
             saveCollectionName,
           );
           setSaveDialogOpen(false);
@@ -228,19 +233,15 @@ function App({}: IAppProps) {
         hidden={hidden[path.map((f) => f.name).join('/') || '_'] || []}
         onFileFolderDrop={async (box, items) => {
           if (box === 'new') {
-            const {
-              files: filesNew,
-              folders: foldersNew,
-            } = separateFileSystemEntries(items);
+            const { files: filesNew, folders: foldersNew } =
+              separateFileSystemEntries(items);
             setRootFiles(filterAudioFiles(filesNew));
             setRootFolders(foldersNew);
             setFiles(filterAudioFiles(filesNew));
             setFolders(foldersNew);
           } else if (box === 'existing') {
-            const {
-              files: filesNew,
-              folders: foldersNew,
-            } = separateFileSystemEntries(items);
+            const { files: filesNew, folders: foldersNew } =
+              separateFileSystemEntries(items);
             setFiles([...files, ...filterAudioFiles(filesNew)]);
             setFolders([...folders, ...foldersNew]);
           } else if (box === 'scan') {

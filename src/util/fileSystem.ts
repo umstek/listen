@@ -1,6 +1,7 @@
 import type { ICollection } from './persistence';
 
 import config from '../config';
+import { getBasicMetadata, BasicMetadata } from './metadata';
 
 export async function getFileSystemEntries(
   items: DataTransferItemList,
@@ -53,11 +54,23 @@ export async function scanEntries(queue: FileSystemDirectoryHandle[]) {
     const { files, folders } = separateFileSystemEntries(entries);
 
     const audioFiles = filterAudioFiles(files);
+    const metadata = (
+      await Promise.allSettled(
+        audioFiles.map(async (h) => getBasicMetadata(await h.getFile())),
+      )
+    )
+      .filter(
+        (r): r is PromiseFulfilledResult<BasicMetadata> =>
+          r.status === 'fulfilled',
+      )
+      .map((r) => r.value);
+
     if (audioFiles.length > 0) {
       collections.push({
         name: directory.name,
-        files: audioFiles,
         folders,
+        files: audioFiles,
+        metadata,
         hidden: {},
         ordered: {},
       });
@@ -72,16 +85,26 @@ export async function scanEntries(queue: FileSystemDirectoryHandle[]) {
 export async function scanDroppedItems(handles: FileSystemHandle[]) {
   const collections: ICollection[] = [];
 
-  const { files: rootFiles, folders: rootFolders } = separateFileSystemEntries(
-    handles,
-  );
+  const { files: rootFiles, folders: rootFolders } =
+    separateFileSystemEntries(handles);
 
   const rootAudioFiles = filterAudioFiles(rootFiles);
+  const metadata = (
+    await Promise.allSettled(
+      rootAudioFiles.map(async (h) => getBasicMetadata(await h.getFile())),
+    )
+  )
+    .filter(
+      (r): r is PromiseFulfilledResult<BasicMetadata> =>
+        r.status === 'fulfilled',
+    )
+    .map((r) => r.value);
   if (rootAudioFiles.length > 0) {
     collections.push({
       name: 'root',
-      files: rootAudioFiles,
       folders: rootFolders,
+      files: rootAudioFiles,
+      metadata,
       hidden: {},
       ordered: {},
     });

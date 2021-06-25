@@ -1,9 +1,11 @@
 import Dexie from 'dexie';
+import type { BasicMetadata } from './metadata';
 
 export interface ICollection {
   name: string;
-  folders: any[];
-  files: any[];
+  folders: FileSystemDirectoryHandle[];
+  files: FileSystemFileHandle[];
+  metadata: BasicMetadata[];
   hidden: { [path: string]: string[] };
   ordered: { [path: string]: string[] };
 }
