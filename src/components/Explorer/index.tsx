@@ -11,7 +11,7 @@ import {
   scan,
   up,
 } from './icons';
-import { FileTile } from './FileTile';
+import FileTile, { DropDown as FileTileDropDown } from './FileTile';
 
 interface IExplorerProps {
   files: any[];
@@ -72,21 +72,21 @@ const Explorer = ({
     return false;
   };
 
-  const createDropHandler = (
-    box: string,
-  ): React.DragEventHandler<HTMLDivElement> => async (ev) => {
-    if (ev.dataTransfer.items) {
-      handleFileFolderDrop(
-        box,
-        await getFileSystemEntries(ev.dataTransfer.items),
-      );
-    } else {
-      // Use DataTransfer interface to access the file(s)
-      for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-        console.log('files:', ev.dataTransfer.files[i]);
+  const createDropHandler =
+    (box: string): React.DragEventHandler<HTMLDivElement> =>
+    async (ev) => {
+      if (ev.dataTransfer.items) {
+        handleFileFolderDrop(
+          box,
+          await getFileSystemEntries(ev.dataTransfer.items),
+        );
+      } else {
+        // Use DataTransfer interface to access the file(s)
+        for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+          console.log('files:', ev.dataTransfer.files[i]);
+        }
       }
-    }
-  };
+    };
 
   return (
     <div
@@ -152,13 +152,12 @@ const Explorer = ({
       {folders
         .filter((x) => !hidden.includes(x.name))
         .map((x) => (
-          <FileTile
-            key={x.name}
-            file={x}
-            onOpen={handleFolderOpen}
-            onHide={handleEntryHide}
-            onDelete={handleEntryDelete}
-          />
+          <FileTile key={x.name} file={x} onOpen={() => handleFolderOpen(x)}>
+            <FileTileDropDown
+              onHide={() => handleEntryHide(x)}
+              onDelete={() => handleEntryDelete(x)}
+            />
+          </FileTile>
         ))}
       {files
         .filter((x) => !hidden.includes(x.name))
@@ -167,10 +166,13 @@ const Explorer = ({
             key={x.name}
             file={x}
             isActiveFile={x === activeFile}
-            onOpen={handleFileOpen}
-            onHide={handleEntryHide}
-            onDelete={handleEntryDelete}
-          />
+            onOpen={() => handleFileOpen(x)}
+          >
+            <FileTileDropDown
+              onHide={() => handleEntryHide(x)}
+              onDelete={() => handleEntryDelete(x)}
+            />
+          </FileTile>
         ))}
     </div>
   );
