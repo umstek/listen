@@ -1,53 +1,5 @@
 import React from 'react';
 
-export const home = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width="24"
-    height="24"
-  >
-    <path fill="none" d="M0 0h24v24H0z" />
-    <path d="M21 20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.49a1 1 0 0 1 .386-.79l8-6.222a1 1 0 0 1 1.228 0l8 6.222a1 1 0 0 1 .386.79V20z" />
-  </svg>
-);
-
-export const up = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width="24"
-    height="24"
-  >
-    <path fill="none" d="M0 0h24v24H0z" />
-    <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm1 10h3l-4-4-4 4h3v4h2v-4z" />
-  </svg>
-);
-
-export const save = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width="24"
-    height="24"
-  >
-    <path fill="none" d="M0 0h24v24H0z" />
-    <path d="M18 21v-8H6v8H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h13l4 4v13a1 1 0 0 1-1 1h-2zm-2 0H8v-6h8v6z" />
-  </svg>
-);
-
-export const open = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width="24"
-    height="24"
-  >
-    <path fill="none" d="M0 0h24v24H0z" />
-    <path d="M3 21a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7.414l2 2H20a1 1 0 0 1 1 1v3H4v9.996L6 11h16.5l-2.31 9.243a1 1 0 0 1-.97.757H3z" />
-  </svg>
-);
-
 export const folderIcon = (
   <svg
     className="inline-block"
@@ -122,45 +74,6 @@ export const repeatAll = (
   </svg>
 );
 
-export const scan = (
-  <svg
-    className="fill-current"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width="64"
-    height="64"
-  >
-    <path fill="none" d="M0 0h24v24H0z" />
-    <path d="M4.257 5.671L12 13.414 13.414 12 5.671 4.257A9.959 9.959 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-2.401.846-4.605 2.257-6.329z" />
-  </svg>
-);
-
-export const addToPlaylist = (
-  <svg
-    className="fill-current"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width="64"
-    height="64"
-  >
-    <path fill="none" d="M0 0h24v24H0z" />
-    <path d="M18 15l-.001 3H21v2h-3.001L18 23h-2l-.001-3H13v-2h2.999L16 15h2zm-7 3v2H3v-2h8zm10-7v2H3v-2h18zm0-7v2H3V4h18z" />
-  </svg>
-);
-
-export const newPlaylist = (
-  <svg
-    className="fill-current"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width="64"
-    height="64"
-  >
-    <path fill="none" d="M0 0h24v24H0z" />
-    <path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" />
-  </svg>
-);
-
 export const hide = (
   <svg
     className="fill-current"
@@ -184,5 +97,17 @@ export const erase = (
   >
     <path fill="none" d="M0 0h24v24H0z" />
     <path d="M14 19h7v2h-9l-3.998.002-6.487-6.487a1 1 0 0 1 0-1.414L12.12 2.494a1 1 0 0 1 1.415 0l7.778 7.778a1 1 0 0 1 0 1.414L14 19zm1.657-4.485l3.535-3.536-6.364-6.364-3.535 3.536 6.364 6.364z" />
+  </svg>
+);
+
+export const more = (
+  <svg
+    className="fill-current"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    width="24"
+    height="24"
+  >
+    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
   </svg>
 );

@@ -30,8 +30,9 @@ function App({}: IAppProps) {
   const [folders, setFolders] = useState<FileSystemDirectoryHandle[]>([]);
   const [hidden, setHidden] = useState<{ [path: string]: string[] }>({});
   const [path, setPath] = useState<any[]>([]);
-  const [activeFile, setActiveFile] =
-    useState<FileSystemFileHandle | undefined>(undefined);
+  const [activeFile, setActiveFile] = useState<
+    FileSystemFileHandle | undefined
+  >(undefined);
   const [deleteRequestedEntry, setDeleteRequestedEntry] =
     useState<any>(undefined);
   const [audioSource, setAudioSource] = useState<string | undefined>(undefined);

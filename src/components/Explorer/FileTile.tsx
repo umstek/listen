@@ -1,22 +1,69 @@
 import React from 'react';
+import { Menu } from '@headlessui/react';
 
-import { erase, fileIcon, folderIcon, hide } from './icons';
+import { erase, fileIcon, folderIcon, hide, more } from './icons';
 
-export interface IFileTileProps {
-  file: any;
-  isActiveFile?: boolean;
-  onOpen: (file: any) => void;
-  onHide: (file: any) => void;
-  onDelete: (file: any) => void;
+interface DropDownProps {
+  onHide: () => void;
+  onDelete: () => void;
 }
 
-export const FileTile = ({
-  file,
-  isActiveFile,
-  onOpen: handleOpen,
+export const DropDown = ({
   onHide: handleHide,
   onDelete: handleDelete,
-}: IFileTileProps) => (
+}: DropDownProps) => (
+  <Menu as="div" className="relative inline-block text-left">
+    <Menu.Button className="pushable outline-none rounded-full p-1 ml-2">
+      {more}
+    </Menu.Button>
+    <Menu.Items className="absolute p-2 space-y-2 right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-xl focus:outline-none">
+      <Menu.Item>
+        {({ active }) => (
+          <button
+            className={['menu-item', active && 'bg-gray-100']
+              .filter(Boolean)
+              .join(' ')}
+            onClick={handleHide}
+          >
+            <span>{hide}</span>
+            <span>Hide</span>
+          </button>
+        )}
+      </Menu.Item>
+      <Menu.Item>
+        {({ active }) => (
+          <button
+            className={[
+              'menu-item',
+              !active && 'text-red-600',
+              active && 'danger',
+            ]
+              .filter(Boolean)
+              .join(' ')}
+            onClick={handleDelete}
+          >
+            <span>{erase}</span>
+            <span>Erase</span>
+          </button>
+        )}
+      </Menu.Item>
+    </Menu.Items>
+  </Menu>
+);
+
+interface FileTileProps {
+  file: any;
+  isActiveFile?: boolean;
+  children: React.ReactElement<DropDownProps>;
+  onOpen: () => void;
+}
+
+const FileTile = ({
+  file,
+  isActiveFile,
+  children,
+  onOpen: handleOpen,
+}: FileTileProps) => (
   <div
     key={file.name}
     className={[
@@ -30,25 +77,16 @@ export const FileTile = ({
     <div className="flex flex-row cursor-default items-center">
       <button
         className="pushable outline-none rounded-full p-1"
-        onClick={() => handleOpen(file)}
+        onClick={handleOpen}
       >
         {file.kind === 'directory' ? folderIcon : fileIcon}
       </button>
       <div className="mx-2">{file.name}</div>
     </div>
     <div className="flex flex-row invisible group-hover:visible items-center">
-      <button
-        className="pushable outline-none rounded-full p-1 ml-2"
-        onClick={() => handleHide(file)}
-      >
-        {hide}
-      </button>
-      <button
-        className="pushable outline-none rounded-full p-1 ml-2 text-red-600"
-        onClick={() => handleDelete(file)}
-      >
-        {erase}
-      </button>
+      {children}
     </div>
   </div>
 );
+
+export default FileTile;
