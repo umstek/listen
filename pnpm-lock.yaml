@@ -20,7 +20,7 @@ specifiers:
   autoprefixer: 10.2.6
   chai: 4.3.4
   dexie: 3.1.0-alpha.10
-  dexie-react-hooks: 1.0.6
+  dexie-react-hooks: 1.0.7
   music-metadata-browser: ^2.2.6
   postcss: 8.3.5
   prettier: 2.3.1
@@ -37,7 +37,7 @@ dependencies:
   '@types/react-beautiful-dnd': 13.0.0
   '@types/wicg-file-system-access': 2020.9.1
   dexie: 3.1.0-alpha.10
-  dexie-react-hooks: 1.0.6_c3995be8fdd405f0a1e5fc278a3b9f16
+  dexie-react-hooks: 1.0.7_c3995be8fdd405f0a1e5fc278a3b9f16
   music-metadata-browser: 2.2.6
   react: 17.0.2
   react-beautiful-dnd: 13.1.0_react-dom@17.0.2+react@17.0.2
@@ -3142,11 +3142,11 @@ packages:
     resolution: {integrity: sha512-xd4D8kHQtB0KtWW0c9xBZD5LVtm9chkMOfs/3Yn01RhT/sFIsVtzTtypfKoFfWBaL+7xCYLxjOLkhwPXaX/Kcg==}
     dev: true
 
-  /dexie-react-hooks/1.0.6_c3995be8fdd405f0a1e5fc278a3b9f16:
-    resolution: {integrity: sha512-OFoOBC4BQzkVGicuWl/cIMtlPp0wTAnUXwUJzq+l/zp0XVGmwEWkemRFq7JbudJLT0DINFVVzgVhGV7KOUK7uA==}
+  /dexie-react-hooks/1.0.7_c3995be8fdd405f0a1e5fc278a3b9f16:
+    resolution: {integrity: sha512-hqXGFbfgu1rdfcGHQUPwW2G0iWyupoNWnk3ODvqr+HdZt2ip3y1e/dcWIOsEnlUWWCWk6a3+ok0fvECU05eE2A==}
     peerDependencies:
       '@types/react': '>=16'
-      dexie: '>=3.1.0-alpha.1'
+      dexie: ~3.1.0-alpha.1 || ~3.2.0-beta.1
       react: '>=16'
     dependencies:
       '@types/react': 17.0.11
