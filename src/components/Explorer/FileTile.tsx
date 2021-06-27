@@ -16,7 +16,7 @@ export const DropDown = ({
     <Menu.Button className="pushable outline-none rounded-full p-1 ml-2">
       {more}
     </Menu.Button>
-    <Menu.Items className="absolute p-2 space-y-2 right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+    <Menu.Items className="absolute p-2 space-y-2 right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-xl focus:outline-none">
       <Menu.Item>
         {({ active }) => (
           <button
