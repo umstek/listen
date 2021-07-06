@@ -14,7 +14,7 @@ specifiers:
   '@types/react': 17.0.11
   '@types/react-beautiful-dnd': 13.0.0
   '@types/react-dom': 17.0.8
-  '@types/snowpack-env': 2.3.3
+  '@types/snowpack-env': 2.3.4
   '@types/wicg-file-system-access': ^2020.9.1
   '@web/test-runner': 0.13.12
   autoprefixer: 10.2.6
@@ -55,7 +55,7 @@ devDependencies:
   '@types/mocha': 8.2.2
   '@types/react': 17.0.11
   '@types/react-dom': 17.0.8
-  '@types/snowpack-env': 2.3.3
+  '@types/snowpack-env': 2.3.4
   '@web/test-runner': 0.13.12
   autoprefixer: 10.2.6_postcss@8.3.5
   chai: 4.3.4
@@ -1747,8 +1747,8 @@ packages:
       '@types/node': 15.12.4
     dev: true
 
-  /@types/snowpack-env/2.3.3:
-    resolution: {integrity: sha512-riJuu2fR3qhBfpWJtqQtNwYJFvquiXfqdprXvZjSNmscnZbIVyHoM49ZVEM1bciKM1mWOCdjXymOYHyGh2WLtg==}
+  /@types/snowpack-env/2.3.4:
+    resolution: {integrity: sha512-zYzMb2aMyzXW5VgOQHy+FgI8N5tLFb+tIsUqk35CIgSr9pT4pji2GR8BCOTMdniusVuRHIp/DaYQNQGYGLVZHQ==}
     dev: true
 
   /@types/uuid/8.3.0:
