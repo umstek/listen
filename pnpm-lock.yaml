@@ -12,7 +12,7 @@ specifiers:
   '@types/chai': 4.2.19
   '@types/mocha': 8.2.2
   '@types/react': 17.0.11
-  '@types/react-beautiful-dnd': 13.0.0
+  '@types/react-beautiful-dnd': 13.1.1
   '@types/react-dom': 17.0.8
   '@types/snowpack-env': 2.3.3
   '@types/wicg-file-system-access': ^2020.9.1
@@ -34,7 +34,7 @@ specifiers:
 
 dependencies:
   '@headlessui/react': 1.3.0_react-dom@17.0.2+react@17.0.2
-  '@types/react-beautiful-dnd': 13.0.0
+  '@types/react-beautiful-dnd': 13.1.1
   '@types/wicg-file-system-access': 2020.9.1
   dexie: 3.1.0-alpha.10
   dexie-react-hooks: 1.0.6_c3995be8fdd405f0a1e5fc278a3b9f16
@@ -1696,8 +1696,8 @@ packages:
     resolution: {integrity: sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==}
     dev: true
 
-  /@types/react-beautiful-dnd/13.0.0:
-    resolution: {integrity: sha512-by80tJ8aTTDXT256Gl+RfLRtFjYbUWOnZuEigJgNsJrSEGxvFe5eY6k3g4VIvf0M/6+xoLgfYWoWonlOo6Wqdg==}
+  /@types/react-beautiful-dnd/13.1.1:
+    resolution: {integrity: sha512-1lBBxVSutE8CQM37Jq7KvJwuA94qaEEqsx+G0dnwzG6Sfwf6JGcNeFk5jjjhJli1q2naeMZm+D/dvT/zyX4QPw==}
     dependencies:
       '@types/react': 17.0.11
     dev: false
