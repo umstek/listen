@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { addToPlaylist, newPlaylist, scan } from './icons';
 import { DropBox } from './DropBox';
 
