@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 
 import { db } from './util/persistence';
@@ -19,73 +19,337 @@ import DeleteFSEntryDialog from './components/modals/DeleteFSEntryDialog';
 
 import './App.css';
 
-interface IAppProps {}
+interface AppProps {}
 
-function App({}: IAppProps) {
-  const [rootFiles, setRootFiles] = useState<FileSystemFileHandle[]>([]);
-  const [rootFolders, setRootFolders] = useState<FileSystemDirectoryHandle[]>(
-    [],
+const initialState = {
+  rootFolders: [] as FileSystemDirectoryHandle[],
+  rootFiles: [] as FileSystemFileHandle[],
+  folders: [] as FileSystemDirectoryHandle[],
+  files: [] as FileSystemFileHandle[],
+  path: [] as FileSystemDirectoryHandle[],
+  activeFile: undefined as FileSystemFileHandle | undefined,
+  hidden: {} as { [path: string]: string[] },
+  deleteRequestedEntry: undefined as FileSystemHandle | undefined,
+  openDialogOpen: false,
+  openCollectionName: '',
+  saveDialogOpen: false,
+  saveCollectionName: '',
+};
+
+type ActionType =
+  | 'prev'
+  | 'next'
+  | 'end-current'
+  | 'open-folder'
+  | 'open-file'
+  | 'hide-file'
+  | 'delete-entry-request'
+  | 'cancel-delete-entry-request'
+  | 'delete-entry'
+  | 'delete-entry-done'
+  | 'navigate-up'
+  | 'navigate-home'
+  | 'merge-state'
+  | 'file-folder-drop'
+  | 'save-collection-dialog'
+  | 'open-collection-dialog'
+  | 'save-collection-dialog-close'
+  | 'open-collection-dialog-close'
+  | 'open-collection'
+  | 'save-collection'
+  | 'open-collection-name-change'
+  | 'save-collection-name-change'
+  | 'path-change';
+
+interface Action<T> {
+  type: ActionType;
+  payload?: T;
+}
+
+function reducer(
+  state: typeof initialState,
+  action: Action<any>,
+): typeof initialState {
+  const { files, hidden, path, activeFile, rootFiles, rootFolders } = state;
+
+  switch (action.type) {
+    case 'prev': {
+      if (!activeFile) {
+        return { ...state, activeFile: files[files.length - 1] };
+      }
+
+      const hiddenItems =
+        hidden[path.map((f) => f.name).join('/') || '_'] || [];
+      const currentIndex = files.indexOf(activeFile);
+
+      let prevIndex = (currentIndex - 1 + files.length) % files.length;
+      while (
+        hiddenItems.includes(files[prevIndex].name) &&
+        currentIndex !== prevIndex
+      ) {
+        prevIndex = (prevIndex - 1 + files.length) % files.length;
+      }
+      return { ...state, activeFile: files[prevIndex] };
+    }
+    case 'next':
+    case 'end-current': {
+      if (!activeFile) {
+        return { ...state, activeFile: files[0] };
+      }
+
+      const hiddenItems =
+        hidden[path.map((f) => f.name).join('/') || '_'] || [];
+      const currentIndex = files.indexOf(activeFile);
+
+      let nextIndex = (currentIndex + 1) % files.length;
+      while (
+        hiddenItems.includes(files[nextIndex].name) &&
+        currentIndex !== nextIndex
+      ) {
+        nextIndex = (nextIndex + 1) % files.length;
+      }
+      return { ...state, activeFile: files[nextIndex] };
+    }
+    case 'open-file': {
+      return { ...state, activeFile: action.payload };
+    }
+    case 'hide-file': {
+      const pathStr = path.map((f) => f.name).join('/') || '_';
+
+      return {
+        ...state,
+        hidden: {
+          ...hidden,
+          [pathStr]: [
+            ...new Set([...(hidden[pathStr] || []), action.payload?.name]),
+          ],
+        },
+      };
+    }
+    case 'navigate-home':
+      return {
+        ...state,
+        path: [],
+        files: filterAudioFiles(rootFiles),
+        folders: rootFolders,
+      };
+    case 'delete-entry-request':
+    case 'cancel-delete-entry-request': {
+      return { ...state, deleteRequestedEntry: action.payload };
+    }
+    case 'merge-state':
+      return { ...state, ...action.payload };
+    case 'save-collection-dialog':
+      return { ...state, saveDialogOpen: true };
+    case 'open-collection-dialog':
+      return { ...state, openDialogOpen: true };
+    case 'save-collection-dialog-close':
+      return { ...state, saveDialogOpen: false };
+    case 'open-collection-dialog-close':
+      return { ...state, openDialogOpen: false };
+    case 'path-change':
+      return { ...state, saveCollectionName: action.payload };
+    case 'save-collection-name-change':
+      return { ...state, saveCollectionName: action.payload };
+    case 'open-collection-name-change':
+      return { ...state, openCollectionName: action.payload };
+    default:
+      return state;
+  }
+}
+
+const wrapDispatchWithMiddleware =
+  (state: typeof initialState, dispatch: React.Dispatch<Action<any>>) =>
+  (type: ActionType) =>
+  async <T,>(payload?: T) => {
+    const {
+      path,
+      deleteRequestedEntry,
+      rootFolders,
+      rootFiles,
+      files,
+      folders,
+      openCollectionName,
+      saveCollectionName,
+      hidden,
+    } = state;
+
+    switch (type) {
+      case 'delete-entry': {
+        if (
+          !path[path.length - 1] ||
+          (await requestPermission(path[path.length - 1], 'readwrite'))
+        ) {
+          break;
+        }
+
+        await deleteEntry(path[path.length - 1], deleteRequestedEntry);
+        dispatch({ type: 'delete-entry-done' });
+
+        break;
+      }
+      case 'open-folder': {
+        const { folders, files } = separateFileSystemEntries(
+          await iterateDirectory(
+            payload as unknown as FileSystemDirectoryHandle,
+          ),
+        );
+
+        dispatch({
+          type: 'merge-state',
+          payload: {
+            path: [...path, payload],
+            files: filterAudioFiles(files),
+            folders,
+          },
+        });
+
+        break;
+      }
+      case 'navigate-up': {
+        const newPath = path.slice(0, path.length - 1);
+        const { folders, files } =
+          newPath.length === 0
+            ? { folders: rootFolders, files: rootFiles }
+            : separateFileSystemEntries(
+                await iterateDirectory(newPath[newPath.length - 1]),
+              );
+
+        dispatch({
+          type: 'merge-state',
+          payload: {
+            path: newPath,
+            files: filterAudioFiles(files),
+            folders,
+          },
+        });
+
+        break;
+      }
+      case 'file-folder-drop': {
+        const { box, items } = payload as unknown as {
+          box: string;
+          items: FileSystemHandle[];
+        };
+
+        if (box === 'new') {
+          const { files: filesNew, folders: foldersNew } =
+            separateFileSystemEntries(items);
+
+          dispatch({
+            type: 'merge-state',
+            payload: {
+              rootFiles: filterAudioFiles(filesNew),
+              rootFolders: foldersNew,
+              files: filterAudioFiles(filesNew),
+              folders: foldersNew,
+            },
+          });
+        } else if (box === 'existing') {
+          const { files: filesNew, folders: foldersNew } =
+            separateFileSystemEntries(items);
+
+          dispatch({
+            type: 'merge-state',
+            payload: {
+              files: [...files, ...filterAudioFiles(filesNew)],
+              folders: [...folders, ...foldersNew],
+            },
+          });
+        } else if (box === 'scan') {
+          const collections = await scanDroppedItems(items);
+          await db.collections.bulkPut(collections);
+        }
+
+        break;
+      }
+      case 'open-collection': {
+        const obj = await db.collections.get(openCollectionName);
+
+        if (obj) {
+          const { files, folders, hidden = {} } = obj;
+
+          dispatch({
+            type: 'merge-state',
+            payload: {
+              rootFiles: filterAudioFiles(files),
+              rootFolders: folders,
+              files: filterAudioFiles(files),
+              folders,
+              hidden,
+            },
+          });
+        }
+
+        dispatch({
+          type: 'merge-state',
+          payload: {
+            openDialogOpen: false,
+            saveCollectionName: openCollectionName,
+          },
+        });
+
+        break;
+      }
+      case 'save-collection': {
+        await db.collections.put(
+          {
+            name: saveCollectionName,
+            folders,
+            files,
+            hidden,
+            ordered: {},
+            metadata: [],
+          },
+          saveCollectionName,
+        );
+
+        dispatch({
+          type: 'merge-state',
+          payload: {
+            saveCollectionName,
+            saveDialogOpen: false,
+          },
+        });
+      }
+      default:
+        break;
+    }
+  };
+
+function App({}: AppProps) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const {
+    files,
+    folders,
+    hidden,
+    path,
+    activeFile,
+    deleteRequestedEntry,
+    saveDialogOpen,
+    saveCollectionName,
+    openDialogOpen,
+    openCollectionName,
+  } = state;
+
+  const makeDispatch =
+    (type: ActionType) =>
+    <T,>(payload?: T) =>
+      dispatch({ type, payload });
+
+  const makeDispatchWithMiddleware = wrapDispatchWithMiddleware(
+    state,
+    dispatch,
   );
-  const [files, setFiles] = useState<FileSystemFileHandle[]>([]);
-  const [folders, setFolders] = useState<FileSystemDirectoryHandle[]>([]);
-  const [hidden, setHidden] = useState<{ [path: string]: string[] }>({});
-  const [path, setPath] = useState<any[]>([]);
-  const [activeFile, setActiveFile] = useState<
-    FileSystemFileHandle | undefined
-  >(undefined);
-  const [deleteRequestedEntry, setDeleteRequestedEntry] =
-    useState<any>(undefined);
+
   const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
 
-  const [isSaveDialogOpen, setSaveDialogOpen] = useState(false);
-  const [saveCollectionName, setSaveCollectionName] = useState('');
-  useEffect(() => {
-    setSaveCollectionName(path[path.length - 1]?.name || '');
-  }, [path]);
+  const handlePathChange = makeDispatch('path-change');
+  useEffect(() => handlePathChange(path[path.length - 1]?.name || ''), [path]);
 
   const collectionNames = useLiveQuery(() =>
     db.collections.toCollection().toArray(),
   );
-  const [isOpenDialogOpen, setOpenDialogOpen] = useState(false);
-  const [openCollectionName, setOpenCollectionName] = useState('');
-
-  const handleNext = () => {
-    if (!activeFile) {
-      setActiveFile(files[0]);
-      return;
-    }
-
-    const hiddenItems = hidden[path.map((f) => f.name).join('/') || '_'] || [];
-    const currentIndex = files.indexOf(activeFile);
-
-    let nextIndex = (currentIndex + 1) % files.length;
-    while (
-      hiddenItems.includes(files[nextIndex].name) &&
-      currentIndex !== nextIndex
-    ) {
-      nextIndex = (nextIndex + 1) % files.length;
-    }
-    setActiveFile(files[nextIndex]);
-  };
-
-  const handlePrevious = () => {
-    if (!activeFile) {
-      setActiveFile(files[files.length - 1]);
-      return;
-    }
-
-    const hiddenItems = hidden[path.map((f) => f.name).join('/') || '_'] || [];
-    const currentIndex = files.indexOf(activeFile);
-
-    let prevIndex = (currentIndex - 1 + files.length) % files.length;
-    while (
-      hiddenItems.includes(files[prevIndex].name) &&
-      currentIndex !== prevIndex
-    ) {
-      prevIndex = (prevIndex - 1 + files.length) % files.length;
-    }
-    setActiveFile(files[prevIndex]);
-  };
 
   useEffect(() => {
     if (activeFile === undefined) {
@@ -114,144 +378,53 @@ function App({}: IAppProps) {
   return (
     <div className="w-[640px] h-[480px]">
       <SaveCollectionDialog
-        isOpen={isSaveDialogOpen}
+        isOpen={saveDialogOpen}
         collectionName={saveCollectionName}
-        onCollectionNameChange={setSaveCollectionName}
-        onSave={async () => {
-          await db.collections.put(
-            {
-              name: saveCollectionName,
-              folders,
-              files,
-              hidden,
-              ordered: {},
-              metadata: [],
-            },
-            saveCollectionName,
-          );
-          setSaveDialogOpen(false);
-        }}
-        onCancel={() => setSaveDialogOpen(false)}
+        onCollectionNameChange={makeDispatch('save-collection-name-change')}
+        onSave={makeDispatchWithMiddleware('save-collection')}
+        onCancel={makeDispatch('save-collection-dialog-close')}
       />
 
       <OpenCollectionDialog
         collectionNames={
           (collectionNames && collectionNames.map((c) => c.name)) || []
         }
-        isOpen={isOpenDialogOpen}
+        isOpen={openDialogOpen}
         collectionName={openCollectionName}
-        onCollectionNameChange={setOpenCollectionName}
-        onOpen={async () => {
-          const obj = await db.collections.get(openCollectionName);
-          if (obj) {
-            const { files, folders, hidden } = obj;
-            setRootFiles(files);
-            setRootFolders(folders);
-            setFiles(filterAudioFiles(files));
-            setFolders(folders);
-            setHidden(hidden || {});
-          }
-          setOpenDialogOpen(false);
-          setSaveCollectionName(openCollectionName);
-        }}
-        onCancel={() => setOpenDialogOpen(false)}
+        onCollectionNameChange={makeDispatch('open-collection-name-change')}
+        onOpen={makeDispatchWithMiddleware('open-collection')}
+        onCancel={makeDispatch('open-collection-dialog-close')}
       />
 
       <DeleteFSEntryDialog
-        entryName={deleteRequestedEntry?.name}
+        entryName={deleteRequestedEntry?.name || ''}
         isOpen={Boolean(deleteRequestedEntry)}
         isFolder={deleteRequestedEntry?.kind === 'directory'}
-        onCancel={() => setDeleteRequestedEntry(undefined)}
-        onDelete={async () => {
-          if (
-            !path[path.length - 1] ||
-            (await requestPermission(path[path.length - 1], 'readwrite'))
-          ) {
-            return;
-          }
-
-          await deleteEntry(path[path.length - 1], deleteRequestedEntry);
-          setDeleteRequestedEntry(undefined);
-        }}
+        onCancel={makeDispatch('cancel-delete-entry-request')}
+        onDelete={makeDispatchWithMiddleware('delete-entry')}
       />
 
       <Player
         src={audioSource}
-        onEnded={handleNext}
-        onNext={handleNext}
-        onPrevious={handlePrevious}
+        onEnded={makeDispatch('end-current')}
+        onNext={makeDispatch('next')}
+        onPrevious={makeDispatch('prev')}
       />
 
       <Explorer
         activeFile={activeFile}
-        onFolderOpen={async (folderHandle) => {
-          setPath([...path, folderHandle]);
-          const { folders, files } = separateFileSystemEntries(
-            await iterateDirectory(folderHandle),
-          );
-
-          setFiles(filterAudioFiles(files));
-          setFolders(folders);
-        }}
-        onFileOpen={(fileHandle) => {
-          setActiveFile(fileHandle);
-        }}
-        onEntryHide={(entryHandle) => {
-          const pathStr = path.map((f) => f.name).join('/') || '_';
-
-          setHidden({
-            ...hidden,
-            [pathStr]: [
-              ...new Set([...(hidden[pathStr] || []), entryHandle.name]),
-            ],
-          });
-        }}
-        onEntryDelete={(entryHandle) => {
-          setDeleteRequestedEntry(entryHandle);
-        }}
-        onNavigateUp={async () => {
-          const backPath = [...path];
-          backPath.pop();
-          setPath(backPath);
-          if (backPath.length === 0) {
-            setFiles(filterAudioFiles(rootFiles));
-            setFolders(rootFolders);
-          } else {
-            const { folders, files } = separateFileSystemEntries(
-              await iterateDirectory(backPath[backPath.length - 1]),
-            );
-            setFiles(filterAudioFiles(files));
-            setFolders(folders);
-          }
-        }}
-        onNavigateHome={async () => {
-          setPath([]);
-          setFiles(filterAudioFiles(rootFiles));
-          setFolders(rootFolders);
-        }}
+        onFolderOpen={makeDispatchWithMiddleware('open-folder')}
+        onFileOpen={makeDispatch('open-file')}
+        onEntryHide={makeDispatch('hide-file')}
+        onEntryDelete={makeDispatch('delete-entry-request')}
+        onNavigateUp={makeDispatchWithMiddleware('navigate-up')}
+        onNavigateHome={makeDispatch('navigate-home')}
         files={files}
         folders={folders}
         hidden={hidden[path.map((f) => f.name).join('/') || '_'] || []}
-        onFileFolderDrop={async (box, items) => {
-          if (box === 'new') {
-            const { files: filesNew, folders: foldersNew } =
-              separateFileSystemEntries(items);
-            setRootFiles(filterAudioFiles(filesNew));
-            setRootFolders(foldersNew);
-            setFiles(filterAudioFiles(filesNew));
-            setFolders(foldersNew);
-          } else if (box === 'existing') {
-            const { files: filesNew, folders: foldersNew } =
-              separateFileSystemEntries(items);
-            setFiles([...files, ...filterAudioFiles(filesNew)]);
-            setFolders([...folders, ...foldersNew]);
-          } else if (box === 'scan') {
-            const collections = await scanDroppedItems(items);
-            await db.collections.bulkPut(collections);
-          }
-        }}
-        onCollectionSave={() => setSaveDialogOpen(true)}
-        onCollectionOpen={() => setOpenDialogOpen(true)}
+        onFileFolderDrop={makeDispatchWithMiddleware('file-folder-drop')}
+        onCollectionSave={makeDispatch('save-collection-dialog')}
+        onCollectionOpen={makeDispatch('open-collection-dialog')}
       />
     </div>
   );
