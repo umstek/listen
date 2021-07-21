@@ -22,7 +22,7 @@ specifiers:
   dexie: 3.1.0-alpha.10
   dexie-react-hooks: 1.0.6
   music-metadata-browser: ^2.2.6
-  postcss: 8.3.5
+  postcss: 8.3.6
   prettier: 2.3.1
   react: 17.0.2
   react-beautiful-dnd: 13.1.0
@@ -46,7 +46,7 @@ dependencies:
 devDependencies:
   '@jadex/snowpack-plugin-tailwindcss-jit': 0.3.0_snowpack@3.6.2+tailwindcss@2.2.4
   '@snowpack/plugin-dotenv': 2.1.0
-  '@snowpack/plugin-postcss': 1.4.3_postcss@8.3.5
+  '@snowpack/plugin-postcss': 1.4.3_postcss@8.3.6
   '@snowpack/plugin-react-refresh': 2.5.0_react-dom@17.0.2+react@17.0.2
   '@snowpack/plugin-typescript': 1.2.1_typescript@4.3.4
   '@snowpack/web-test-runner-plugin': 0.2.2_7d8a95239390c8c9e9c006f658e0d9f6
@@ -57,12 +57,12 @@ devDependencies:
   '@types/react-dom': 17.0.8
   '@types/snowpack-env': 2.3.3
   '@web/test-runner': 0.13.12
-  autoprefixer: 10.2.6_postcss@8.3.5
+  autoprefixer: 10.2.6_postcss@8.3.6
   chai: 4.3.4
-  postcss: 8.3.5
+  postcss: 8.3.6
   prettier: 2.3.1
   snowpack: 3.6.2
-  tailwindcss: 2.2.4_72be89de93206f86f2d67dd5290ec14d
+  tailwindcss: 2.2.4_332e4ea0493f013a8b549b1918985ad0
   typescript: 4.3.4
   workbox-cli: 6.1.5
 
@@ -1177,12 +1177,12 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@fullhuman/postcss-purgecss/4.0.3_postcss@8.3.5:
+  /@fullhuman/postcss-purgecss/4.0.3_postcss@8.3.6:
     resolution: {integrity: sha512-/EnQ9UDWGGqHkn1UKAwSgh+gJHPKmD+Z+5dQ4gWT4qq2NUyez3zqAfZNwFH3eSgmgO+wjTXfhlLchx2M9/K+7Q==}
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
-      postcss: 8.3.5
+      postcss: 8.3.6
       purgecss: 4.0.3
     dev: true
 
@@ -1245,7 +1245,7 @@ packages:
       micromatch: 4.0.4
       path: 0.12.7
       snowpack: 3.6.2
-      tailwindcss: 2.2.4_72be89de93206f86f2d67dd5290ec14d
+      tailwindcss: 2.2.4_332e4ea0493f013a8b549b1918985ad0
     dev: true
 
   /@jest/types/27.0.2:
@@ -1421,14 +1421,14 @@ packages:
       dotenv-expand: 5.1.0
     dev: true
 
-  /@snowpack/plugin-postcss/1.4.3_postcss@8.3.5:
+  /@snowpack/plugin-postcss/1.4.3_postcss@8.3.6:
     resolution: {integrity: sha512-RJGYagse6Pi86Bqm8vPukhCwFVa92VIB81qP3PXPQ/ITQy5gVWDYi4oU+r1A6hsEZ9scUNZevfw6ISya+oiMNQ==}
     peerDependencies:
       postcss: '*'
     dependencies:
       minimatch: 3.0.4
       normalize-path: 3.0.0
-      postcss: 8.3.5
+      postcss: 8.3.6
       postcss-load-config: 3.1.0
       workerpool: 6.1.5
     transitivePeerDependencies:
@@ -2257,7 +2257,7 @@ packages:
     hasBin: true
     dev: true
 
-  /autoprefixer/10.2.6_postcss@8.3.5:
+  /autoprefixer/10.2.6_postcss@8.3.6:
     resolution: {integrity: sha512-8lChSmdU6dCNMCQopIf4Pe5kipkAGj/fvTMslCsih0uHpOrXOPUEVOmYMMqmw3cekQkSD7EhIeuYl5y0BLdKqg==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -2269,7 +2269,7 @@ packages:
       colorette: 1.2.2
       fraction.js: 4.1.1
       normalize-range: 0.1.2
-      postcss: 8.3.5
+      postcss: 8.3.6
       postcss-value-parser: 4.1.0
     dev: true
 
@@ -5490,13 +5490,13 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /postcss-nested/5.0.5_postcss@8.3.5:
+  /postcss-nested/5.0.5_postcss@8.3.6:
     resolution: {integrity: sha512-GSRXYz5bccobpTzLQZXOnSOfKl6TwVr5CyAQJUPub4nuRJSOECK5AqurxVgmtxP48p0Kc/ndY/YyS1yqldX0Ew==}
     engines: {node: '>=10.0'}
     peerDependencies:
       postcss: ^8.1.13
     dependencies:
-      postcss: 8.3.5
+      postcss: 8.3.6
       postcss-selector-parser: 6.0.6
     dev: true
 
@@ -5518,6 +5518,15 @@ packages:
 
   /postcss/8.3.5:
     resolution: {integrity: sha512-NxTuJocUhYGsMiMFHDUkmjSKT3EdH4/WbGF6GCi1NDGk+vbcUTun4fpbOqaPtD8IIsztA2ilZm2DhYCuyN58gA==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      colorette: 1.2.2
+      nanoid: 3.1.23
+      source-map-js: 0.6.2
+    dev: true
+
+  /postcss/8.3.6:
+    resolution: {integrity: sha512-wG1cc/JhRgdqB6WHEuyLTedf3KIRuD0hG6ldkFEZNCjRxiC+3i6kkWUUbiJQayP28iwG35cEmAbe98585BYV0A==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       colorette: 1.2.2
@@ -6541,7 +6550,7 @@ packages:
       wordwrapjs: 4.0.1
     dev: true
 
-  /tailwindcss/2.2.4_72be89de93206f86f2d67dd5290ec14d:
+  /tailwindcss/2.2.4_332e4ea0493f013a8b549b1918985ad0:
     resolution: {integrity: sha512-OdBCPgazNNsknSP+JfrPzkay9aqKjhKtFhbhgxHgvEFdHy/GuRPo2SCJ4w1SFTN8H6FPI4m6qD/Jj20NWY1GkA==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -6549,9 +6558,9 @@ packages:
       autoprefixer: ^10.0.2
       postcss: ^8.0.9
     dependencies:
-      '@fullhuman/postcss-purgecss': 4.0.3_postcss@8.3.5
+      '@fullhuman/postcss-purgecss': 4.0.3_postcss@8.3.6
       arg: 5.0.0
-      autoprefixer: 10.2.6_postcss@8.3.5
+      autoprefixer: 10.2.6_postcss@8.3.6
       bytes: 3.1.0
       chalk: 4.1.1
       chokidar: 3.5.2
@@ -6571,10 +6580,10 @@ packages:
       node-emoji: 1.10.0
       normalize-path: 3.0.0
       object-hash: 2.2.0
-      postcss: 8.3.5
+      postcss: 8.3.6
       postcss-js: 3.0.3
       postcss-load-config: 3.1.0
-      postcss-nested: 5.0.5_postcss@8.3.5
+      postcss-nested: 5.0.5_postcss@8.3.6
       postcss-selector-parser: 6.0.6
       postcss-value-parser: 4.1.0
       pretty-hrtime: 1.0.3
