@@ -23,7 +23,7 @@ export function DropZone({
   return (
     <div
       className="z-20 grid grid-cols-2 gap-8 p-8 absolute bg-white rounded-3xl shadow-2xl mx-auto transition-all"
-      onDragLeave={handleDragLeave}
+      // onDragLeave={handleDragLeave}
       onDragOver={handleDragOver}
     >
       <div

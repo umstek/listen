@@ -83,7 +83,7 @@ function App({}: AppProps) {
   }, [activeFile]);
 
   return (
-    <div className="w-[640px] h-[480px]">
+    <div className="w-full h-full">
       <SaveCollectionDialog
         isOpen={saveDialogOpen}
         collectionName={saveCollectionName}
