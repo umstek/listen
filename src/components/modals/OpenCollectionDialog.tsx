@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dialog, RadioGroup } from '@headlessui/react';
 
 import BasicDialog from './BasicDialog';
@@ -19,43 +19,55 @@ const OpenCollectionDialog = ({
   onCollectionNameChange: handleCollectionNameChange,
   onOpen: handleOpen,
   onCancel: handleCancel,
-}: IOpenCollectionDialogProps) => (
-  <BasicDialog
-    isOpen={isOpen}
-    onCancel={handleCancel}
-    title="Open a collection"
-    actions={[{ label: 'Open', action: handleOpen }]}
-  >
-    <Dialog.Description className="text-sm text-gray-500">
-      All collections
-    </Dialog.Description>
-    <RadioGroup
-      value={collectionName}
-      onChange={handleCollectionNameChange}
-      className="space-y-2 my-2 h-96 p-2 overflow-y-auto"
+}: IOpenCollectionDialogProps) => {
+  const [search, setSearch] = useState('');
+
+  return (
+    <BasicDialog
+      isOpen={isOpen}
+      onCancel={handleCancel}
+      title="Open a collection"
+      actions={[{ label: 'Open', action: handleOpen }]}
     >
-      {collectionNames.map((name) => (
-        <RadioGroup.Option
-          key={name}
-          className="outline-none focus:outline-none focus:ring-offset-1 focus:ring-2 focus:ring-yellow-500 rounded-lg"
-          value={name}
-        >
-          {({ checked }) => (
-            <div
-              className={[
-                'py-2 px-3 rounded-lg cursor-pointer truncate select-none',
-                checked && 'primary shadow-md',
-              ]
-                .filter(Boolean)
-                .join(' ')}
+      <Dialog.Description className="text-sm text-gray-500">
+        Search for a collection to open
+      </Dialog.Description>
+      <input
+        type="text"
+        className="input px-3 py-2 my-2 rounded"
+        value={search}
+        onChange={(ev) => setSearch(ev.target.value)}
+      />
+      <RadioGroup
+        value={collectionName}
+        onChange={handleCollectionNameChange}
+        className="space-y-2 my-2 h-[40vh] p-2 overflow-y-auto"
+      >
+        {collectionNames
+          .filter((name) => name.toLowerCase().includes(search.toLowerCase()))
+          .map((name) => (
+            <RadioGroup.Option
+              key={name}
+              className="outline-none focus:outline-none focus:ring-offset-1 focus:ring-2 focus:ring-yellow-500 rounded-lg"
+              value={name}
             >
-              {name}
-            </div>
-          )}
-        </RadioGroup.Option>
-      ))}
-    </RadioGroup>
-  </BasicDialog>
-);
+              {({ checked }) => (
+                <div
+                  className={[
+                    'py-2 px-3 rounded-lg cursor-pointer truncate select-none',
+                    checked && 'primary shadow-md',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                >
+                  {name}
+                </div>
+              )}
+            </RadioGroup.Option>
+          ))}
+      </RadioGroup>
+    </BasicDialog>
+  );
+};
 
 export default OpenCollectionDialog;

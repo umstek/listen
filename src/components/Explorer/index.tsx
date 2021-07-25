@@ -16,7 +16,13 @@ interface IExplorerProps {
   onEntryDelete: (entry: any) => void;
   onNavigateUp: () => void;
   onNavigateHome: () => void;
-  onFileFolderDrop: (box: string, items: FileSystemHandle[]) => void;
+  onFileFolderDrop: ({
+    box,
+    items,
+  }: {
+    box: string;
+    items: FileSystemHandle[];
+  }) => void;
   onCollectionOpen: () => void;
   onCollectionSave: () => void;
 }
@@ -68,10 +74,10 @@ const Explorer = ({
     (box: string): React.DragEventHandler<HTMLDivElement> =>
     async (ev) => {
       if (ev.dataTransfer.items) {
-        handleFileFolderDrop(
+        handleFileFolderDrop({
           box,
-          await getFileSystemEntries(ev.dataTransfer.items),
-        );
+          items: await getFileSystemEntries(ev.dataTransfer.items),
+        });
       } else {
         // Use DataTransfer interface to access the file(s)
         for (var i = 0; i < ev.dataTransfer.files.length; i++) {
