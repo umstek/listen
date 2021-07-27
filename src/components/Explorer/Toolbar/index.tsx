@@ -1,4 +1,5 @@
 import React from 'react';
+import { AddItemsDropdown } from './AddItemsDropdown';
 import { home, open, save, up } from './icons';
 
 interface ToolbarProps {
@@ -6,6 +7,13 @@ interface ToolbarProps {
   onNavigateUp: () => void;
   onSave: () => void;
   onOpen: () => void;
+  onAddItems: ({
+    box,
+    items,
+  }: {
+    box: string;
+    items: FileSystemHandle[];
+  }) => void;
 }
 
 export function Toolbar({
@@ -13,6 +21,7 @@ export function Toolbar({
   onNavigateUp: handleNavigateUp,
   onSave: handleSave,
   onOpen: handleOpen,
+  onAddItems: handleAddItems,
 }: ToolbarProps) {
   return (
     <div className="flex flex-row">
@@ -20,6 +29,7 @@ export function Toolbar({
       <button onClick={handleNavigateUp}>{up}</button>
       <button onClick={handleSave}>{save}</button>
       <button onClick={handleOpen}>{open}</button>
+      <AddItemsDropdown onItemsSelected={handleAddItems}></AddItemsDropdown>
     </div>
   );
 }

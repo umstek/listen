@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+// import { PlayIcon, PauseIcon, StopIcon, FastForwardIcon, RewindIcon } from '@heroicons/react/solid';
 
 import { clamp } from '../../util/math';
 import { backward, next, pause, play, previous, stop, forward } from './icons';

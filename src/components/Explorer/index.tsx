@@ -98,6 +98,7 @@ const Explorer = ({
         onNavigateUp={handleNavigateUp}
         onOpen={handleOpen}
         onSave={handleSave}
+        onAddItems={handleFileFolderDrop}
       />
 
       {isDropZoneVisible && (
