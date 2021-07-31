@@ -3,6 +3,52 @@ import type { ICollection } from './persistence';
 import config from '../config';
 import { getBasicMetadata, BasicMetadata } from './metadata';
 
+export async function getFile(box: 'new' | 'existing') {
+  try {
+    let fileHandles = await window.showOpenFilePicker({
+      multiple: true,
+      // TODO: Replace with SNOWPACK_PUBLIC_RECOGNIZED_EXTENSIONS somehow. Maybe don't use regex.
+      types: [
+        {
+          accept: {
+            'audio/*': [
+              '.wav',
+              '.wave',
+              '.mp3',
+              '.m4a',
+              '.m4b',
+              '.m4p',
+              '.m4r',
+              '.aac',
+              '.oga',
+              '.ogg',
+              '.spx',
+              '.opus',
+              '.flac',
+              '.caf',
+            ],
+          },
+          description: 'All Music Files',
+        },
+      ],
+    });
+
+    return { box, items: fileHandles };
+  } catch (error) {
+    return { box: '', items: [] };
+  }
+}
+
+export async function getFolder() {
+  try {
+    const fileSystemDirectoryHandle = await window.showDirectoryPicker();
+
+    return { box: 'scan', items: [fileSystemDirectoryHandle] };
+  } catch (error) {
+    return { box: '', items: [] };
+  }
+}
+
 export async function getFileSystemEntries(
   items: DataTransferItemList,
 ): Promise<FileSystemHandle[]> {
