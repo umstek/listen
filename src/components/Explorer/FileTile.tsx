@@ -1,7 +1,12 @@
 import React from 'react';
 import { Menu } from '@headlessui/react';
-
-import { erase, fileIcon, folderIcon, hide, more } from './icons';
+import {
+  MdMoreHoriz as MoreIcon,
+  MdVisibilityOff as HideIcon,
+  MdDeleteForever as DeleteIcon,
+  MdFolder as FolderIcon,
+  MdPlayArrow as FileIcon,
+} from 'react-icons/md';
 
 interface DropDownProps {
   onHide: () => void;
@@ -14,7 +19,7 @@ export const DropDown = ({
 }: DropDownProps) => (
   <Menu as="div" className="relative inline-block text-left">
     <Menu.Button className="pushable outline-none rounded-full p-1 ml-2">
-      {more}
+      <MoreIcon />
     </Menu.Button>
     <Menu.Items className="absolute p-2 space-y-2 right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-xl focus:outline-none">
       <Menu.Item>
@@ -25,7 +30,9 @@ export const DropDown = ({
               .join(' ')}
             onClick={handleHide}
           >
-            <span>{hide}</span>
+            <span>
+              <HideIcon />
+            </span>
             <span>Hide</span>
           </button>
         )}
@@ -42,7 +49,9 @@ export const DropDown = ({
               .join(' ')}
             onClick={handleDelete}
           >
-            <span>{erase}</span>
+            <span>
+              <DeleteIcon />
+            </span>
             <span>Erase</span>
           </button>
         )}
@@ -79,7 +88,7 @@ const FileTile = ({
         className="pushable outline-none rounded-full p-1"
         onClick={handleOpen}
       >
-        {file.kind === 'directory' ? folderIcon : fileIcon}
+        {file.kind === 'directory' ? <FolderIcon /> : <FileIcon />}
       </button>
       <div className="mx-2">{file.name}</div>
     </div>

@@ -1,6 +1,12 @@
 import React from 'react';
 import { AddItemsDropdown } from './AddItemsDropdown';
-import { home, open, save, up } from './icons';
+import {
+  MdHome as HomeIcon,
+  MdArrowUpward as UpIcon,
+  MdSave as SaveIcon,
+  MdFolderOpen as OpenIcon,
+} from 'react-icons/md';
+import { ToolButton } from './ToolButton';
 
 interface ToolbarProps {
   onNavigateHome: () => void;
@@ -24,12 +30,12 @@ export function Toolbar({
   onAddItems: handleAddItems,
 }: ToolbarProps) {
   return (
-    <div className="flex flex-row">
-      <button onClick={handleNavigateHome}>{home}</button>
-      <button onClick={handleNavigateUp}>{up}</button>
-      <button onClick={handleSave}>{save}</button>
-      <button onClick={handleOpen}>{open}</button>
-      <AddItemsDropdown onItemsSelected={handleAddItems}></AddItemsDropdown>
+    <div className="p-4 flex flex-row space-x-2">
+      <ToolButton Icon={HomeIcon} onClick={handleNavigateHome} />
+      <ToolButton Icon={UpIcon} onClick={handleNavigateUp} />
+      <ToolButton Icon={SaveIcon} onClick={handleSave} />
+      <ToolButton Icon={OpenIcon} onClick={handleOpen} />
+      <AddItemsDropdown onItemsSelected={handleAddItems} />
     </div>
   );
 }

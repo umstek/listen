@@ -2,11 +2,10 @@ import React, { Fragment } from 'react';
 
 import { Popover, Transition } from '@headlessui/react';
 import {
-  DocumentAddIcon,
-  PlusIcon,
-  ViewGridAddIcon,
-  DocumentSearchIcon,
-} from '@heroicons/react/solid';
+  MdAdd as AddIcon,
+  MdPlaylistAdd as PlaylistAddIcon,
+  MdLibraryAdd as LibraryAddIcon,
+} from 'react-icons/md';
 
 import { getFile, getFolder } from '../../../util/fileSystem';
 
@@ -15,19 +14,19 @@ const solutions = [
     name: 'New playlist',
     description: 'Create a new playlist and add to it',
     action: () => getFile('new'),
-    icon: PlusIcon,
+    icon: AddIcon,
   },
   {
     name: 'Add to playlist',
     description: 'Add to current playlist',
     action: () => getFile('existing'),
-    icon: ViewGridAddIcon,
+    icon: PlaylistAddIcon,
   },
   {
     name: 'Scan',
     description: 'Scan folder and make playlists automatically',
     action: getFolder,
-    icon: DocumentSearchIcon,
+    icon: LibraryAddIcon,
   },
 ];
 
@@ -46,9 +45,9 @@ export function AddItemsDropdown({
     <Popover className="relative">
       {({ open }) => (
         <>
-          <Popover.Button>
-            <DocumentAddIcon
-              className={`h-6 w-6 fill-current`}
+          <Popover.Button className="p-2 rounded-full pushable secondary">
+            <LibraryAddIcon
+              className="h-6 w-6 fill-current"
               aria-hidden="true"
             />
           </Popover.Button>
@@ -65,15 +64,18 @@ export function AddItemsDropdown({
               <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   {solutions.map((item) => (
-                    <a
+                    <button
                       key={item.name}
                       onClick={async () => onItemsSelected(await item.action())}
                       className="cursor-pointer select-none flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                     >
                       <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 fill-current sm:h-12 sm:w-12">
-                        <item.icon aria-hidden="true" />
+                        <item.icon
+                          className="h-6 w-6 fill-current"
+                          aria-hidden="true"
+                        />
                       </div>
-                      <div className="ml-4">
+                      <div className="ml-4 text-left">
                         <p className="text-sm font-medium text-gray-900">
                           {item.name}
                         </p>
@@ -81,7 +83,7 @@ export function AddItemsDropdown({
                           {item.description}
                         </p>
                       </div>
-                    </a>
+                    </button>
                   ))}
                 </div>
               </div>

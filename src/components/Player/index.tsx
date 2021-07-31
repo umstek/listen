@@ -1,8 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import { PlayIcon, PauseIcon, StopIcon, FastForwardIcon, RewindIcon } from '@heroicons/react/solid';
+import {
+  MdPlayArrow as PlayIcon,
+  MdPause as PauseIcon,
+  MdSkipNext as NextIcon,
+  MdSkipPrevious as PrevIcon,
+  MdStop as StopIcon,
+  MdForward10 as FastForwardIcon,
+  MdReplay10 as RewindIcon,
+} from 'react-icons/md';
 
 import { clamp } from '../../util/math';
-import { backward, next, pause, play, previous, stop, forward } from './icons';
 
 import './styles.css';
 
@@ -24,7 +31,11 @@ const PlayButton = ({ status, onClick: handleClick }: IPlayButtonProps) => {
       onClick={handleClick}
     >
       <span className="mx-auto">
-        {status === PlayStatus.PLAYING ? pause : play}
+        {status === PlayStatus.PLAYING ? (
+          <PauseIcon className="h-6 w-6" />
+        ) : (
+          <PlayIcon className="h-6 w-6" />
+        )}
       </span>
     </button>
   );
@@ -133,15 +144,15 @@ const PlayerControls = ({
       ></audio>
       <div className="flex flex-row justify-center items-center transition-all bg-gradient-to-r from-pink-100 via-red-100 to-yellow-100 rounded-full p-2">
         <button className="control" onClick={handlePrevious}>
-          {previous}
+          <PrevIcon className="h-6 w-6" />
         </button>
         <div className="flex flex-col items-center">
           <div className="flex flex-row justify-between">
             <button className="control m-1" onClick={handleBackward}>
-              {backward}
+              <RewindIcon className="h-6 w-6" />
             </button>
             <button className="control m-1" onClick={handleForward}>
-              {forward}
+              <FastForwardIcon className="h-6 w-6" />
             </button>
           </div>
           <PlayButton
@@ -159,12 +170,12 @@ const PlayerControls = ({
               className="control"
               onClick={() => setPlayStatus(PlayStatus.STOPPED)}
             >
-              {stop}
+              <StopIcon className="h-6 w-6" />
             </button>
           </div>
         </div>
         <button className="control" onClick={handleNext}>
-          {next}
+          <NextIcon className="h-6 w-6" />
         </button>
       </div>
     </div>
