@@ -7,27 +7,9 @@ export async function getFile(box: 'new' | 'existing') {
   try {
     let fileHandles = await window.showOpenFilePicker({
       multiple: true,
-      // TODO: Replace with SNOWPACK_PUBLIC_RECOGNIZED_EXTENSIONS somehow. Maybe don't use regex.
       types: [
         {
-          accept: {
-            'audio/*': [
-              '.wav',
-              '.wave',
-              '.mp3',
-              '.m4a',
-              '.m4b',
-              '.m4p',
-              '.m4r',
-              '.aac',
-              '.oga',
-              '.ogg',
-              '.spx',
-              '.opus',
-              '.flac',
-              '.caf',
-            ],
-          },
+          accept: { 'audio/*': config.recognizedExtensionsList },
           description: 'All Music Files',
         },
       ],
@@ -87,7 +69,9 @@ export async function iterateDirectory(
 }
 
 export function filterAudioFiles(files: FileSystemFileHandle[]) {
-  return files.filter((file) => config.recognizedExtensions.exec(file.name));
+  return files.filter((file) =>
+    config.recognizedExtensionsRegex.exec(file.name),
+  );
 }
 
 export async function scanEntries(queue: FileSystemDirectoryHandle[]) {
