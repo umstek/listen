@@ -20,7 +20,7 @@ specifiers:
   chai: 4.3.4
   dexie: 3.2.0-beta-2
   dexie-react-hooks: 1.0.7
-  music-metadata-browser: 2.4.0
+  music-metadata-browser: 2.4.3
   postcss: 8.3.6
   prettier: 2.3.2
   react: 17.0.2
@@ -36,7 +36,7 @@ dependencies:
   '@types/wicg-file-system-access': 2020.9.2
   dexie: 3.2.0-beta-2
   dexie-react-hooks: 1.0.7_a45b07752916ae686afe4e3b7d172e81
-  music-metadata-browser: 2.4.0
+  music-metadata-browser: 2.4.3
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-icons: 4.2.0_react@17.0.2
@@ -1657,8 +1657,8 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: true
 
-  /@tokenizer/token/0.1.1:
-    resolution: {integrity: sha512-XO6INPbZCxdprl+9qa/AAbFFOMzzwqYxpjPgLICrMD6C2FCw6qfJOPcBk6JqqPLSaZ/Qx87qn4rpPmPMwaAK6w==}
+  /@tokenizer/token/0.3.0:
+    resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
     dev: false
 
   /@tootallnate/once/1.1.2:
@@ -3831,13 +3831,13 @@ packages:
       escape-string-regexp: 1.0.5
     dev: true
 
-  /file-type/16.5.2:
-    resolution: {integrity: sha512-lnHRZj2USLF3v4C5ZY7/vQQeoTVA1YV9TtD6UUCr9z5Cd0uyutqxPBJxkXzM6lufPNuSfefq/yFmnSPz0C3wNw==}
+  /file-type/16.5.3:
+    resolution: {integrity: sha512-uVsl7iFhHSOY4bEONLlTK47iAHtNsFHWP5YE4xJfZ4rnX7S1Q3wce09XgqSC7E/xh8Ncv/be1lNoyprlUH/x6A==}
     engines: {node: '>=10'}
     dependencies:
       readable-web-to-node-stream: 3.0.2
-      strtok3: 6.1.3
-      token-types: 3.1.0
+      strtok3: 6.2.4
+      token-types: 4.1.1
     dev: false
 
   /file-uri-to-path/1.0.0:
@@ -5484,28 +5484,28 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: true
 
-  /music-metadata-browser/2.4.0:
-    resolution: {integrity: sha512-DZbOIqDjZ5i67dLX/mww1Ibq5FxPrF3hOI14STrnB/vi5r9LJ7SHXJseh2EY+oujI4A8taGS063giAOzmIyIYg==}
+  /music-metadata-browser/2.4.3:
+    resolution: {integrity: sha512-nhVBoT5ZW46IbE8DYNq5atGxFQkBVYu5cFeU0XhC9F1pJs6VAcNp7DEOalXoyWr4bQkfcdm+b3KAGKwwL3IEdQ==}
     dependencies:
       buffer: 6.0.3
       debug: 4.3.2
-      music-metadata: 7.11.0
+      music-metadata: 7.11.3
       readable-stream: 3.6.0
       readable-web-to-node-stream: 3.0.2
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /music-metadata/7.11.0:
-    resolution: {integrity: sha512-mDS6tZt0csbKCpWJcUlyjv5OIYUHnDDLm7phwRmVT/2jSPxHjvwZwUOx2/dD+uH5n2XGTB0iAqWNtmZJO4L3Hw==}
+  /music-metadata/7.11.3:
+    resolution: {integrity: sha512-Ou1y7H6zIbrbxnTacKQgrLC5GZgOGKykcqUf6jhuoFzfZjnKJkm4Ke1hqYhqnW3PHwrsmkAs/GP9SUGiukwubA==}
     engines: {node: '>=10'}
     dependencies:
       content-type: 1.0.4
       debug: 4.3.2
-      file-type: 16.5.2
+      file-type: 16.5.3
       media-typer: 1.1.0
-      strtok3: 6.2.2
-      token-types: 4.1.0
+      strtok3: 6.2.4
+      token-types: 4.1.1
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -6030,13 +6030,8 @@ packages:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
     dev: true
 
-  /peek-readable/3.1.4:
-    resolution: {integrity: sha512-DX7ec7frSMtCWw+zMd27f66hcxIz/w9LQTY2RflB4WNHCVPAye1pJiP2t3gvaaOhu7IOhtPbHw8MemMj+F5lrg==}
-    engines: {node: '>=8'}
-    dev: false
-
-  /peek-readable/4.0.0:
-    resolution: {integrity: sha512-kLbU4cz6h86poGVBKgAVMpFmD47nX04fPPQNKnv9fuj+IJZYkEBjsYAVu5nDbZWx0ZsWwWlMzeG90zQa5KLBaA==}
+  /peek-readable/4.0.1:
+    resolution: {integrity: sha512-7qmhptnR0WMSpxT5rMHG9bW/mYSR1uqaPFj2MHvT+y/aOUu6msJijpKt5SkTDKySwg65OWG2JwTMBlgcbwMHrQ==}
     engines: {node: '>=8'}
     dev: false
 
@@ -7234,19 +7229,12 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /strtok3/6.1.3:
-    resolution: {integrity: sha512-ssWSKFOeUTurMSucgyUf+a6Z9mVTYrsYiyEK5RLnh8BM6sFrKSljVlnjZXIDxMguYfdQI+mUPFHo88FYTxq1XA==}
+  /strtok3/6.2.4:
+    resolution: {integrity: sha512-GO8IcFF9GmFDvqduIspUBwCzCbqzegyVKIsSymcMgiZKeCfrN9SowtUoi8+b59WZMAjIzVZic/Ft97+pynR3Iw==}
     engines: {node: '>=10'}
     dependencies:
-      '@tokenizer/token': 0.1.1
-      peek-readable: 3.1.4
-    dev: false
-
-  /strtok3/6.2.2:
-    resolution: {integrity: sha512-iUzLl3UhF2RfqQah80JngnfltQFLEidGyTX8+hHFMQFjzUj3UpIpOx824FtFmRI9bwyywReENpdHGDkFJwJlGQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      peek-readable: 4.0.0
+      '@tokenizer/token': 0.3.0
+      peek-readable: 4.0.1
     dev: false
 
   /supports-color/5.5.0:
@@ -7445,18 +7433,11 @@ packages:
     engines: {node: '>=0.6'}
     dev: true
 
-  /token-types/3.1.0:
-    resolution: {integrity: sha512-WhoeIW7UTn7NC7L0t/4x3vU/YYSS1oeUxYgiGXQLd82Kaf1qtlxOex3ETY0+o2QuRgAdyursMlUhQBKDCfMUkQ==}
+  /token-types/4.1.1:
+    resolution: {integrity: sha512-hD+QyuUAyI2spzsI0B7gf/jJ2ggR4RjkAo37j3StuePhApJUwcWDjnHDOFdIWYSwNR28H14hpwm4EI+V1Ted1w==}
     engines: {node: '>=10'}
     dependencies:
-      '@tokenizer/token': 0.1.1
-      ieee754: 1.2.1
-    dev: false
-
-  /token-types/4.1.0:
-    resolution: {integrity: sha512-2JV21LhBx3WsTveWcXp20SDo0/fQ2TK2RFcFBIRDvkOIy6+E79n+rqMuvolqyuWPgYazCrHXWpE0OxRj43nb9Q==}
-    engines: {node: '>=10'}
-    dependencies:
+      '@tokenizer/token': 0.3.0
       ieee754: 1.2.1
     dev: false
 
