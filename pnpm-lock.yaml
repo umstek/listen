@@ -17,6 +17,7 @@ specifiers:
   '@types/wicg-file-system-access': 2020.9.2
   '@web/test-runner': 0.13.15
   autoprefixer: 10.3.1
+  browser-fs-access: ^0.19.2
   chai: 4.3.4
   dexie: 3.2.0-beta-2
   dexie-react-hooks: 1.0.7
@@ -34,6 +35,7 @@ specifiers:
 dependencies:
   '@headlessui/react': 1.4.0_react-dom@17.0.2+react@17.0.2
   '@types/wicg-file-system-access': 2020.9.2
+  browser-fs-access: 0.19.2
   dexie: 3.2.0-beta-2
   dexie-react-hooks: 1.0.7_a45b07752916ae686afe4e3b7d172e81
   music-metadata-browser: 2.4.3
@@ -2614,6 +2616,10 @@ packages:
     dependencies:
       fill-range: 7.0.1
     dev: true
+
+  /browser-fs-access/0.19.2:
+    resolution: {integrity: sha512-hphHecCzsDd2YhOasCVfOQLIZT6Z4FlsmYDHt8ahsQ04w61kyf/6rr/j5E73yl0081vQxAbg3aJUOxoPei2+Hg==}
+    dev: false
 
   /browserslist/4.16.6:
     resolution: {integrity: sha512-Wspk/PqO+4W9qp5iUTJsa1B/QrYn1keNCcEP5OvP7WBwT4KaDly0uONYmC6Xa3Z5IqnUgS0KcgLYu1l74x0ZXQ==}

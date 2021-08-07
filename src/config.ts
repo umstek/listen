@@ -6,6 +6,10 @@ const config = {
     import.meta.env.SNOWPACK_PUBLIC_RECOGNIZED_EXTENSIONS_CSV.split(',').map(
       (ext: string) => `.${ext}`,
     ),
+  recognizedMimeTypesList:
+    import.meta.env.SNOWPACK_PUBLIC_RECOGNIZED_MIME_TYPES_CSV.split(',').map(
+      (mimeType: string) => mimeType.trim(),
+    ),
 };
 
 export default config;

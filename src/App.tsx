@@ -2,7 +2,7 @@ import React, { useEffect, useState, useReducer } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 
 import { db } from './util/persistence';
-import { requestPermission } from './util/fileSystem';
+import { getFiles, getFolder1, requestPermission } from './util/fileSystem';
 import { getMetadata } from './util/metadata';
 
 import Explorer from './components/Explorer';
@@ -147,6 +147,9 @@ function App({}: AppProps) {
           ExplorerActionType.REQUEST_OPEN_COLLECTION,
         )}
       />
+
+      <button onClick={() => getFiles('new')}>Files</button>
+      <button onClick={() => getFolder1()}>Folder</button>
     </div>
   );
 }

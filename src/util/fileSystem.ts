@@ -1,7 +1,29 @@
+import { directoryOpen, fileOpen } from 'browser-fs-access';
+
 import type { ICollection } from './persistence';
+import { getBasicMetadata, BasicMetadata } from './metadata';
 
 import config from '../config';
-import { getBasicMetadata, BasicMetadata } from './metadata';
+
+export async function getFiles(box: 'new' | 'existing') {
+  const files = await fileOpen({
+    description: 'Audio files',
+    extensions: config.recognizedExtensionsList,
+    mimeTypes: config.recognizedMimeTypesList,
+    multiple: true,
+    id: `audio-${box}`,
+  });
+  console.log(files);
+}
+
+export async function getFolder1() {
+  const f = await directoryOpen({
+    recursive: true,
+    id: 'audio-folder',
+  });
+  console.log(f);
+  
+}
 
 export async function getFile(box: 'new' | 'existing') {
   try {
