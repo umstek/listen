@@ -15,7 +15,6 @@ module.exports = {
       },
     ],
     '@snowpack/plugin-postcss',
-    '@jadex/snowpack-plugin-tailwindcss-jit', // TODO Remove once snowpack supports postcss refresh
   ],
   routes: [
     /* Enable an SPA Fallback in development: */
