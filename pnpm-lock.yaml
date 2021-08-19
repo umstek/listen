@@ -19,7 +19,7 @@ specifiers:
   chai: 4.3.4
   dexie: 3.2.0-beta.3
   dexie-react-hooks: 1.0.7
-  music-metadata-browser: 2.4.3
+  music-metadata-browser: 2.5.0
   postcss: 8.3.6
   prettier: 2.3.2
   react: 17.0.2
@@ -35,7 +35,7 @@ dependencies:
   '@types/wicg-file-system-access': 2020.9.2
   dexie: 3.2.0-beta.3
   dexie-react-hooks: 1.0.7_6632f0e72416978ace033315fc8c9f92
-  music-metadata-browser: 2.4.3
+  music-metadata-browser: 2.5.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-icons: 4.2.0_react@17.0.2
@@ -5479,8 +5479,8 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: true
 
-  /music-metadata-browser/2.4.3:
-    resolution: {integrity: sha512-nhVBoT5ZW46IbE8DYNq5atGxFQkBVYu5cFeU0XhC9F1pJs6VAcNp7DEOalXoyWr4bQkfcdm+b3KAGKwwL3IEdQ==}
+  /music-metadata-browser/2.5.0:
+    resolution: {integrity: sha512-g5TdRq+wN1VvgBk3wtieY87E8n/niH5bHI4r8YIpM7x0lMru3Ub17Oa5o4mA0MGvm4T5BfjmYHxfMGsH4pbCng==}
     dependencies:
       buffer: 6.0.3
       debug: 4.3.2
