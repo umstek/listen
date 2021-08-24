@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@headlessui/react': 1.4.0
-  '@snowpack/plugin-dotenv': 2.1.0
+  '@snowpack/plugin-dotenv': 2.2.0
   '@snowpack/plugin-postcss': 1.4.3
   '@snowpack/plugin-react-refresh': 2.5.0
   '@snowpack/plugin-typescript': 1.2.1
@@ -41,7 +41,7 @@ dependencies:
   react-icons: 4.2.0_react@17.0.2
 
 devDependencies:
-  '@snowpack/plugin-dotenv': 2.1.0
+  '@snowpack/plugin-dotenv': 2.2.0
   '@snowpack/plugin-postcss': 1.4.3_postcss@8.3.6
   '@snowpack/plugin-react-refresh': 2.5.0_react-dom@17.0.2+react@17.0.2
   '@snowpack/plugin-typescript': 1.2.1_typescript@4.3.5
@@ -1512,8 +1512,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@snowpack/plugin-dotenv/2.1.0:
-    resolution: {integrity: sha512-NvwB+kQuxKheZLWrRvOgXB8i0cXhuIkljbgCn02fRGCIOigPIDk1jZrnn3x9skqqtul/XvW9dNulVi6Fa7CN6g==}
+  /@snowpack/plugin-dotenv/2.2.0:
+    resolution: {integrity: sha512-/gj91mHz9iPi7e393sibVfpm4jrG7hqZytgkfiscOIWJ8Y838D0jX1JFXu9IAThZz0IEKTLpb74d5A7pM00HVg==}
     dependencies:
       dotenv: 8.6.0
       dotenv-expand: 5.1.0
