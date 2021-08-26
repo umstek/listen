@@ -25,7 +25,7 @@ specifiers:
   react: 17.0.2
   react-dom: 17.0.2
   react-icons: 4.2.0
-  snowpack: 3.8.3
+  snowpack: 3.8.8
   tailwindcss: 2.2.7
   typescript: 4.3.5
   workbox-cli: 6.2.2
@@ -45,7 +45,7 @@ devDependencies:
   '@snowpack/plugin-postcss': 1.4.3_postcss@8.3.6
   '@snowpack/plugin-react-refresh': 2.5.0_react-dom@17.0.2+react@17.0.2
   '@snowpack/plugin-typescript': 1.2.1_typescript@4.3.5
-  '@snowpack/web-test-runner-plugin': 0.2.2_409ccc0fc0dd49fe23282460faca03b0
+  '@snowpack/web-test-runner-plugin': 0.2.2_8b7edfbebdc7591d626612800e78c242
   '@testing-library/react': 12.0.0_react-dom@17.0.2+react@17.0.2
   '@types/chai': 4.2.21
   '@types/mocha': 9.0.0
@@ -57,7 +57,7 @@ devDependencies:
   chai: 4.3.4
   postcss: 8.3.6
   prettier: 2.3.2
-  snowpack: 3.8.3
+  snowpack: 3.8.8
   tailwindcss: 2.2.7_7b69a43ec4689fa7484dee35f79a7806
   typescript: 4.3.5
   workbox-cli: 6.2.2
@@ -1558,14 +1558,14 @@ packages:
       typescript: 4.3.5
     dev: true
 
-  /@snowpack/web-test-runner-plugin/0.2.2_409ccc0fc0dd49fe23282460faca03b0:
+  /@snowpack/web-test-runner-plugin/0.2.2_8b7edfbebdc7591d626612800e78c242:
     resolution: {integrity: sha512-I7KC8BAcgRWZAg53w7Uq3UDY9hcn1ZGvmA+MjPqvgQXvKbwXfH0+T1nyPQmKUgYR1If99Vk4GnFscDZtaGbZCg==}
     peerDependencies:
       '@web/test-runner': '>=0.10.0 <1.0.0'
       snowpack: ^3.0.0
     dependencies:
       '@web/test-runner': 0.13.15
-      snowpack: 3.8.3
+      snowpack: 3.8.8
     dev: true
 
   /@surma/rollup-plugin-off-main-thread/1.4.2:
@@ -6869,7 +6869,7 @@ packages:
       mkdirp: 1.0.4
       p-queue: 6.6.2
       rimraf: 3.0.2
-      rollup: 2.37.1
+      rollup: 2.56.0
       validate-npm-package-name: 3.0.0
     dev: true
 
@@ -6922,8 +6922,8 @@ packages:
       use: 3.1.1
     dev: true
 
-  /snowpack/3.8.3:
-    resolution: {integrity: sha512-nD699xWIDk9nGH4V9xKjgIVPA8jXWp/crUG46mu3/11rrdEv94v4xV/j373w3EvegGVQ3JdA5mlNpxDU8wk5uw==}
+  /snowpack/3.8.8:
+    resolution: {integrity: sha512-Y/4V8FdzzYpwmJU2TgXRRFytz+GFSliWULK9J5O6C72KyK60w20JKqCdRtVs1S6BuobCedF5vSBD1Gvtm+gsJg==}
     engines: {node: '>=10.19.0'}
     hasBin: true
     dependencies:
@@ -6954,6 +6954,7 @@ packages:
       isbinaryfile: 4.0.8
       jsonschema: 1.2.11
       kleur: 4.1.4
+      magic-string: 0.25.7
       meriyah: 3.1.6
       mime-types: 2.1.32
       mkdirp: 1.0.4
