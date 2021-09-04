@@ -56,7 +56,7 @@ const BasicDialog = ({
           <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
             <Dialog.Title
               as="h3"
-              className="text-lg font-medium leading-6 text-gray-900"
+              className="text-lg font-semibold leading-6 text-gray-900"
             >
               {title}
             </Dialog.Title>
@@ -69,7 +69,7 @@ const BasicDialog = ({
                   key={label}
                   type="button"
                   className={[
-                    'pushable rounded px-4 py-2 mx-2 text-sm font-medium',
+                    'pushable rounded px-4 py-2 mx-2 text-sm font-bold',
                     i === 0 && (isDangerousAction ? 'danger' : 'primary'),
                   ]
                     .filter(Boolean)
@@ -81,7 +81,7 @@ const BasicDialog = ({
               ))}
               <button
                 type="button"
-                className="pushable rounded px-4 py-2 mx-2 text-sm font-medium"
+                className="pushable rounded px-4 py-2 mx-2 text-sm font-bold"
                 onClick={handleCancel}
               >
                 Cancel

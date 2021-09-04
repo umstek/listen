@@ -76,10 +76,10 @@ export function AddItemsDropdown({
                         />
                       </div>
                       <div className="ml-4 text-left">
-                        <p className="text-sm font-medium text-gray-900">
+                        <p className="text-sm font-bold text-gray-900">
                           {item.name}
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm font-semibold text-gray-500">
                           {item.description}
                         </p>
                       </div>

@@ -21,6 +21,7 @@ import { initialState } from './initialState';
 import { wrapDispatchWithMiddleware } from './middleware';
 
 import './App.css';
+import History from './components/History';
 
 interface AppProps {}
 
@@ -83,7 +84,7 @@ function App({}: AppProps) {
   }, [activeFile]);
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full font-semibold">
       <SaveCollectionDialog
         isOpen={saveDialogOpen}
         collectionName={saveCollectionName}
@@ -147,6 +148,8 @@ function App({}: AppProps) {
           ExplorerActionType.REQUEST_OPEN_COLLECTION,
         )}
       />
+
+      <History />
     </div>
   );
 }
