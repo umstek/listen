@@ -50,38 +50,12 @@ function App({}: AppProps) {
     dispatch,
   );
 
-  const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
-
   const handlePathChange = makeDispatch(ExplorerActionType.PATH_CHANGE);
   useEffect(() => handlePathChange(path[path.length - 1]?.name || ''), [path]);
 
   const collectionNames = useLiveQuery(() =>
     db.collections.toCollection().toArray(),
   );
-
-  useEffect(() => {
-    if (activeFile === undefined) {
-      return;
-    }
-
-    const f = async () => {
-      if ((await requestPermission(activeFile, 'read')) !== 'granted') {
-        return;
-      }
-
-      const fileData: File = await activeFile.getFile();
-      const metadata = await getMetadata(fileData);
-      console.log(metadata);
-      const source = URL.createObjectURL(fileData);
-      setAudioSource(source);
-    };
-
-    f();
-
-    return () => {
-      audioSource && URL.revokeObjectURL(audioSource);
-    };
-  }, [activeFile]);
 
   return (
     <div className="w-full h-full font-semibold">
@@ -117,7 +91,9 @@ function App({}: AppProps) {
       />
 
       <Player
-        src={audioSource}
+        activeFile={activeFile}
+        collection={openCollectionName}
+        path={path.map((f) => f.name).join('/')}
         onEnded={makeDispatch(PlayerActionType.END_CURRENT)}
         onNext={makeDispatch(PlayerActionType.NEXT)}
         onPrevious={makeDispatch(PlayerActionType.PREV)}

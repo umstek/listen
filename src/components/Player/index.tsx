@@ -9,8 +9,11 @@ import {
   MdForward10 as FastForwardIcon,
   MdReplay10 as RewindIcon,
 } from 'react-icons/md';
+import type { IAudioMetadata } from 'music-metadata-browser';
 
-import type { HistoricalEvent } from 'src/util/persistence';
+import type { HistoricalEvent } from '../../util/persistence';
+import { requestPermission } from '../../util/fileSystem';
+import { getMetadata } from '../../util/metadata';
 import { clamp } from '../../util/math';
 
 import './styles.css';
@@ -44,7 +47,9 @@ const PlayButton = ({ status, onClick: handleClick }: IPlayButtonProps) => {
 };
 
 interface IPlayerControlsProps {
-  src?: string;
+  activeFile?: FileSystemFileHandle;
+  collection: string;
+  path: string;
   autoplay?: boolean;
   onPrevious: () => void;
   onNext: () => void;
@@ -53,7 +58,9 @@ interface IPlayerControlsProps {
 }
 
 const PlayerControls = ({
-  src,
+  activeFile,
+  collection,
+  path,
   autoplay = true,
   onPrevious: handlePrevious,
   onNext: handleNext,
@@ -63,7 +70,36 @@ const PlayerControls = ({
   const [position, setPosition] = useState(0);
   const [seeking, setSeeking] = useState(false);
   const [playStatus, setPlayStatus] = useState(PlayStatus.STOPPED);
+  const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
+  const [audioMetadata, setAudioMetadata] = useState<
+    IAudioMetadata | undefined
+  >(undefined);
+
   const audioElement = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    if (activeFile === undefined) {
+      return;
+    }
+
+    const f = async () => {
+      if ((await requestPermission(activeFile, 'read')) !== 'granted') {
+        return;
+      }
+
+      const fileData: File = await activeFile.getFile();
+      const metadata = await getMetadata(fileData);
+      setAudioMetadata(metadata);
+      const source = URL.createObjectURL(fileData);
+      setAudioSource(source);
+    };
+
+    f();
+
+    return () => {
+      audioSource && URL.revokeObjectURL(audioSource);
+    };
+  }, [activeFile]);
 
   useEffect(() => {
     switch (playStatus) {
@@ -85,10 +121,10 @@ const PlayerControls = ({
   useEffect(() => {
     setPosition(0);
     audioElement.current && (audioElement.current.currentTime = 0);
-    if (autoplay && src) {
+    if (autoplay && audioSource) {
       audioElement.current?.play();
     }
-  }, [src]);
+  }, [audioSource]);
 
   const percentage = (position * 100) / (audioElement.current?.duration || 0);
 
@@ -109,9 +145,9 @@ const PlayerControls = ({
   };
 
   return (
-    <div className="z-10 fixed flex flex-row items-end p-4 right-0 bottom-0">
-      <div className="flex flex-col justify-end rounded-2xl bg-white shadow-md pl-4 py-4 pr-24 transform translate-x-24">
-        <div className="flex flex-row justify-between items-center mr-3">
+    <div className="z-10 fixed flex w-screen flex-col-reverse md:flex-row items-end md:p-4 md:w-auto right-0 bottom-0">
+      <div className="flex flex-col w-full md:w-auto justify-end md:rounded-2xl bg-white shadow-md pl-4 pr-4 py-4 md:pr-24 transform md:translate-x-24">
+        <div className="flex flex-row flex-grow justify-between items-center ml-3 mr-3">
           <div className="w-24 text-left">
             {Duration.fromMillis(position * 1000).toFormat('hh:mm:ss')}
           </div>
@@ -148,19 +184,19 @@ const PlayerControls = ({
           </div>
         </div>
 
-        <div className="text-right mt-2">
-          <div className="text-gray-600 mr-4">Audio-books</div>
-          <div className="text-gray-600 mr-4">
-            Sir Arthur Conan Doyle/Sherlock Holmes
-          </div>
-          <h3 className="text-lg truncate overflow-ellipsis mt-2">
-            Sherlock Holmes The Definitive Collection (Unabridged) - 015.m4b
+        <div className="md:text-right mt-2">
+          <div className="text-gray-600 ml-4 md:ml-0 md:mr-4 truncate overflow-ellipsis">{collection}</div>
+          <div className="text-gray-600 ml-4 md:ml-0 md:mr-4 truncate overflow-ellipsis">{path}</div>
+          <h3 className="text-lg truncate overflow-ellipsis ml-4 md:ml-0 mt-2">
+            {audioMetadata?.common.track.no}/{audioMetadata?.common.track.of}
+            {' - '}
+            {audioMetadata?.common.title || activeFile?.name}
           </h3>
         </div>
 
         <audio
           ref={audioElement}
-          src={src}
+          src={audioSource}
           onTimeUpdate={() => {
             !seeking && setPosition(audioElement.current?.currentTime || 0);
           }}
