@@ -146,7 +146,7 @@ const PlayerControls = ({
 
   return (
     <div className="z-10 fixed flex w-screen flex-col-reverse md:flex-row items-end md:p-4 md:w-auto right-0 bottom-0">
-      <div className="flex flex-col w-full md:w-auto justify-end md:rounded-2xl bg-white shadow-md pl-4 pr-4 py-4 md:pr-24 transform md:translate-x-24">
+      <div className="flex flex-col w-full md:w-auto justify-end md:rounded-2xl bg-white shadow-md pl-4 pr-4 py-4 md:pr-24 transform md:translate-x-24 border-t">
         <div className="flex flex-row flex-grow justify-between items-center ml-3 mr-3">
           <div className="w-24 text-left">
             {Duration.fromMillis(position * 1000).toFormat('hh:mm:ss')}
@@ -206,7 +206,7 @@ const PlayerControls = ({
         ></audio>
       </div>
 
-      <div className="rounded-full p-2 bg-white shadow-md z-0">
+      <div className="rounded-full p-2 bg-white shadow-md z-0 border">
         <div className="flex flex-row justify-center items-center transition-all bg-gradient-to-r from-pink-100 via-red-100 to-yellow-100 rounded-full p-2">
           <button className="control" onClick={handlePrevious}>
             <PrevIcon className="h-6 w-6" />
