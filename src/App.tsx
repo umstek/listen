@@ -121,6 +121,7 @@ function App({}: AppProps) {
         onEnded={makeDispatch(PlayerActionType.END_CURRENT)}
         onNext={makeDispatch(PlayerActionType.NEXT)}
         onPrevious={makeDispatch(PlayerActionType.PREV)}
+        onHistoricalEvent={() => {}}
       />
 
       <Explorer

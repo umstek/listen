@@ -1,6 +1,15 @@
 import Dexie from 'dexie';
 import type { BasicMetadata } from './metadata';
 
+export interface HistoricalEvent {
+  type: 'play' | 'pause' | 'stop' | 'seek' | 'end';
+  collection: string;
+  title: string;
+  path: string;
+  file: FileSystemFileHandle;
+  seek?: number; // milliseconds? we ought to seek to a few seconds earlier position
+}
+
 export interface ICollection {
   name: string;
   folders: FileSystemDirectoryHandle[];

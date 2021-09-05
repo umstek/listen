@@ -9,6 +9,7 @@ specifiers:
   '@snowpack/web-test-runner-plugin': 0.2.2
   '@testing-library/react': 12.0.0
   '@types/chai': 4.2.21
+  '@types/luxon': ^2.0.2
   '@types/mocha': 9.0.0
   '@types/react': 17.0.19
   '@types/react-dom': 17.0.9
@@ -19,6 +20,7 @@ specifiers:
   chai: 4.3.4
   dexie: 3.2.0-beta.3
   dexie-react-hooks: 1.0.7
+  luxon: ^2.0.2
   music-metadata-browser: 2.5.0
   postcss: 8.3.6
   prettier: 2.3.2
@@ -35,6 +37,7 @@ dependencies:
   '@types/wicg-file-system-access': 2020.9.2
   dexie: 3.2.0-beta.3
   dexie-react-hooks: 1.0.7_5cdef09340ba5c520c81466d3fca3047
+  luxon: 2.0.2
   music-metadata-browser: 2.5.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -48,6 +51,7 @@ devDependencies:
   '@snowpack/web-test-runner-plugin': 0.2.2_fa2f09fea00c00514dd3ebdb441d4aac
   '@testing-library/react': 12.0.0_react-dom@17.0.2+react@17.0.2
   '@types/chai': 4.2.21
+  '@types/luxon': 2.0.2
   '@types/mocha': 9.0.0
   '@types/react': 17.0.19
   '@types/react-dom': 17.0.9
@@ -1793,6 +1797,10 @@ packages:
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
       '@types/node': 16.7.5
+    dev: true
+
+  /@types/luxon/2.0.2:
+    resolution: {integrity: sha512-CUrDlIVYv7TNkdQV8YfT2WGAHyMAwFIT1PXoUcQhX2EFMVL20lxEQHWc73gdJfRtMsI6Vc22HvR7eUN0jkx6+w==}
     dev: true
 
   /@types/mime/1.3.2:
@@ -5238,6 +5246,10 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /luxon/2.0.2:
+    resolution: {integrity: sha512-ZRioYLCgRHrtTORaZX1mx+jtxKtKuI5ZDvHNAmqpUzGqSrR+tL4FVLn/CUGMA3h0+AKD1MAxGI5GnCqR5txNqg==}
+    dev: false
 
   /lz-string/1.4.4:
     resolution: {integrity: sha1-wNjq82BZ9wV5bh40SBHPTEmNOiY=}
