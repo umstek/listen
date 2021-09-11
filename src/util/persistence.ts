@@ -2,12 +2,13 @@ import Dexie from 'dexie';
 import type { BasicMetadata } from './metadata';
 
 export interface HistoricalEvent {
-  type: 'play' | 'pause' | 'stop' | 'seek' | 'end';
   collection: string;
-  title: string;
   path: string;
+  fileName: string;
+  title: string;
   file: FileSystemFileHandle;
-  seek?: number; // milliseconds? we ought to seek to a few seconds earlier position
+  position: number; // milliseconds? we ought to seek to a few seconds earlier position
+  time: number; // epoch time
 }
 
 export interface ICollection {
@@ -21,14 +22,17 @@ export interface ICollection {
 
 class MainDatabase extends Dexie {
   collections: Dexie.Table<ICollection, string>;
+  history: Dexie.Table<HistoricalEvent, number>;
 
   constructor() {
     super('main');
-    this.version(2).stores({
-      collections: '++name,folders,files,hidden,ordered',
+    this.version(1).stores({
+      collections: 'name',
+      history: '++id,time,collection,path,fileName',
     });
 
     this.collections = this.table('collections');
+    this.history = this.table('history');
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Duration } from 'luxon';
 import {
   MdPlayArrow as PlayIcon,
@@ -58,14 +58,14 @@ interface IPlayerControlsProps {
 }
 
 const PlayerControls = ({
-  activeFile,
   collection,
   path,
+  activeFile,
   autoplay = true,
   onPrevious: handlePrevious,
   onNext: handleNext,
   onEnded: handleEnded,
-  onHistoricalEvent: handleHistoricalEvent,
+  onHistoricalEvent,
 }: IPlayerControlsProps) => {
   const [position, setPosition] = useState(0);
   const [seeking, setSeeking] = useState(false);
@@ -100,6 +100,27 @@ const PlayerControls = ({
       audioSource && URL.revokeObjectURL(audioSource);
     };
   }, [activeFile]);
+
+  useEffect(() => {
+    activeFile &&
+      audioMetadata &&
+      onHistoricalEvent({
+        collection,
+        path,
+        fileName: activeFile.name,
+        file: activeFile,
+        title: audioMetadata.common.title || activeFile.name,
+        position: Math.floor(position / 60) * 60,
+        time: Date.now(),
+      });
+  }, [
+    onHistoricalEvent,
+    collection,
+    path,
+    activeFile,
+    audioMetadata,
+    Math.floor(position / 60),
+  ]);
 
   useEffect(() => {
     switch (playStatus) {
@@ -172,8 +193,8 @@ const PlayerControls = ({
             onMouseUp={() => {
               if (audioElement.current) {
                 audioElement.current.currentTime = position;
+                audioElement.current.play();
               }
-              audioElement.current?.play();
               setSeeking(false);
             }}
           />
@@ -185,8 +206,12 @@ const PlayerControls = ({
         </div>
 
         <div className="md:text-right mt-2">
-          <div className="text-gray-600 ml-4 md:ml-0 md:mr-4 truncate overflow-ellipsis">{collection}</div>
-          <div className="text-gray-600 ml-4 md:ml-0 md:mr-4 truncate overflow-ellipsis">{path}</div>
+          <div className="text-gray-600 ml-4 md:ml-0 md:mr-4 truncate overflow-ellipsis">
+            {collection}
+          </div>
+          <div className="text-gray-600 ml-4 md:ml-0 md:mr-4 truncate overflow-ellipsis">
+            {path}
+          </div>
           <h3 className="text-lg truncate overflow-ellipsis ml-4 md:ml-0 mt-2">
             {audioMetadata?.common.track.no}/{audioMetadata?.common.track.of}
             {' - '}
@@ -239,7 +264,12 @@ const PlayerControls = ({
               </button>
             </div>
           </div>
-          <button className="control" onClick={handleNext}>
+          <button
+            className="control"
+            onClick={() => {
+              handleNext();
+            }}
+          >
             <NextIcon className="h-6 w-6" />
           </button>
         </div>

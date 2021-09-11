@@ -1,61 +1,21 @@
 import React from 'react';
+import { DateTime, Duration } from 'luxon';
+import { useLiveQuery } from 'dexie-react-hooks';
+
 import { MdRestore as Resume } from 'react-icons/md';
 import { MdPlayArrow as Play } from 'react-icons/md';
 import { MdDelete as Delete } from 'react-icons/md';
 
-const song = {
-  title: 'In The End',
-  collection: 'English Music',
-  path: 'Linkin Park/Hybrid Theory',
-  seekPointPairs: [],
-  finished: true,
-};
-
-const audioBook = {
-  title: '- 02.mp3',
-  collection: 'Audio-books',
-  path: 'The Hunger Games Trilogy/The Hunger Games - Catching Fire',
-  seekPointPairs: [
-    { start: 0, end: 23 },
-    { start: 23, end: 45 },
-    { start: 45, end: 67 },
-    { start: 67, end: 89 },
-    { start: 89, end: 111 },
-    { start: 111, end: 133 },
-  ],
-  finished: false,
-};
-
-const audioBook2 = {
-  title: 'Sherlock Holmes The Definitive Collection (Unabridged) - 124.m4b',
-  collection: 'Audio-books',
-  path: 'Sherlock Holmes',
-  seekPointPairs: [
-    { start: 0, end: 23 },
-    { start: 23, end: 45 },
-    { start: 45, end: 67 },
-    { start: 67, end: 89 },
-    { start: 89, end: 111 },
-    { start: 111, end: 133 },
-  ],
-  finished: false,
-};
-
-interface HistoryEntryProps {
-  title: string;
-  collection: string;
-  path: string;
-  seekPointPairs: { start: number; end: number }[];
-  finished: boolean;
-}
+import { db, HistoricalEvent } from '../../util/persistence';
 
 const HistoryEntry = ({
   title,
   collection,
   path,
-  seekPointPairs,
-  finished,
-}: HistoryEntryProps) => {
+  position,
+  time,
+  finished = false,
+}: HistoricalEvent & { finished?: boolean }) => {
   return (
     <div
       className={[
@@ -80,8 +40,15 @@ const HistoryEntry = ({
           </button>
         </div>
       </div>
-      <div className="text-gray-600">{collection}</div>
-      <div className="text-gray-600">{path}</div>
+      <div className="text-gray-600">
+        {collection}/{path}
+      </div>
+      <div className="text-gray-600">
+        {Duration.fromMillis(position * 1000).toFormat('h:mm:ss')}
+      </div>
+      <div className="text-gray-600 text-sm text-right">
+        {DateTime.fromMillis(time).toRelative()}
+      </div>
     </div>
   );
 };
@@ -103,23 +70,22 @@ const HistorySection = ({ children, sectionName }: HistorySectionProps) => {
 interface HistoryProps {}
 
 const History = ({}: HistoryProps) => {
+  const history = useLiveQuery(() => db.history.reverse().toArray()) || [];
+
   return (
     <div id="history">
       <div>
         <h1 className="text-6xl font-light">Recently Played</h1>
       </div>
       <div className="mt-8">
-        <HistorySection sectionName="Today">
-          <HistoryEntry {...song} />
+        <HistorySection sectionName="A short while ago">
+          {history.map((entry) => (
+            <HistoryEntry {...entry} key={entry.time} />
+          ))}
         </HistorySection>
-        <HistorySection sectionName="Yesterday">
-          <HistoryEntry {...audioBook} />
-          <HistoryEntry {...audioBook} />
-          <HistoryEntry {...audioBook} />
-        </HistorySection>
-        <HistorySection sectionName="Earlier this week">
-          <HistoryEntry {...audioBook2} />
-        </HistorySection>
+        <HistorySection sectionName="Earlier today"></HistorySection>
+        <HistorySection sectionName="Yesterday"></HistorySection>
+        <HistorySection sectionName="Earlier this week"></HistorySection>
         <HistorySection sectionName="Earlier this month"></HistorySection>
         <HistorySection sectionName="Earlier this year"></HistorySection>
         <HistorySection sectionName="A long time ago"></HistorySection>
