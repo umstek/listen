@@ -25,7 +25,12 @@ const HistoryEntry = ({
         .join(' ')}
     >
       <div className="flex flex-row justify-between items-start rounded-lg">
-        <h3>{title}</h3>
+        <div>
+          <span className="text-gray-500 font-medium">
+            {collection}/{path ? path + '/' : ''}
+          </span>
+          <h3 className="inline-block">{title}</h3>
+        </div>
         <div className="flex flex-row space-x-4 sm:invisible group-hover:visible">
           <button className="pushable outline-none rounded-full p-1">
             <Play className="h-6 w-6" />
@@ -40,14 +45,13 @@ const HistoryEntry = ({
           </button>
         </div>
       </div>
-      <div className="text-gray-600">
-        {collection}/{path}
-      </div>
-      <div className="text-gray-600">
-        {Duration.fromMillis(position * 1000).toFormat('h:mm:ss')}
-      </div>
-      <div className="text-gray-600 text-sm text-right">
-        {DateTime.fromMillis(time).toRelative()}
+      <div className="mt-1 text-gray-600 flex flex-row justify-between items-end">
+        <div className="text-sm">
+          {Duration.fromMillis(position * 1000).toFormat('h:mm:ss')}
+        </div>
+        <div className="text-xs text-right">
+          {DateTime.fromMillis(time).toRelative()}
+        </div>
       </div>
     </div>
   );
