@@ -28,6 +28,8 @@ When complete, ths should be able to:
   - [x] Play Previous File
   - [x] Fast Rewind
   - [x] Fast Forward
+  - [ ] Speed Control
+  - [ ] Pitch Control
   - [ ] Repeat current song once/forever
   - [ ] Repeat playlist
   - [ ] Shuffle playlist (+altered by repeat option)
