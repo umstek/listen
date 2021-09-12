@@ -25,7 +25,7 @@ const DeleteFSEntryDialog = ({
     title={`Delete ${isFolder ? 'folder' : 'file'} ${entryName}?`}
     actions={[{ label: 'Delete', action: handleDelete }]}
   >
-    <Dialog.Description className="text-sm text-gray-500">
+    <Dialog.Description className="text-sm text-gray-500 font-medium">
       Are you sure you want to <b>permanently</b> remove '{entryName}'
       {isFolder && <b> and its contents</b>} from your file system? (If you just
       want to omit file/folder from playing, use the 'hide' [eye] icon.)

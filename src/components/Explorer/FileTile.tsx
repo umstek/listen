@@ -19,9 +19,9 @@ export const DropDown = ({
 }: DropDownProps) => (
   <Menu as="div" className="relative inline-block text-left">
     <Menu.Button className="pushable outline-none rounded-full p-1 ml-2">
-      <MoreIcon />
+      <MoreIcon className="h-6 w-6" />
     </Menu.Button>
-    <Menu.Items className="absolute p-2 space-y-2 right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-xl focus:outline-none">
+    <Menu.Items className="absolute p-2 space-y-2 right-0 mt-2 origin-top-right bg-white rounded-md shadow-xl focus:outline-none">
       <Menu.Item>
         {({ active }) => (
           <button
@@ -31,7 +31,7 @@ export const DropDown = ({
             onClick={handleHide}
           >
             <span>
-              <HideIcon />
+              <HideIcon className="h-6 w-6" />
             </span>
             <span>Hide</span>
           </button>
@@ -50,7 +50,7 @@ export const DropDown = ({
             onClick={handleDelete}
           >
             <span>
-              <DeleteIcon />
+              <DeleteIcon className="h-6 w-6" />
             </span>
             <span>Erase</span>
           </button>
@@ -88,7 +88,11 @@ const FileTile = ({
         className="pushable outline-none rounded-full p-1"
         onClick={handleOpen}
       >
-        {file.kind === 'directory' ? <FolderIcon /> : <FileIcon />}
+        {file.kind === 'directory' ? (
+          <FolderIcon className="h-6 w-6" />
+        ) : (
+          <FileIcon className="h-6 w-6" />
+        )}
       </button>
       <div className="mx-2">{file.name}</div>
     </div>

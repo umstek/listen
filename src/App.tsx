@@ -21,6 +21,7 @@ import { initialState } from './initialState';
 import { wrapDispatchWithMiddleware } from './middleware';
 
 import './App.css';
+import History from './components/History';
 
 interface AppProps {}
 
@@ -49,8 +50,6 @@ function App({}: AppProps) {
     dispatch,
   );
 
-  const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
-
   const handlePathChange = makeDispatch(ExplorerActionType.PATH_CHANGE);
   useEffect(() => handlePathChange(path[path.length - 1]?.name || ''), [path]);
 
@@ -58,32 +57,8 @@ function App({}: AppProps) {
     db.collections.toCollection().toArray(),
   );
 
-  useEffect(() => {
-    if (activeFile === undefined) {
-      return;
-    }
-
-    const f = async () => {
-      if ((await requestPermission(activeFile, 'read')) !== 'granted') {
-        return;
-      }
-
-      const fileData: File = await activeFile.getFile();
-      const metadata = await getMetadata(fileData);
-      console.log(metadata);
-      const source = URL.createObjectURL(fileData);
-      setAudioSource(source);
-    };
-
-    f();
-
-    return () => {
-      audioSource && URL.revokeObjectURL(audioSource);
-    };
-  }, [activeFile]);
-
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full font-semibold">
       <SaveCollectionDialog
         isOpen={saveDialogOpen}
         collectionName={saveCollectionName}
@@ -116,10 +91,13 @@ function App({}: AppProps) {
       />
 
       <Player
-        src={audioSource}
+        activeFile={activeFile}
+        collection={openCollectionName}
+        path={path.map((f) => f.name).join('/')}
         onEnded={makeDispatch(PlayerActionType.END_CURRENT)}
         onNext={makeDispatch(PlayerActionType.NEXT)}
         onPrevious={makeDispatch(PlayerActionType.PREV)}
+        onHistoricalEvent={db.history.add.bind(db.history)}
       />
 
       <Explorer
@@ -147,6 +125,8 @@ function App({}: AppProps) {
           ExplorerActionType.REQUEST_OPEN_COLLECTION,
         )}
       />
+
+      <History />
     </div>
   );
 }
