@@ -23,7 +23,7 @@ specifiers:
   luxon: 2.0.2
   music-metadata-browser: 2.5.0
   postcss: 8.3.6
-  prettier: 2.4.0
+  prettier: 2.4.1
   react: 17.0.2
   react-dom: 17.0.2
   react-icons: 4.2.0
@@ -60,7 +60,7 @@ devDependencies:
   autoprefixer: 10.3.4_postcss@8.3.6
   chai: 4.3.4
   postcss: 8.3.6
-  prettier: 2.4.0
+  prettier: 2.4.1
   snowpack: 3.8.8
   tailwindcss: 2.2.15_4dc2d3db2b138fb8fa7d5c7b0c803aba
   typescript: 4.4.3
@@ -5673,8 +5673,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /prettier/2.4.0:
-    resolution: {integrity: sha512-DsEPLY1dE5HF3BxCRBmD4uYZ+5DCbvatnolqTqcxEgKVZnL2kUfyu7b8pPQ5+hTBkdhU9SLUmK0/pHb07RE4WQ==}
+  /prettier/2.4.1:
+    resolution: {integrity: sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
