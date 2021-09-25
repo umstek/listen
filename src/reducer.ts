@@ -2,7 +2,7 @@ import { Action, ExplorerActionType, PlayerActionType } from './actionTypes';
 import type { State } from './initialState';
 import { filterAudioFiles } from './util/fileSystem';
 
-export function reducer(state: State, action: Action<any>): State {
+export default function reducer(state: State, action: Action<any>): State {
   const { files, hidden, path, activeFile, rootFiles, rootFolders } = state;
 
   switch (action.type) {

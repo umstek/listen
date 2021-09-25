@@ -1,9 +1,7 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 
 import { db } from './util/persistence';
-import { requestPermission } from './util/fileSystem';
-import { getMetadata } from './util/metadata';
 
 import Explorer from './components/Explorer';
 import Player from './components/Player';
@@ -11,47 +9,27 @@ import SaveCollectionDialog from './components/modals/SaveCollectionDialog';
 import OpenCollectionDialog from './components/modals/OpenCollectionDialog';
 import DeleteFSEntryDialog from './components/modals/DeleteFSEntryDialog';
 
-import {
-  ActionType,
-  ExplorerActionType,
-  PlayerActionType,
-} from './actionTypes';
-import { reducer } from './reducer';
-import { initialState } from './initialState';
-import { wrapDispatchWithMiddleware } from './middleware';
-
 import './App.css';
 import History from './components/History';
+import { actions, state$ } from './stateManager';
+import type { State } from './initialState';
+import initialState from './initialState';
 
 interface AppProps {}
 
 function App({}: AppProps) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const {
-    files,
-    folders,
-    hidden,
-    path,
-    activeFile,
-    deleteRequestedEntry,
-    saveDialogOpen,
-    saveCollectionName,
-    openDialogOpen,
-    openCollectionName,
-  } = state;
+  const [state, setState] = useState<State>(initialState);
 
-  const makeDispatch =
-    (type: ActionType) =>
-    <T,>(payload?: T) =>
-      dispatch({ type, payload });
+  useEffect(() => {
+    const subscription = state$.subscribe(setState);
+    return () => subscription.unsubscribe();
+  }, []);
 
-  const makeDispatchWithMiddleware = wrapDispatchWithMiddleware(
-    state,
-    dispatch,
+  useEffect(
+    () =>
+      actions.handlePathChange(state.path[state.path.length - 1]?.name || ''),
+    [state.path],
   );
-
-  const handlePathChange = makeDispatch(ExplorerActionType.PATH_CHANGE);
-  useEffect(() => handlePathChange(path[path.length - 1]?.name || ''), [path]);
 
   const collectionNames = useLiveQuery(() =>
     db.collections.toCollection().toArray(),
@@ -60,70 +38,58 @@ function App({}: AppProps) {
   return (
     <div className="w-full h-full font-semibold">
       <SaveCollectionDialog
-        isOpen={saveDialogOpen}
-        collectionName={saveCollectionName}
-        onCollectionNameChange={makeDispatch(
-          ExplorerActionType.SAVE_COLLECTION_NAME_CHANGE,
-        )}
-        onSave={makeDispatchWithMiddleware(ExplorerActionType.SAVE_COLLECTION)}
-        onCancel={makeDispatch(ExplorerActionType.CANCEL_SAVE_COLLECTION)}
+        isOpen={state.saveDialogOpen}
+        collectionName={state.saveCollectionName}
+        onCollectionNameChange={actions.changeSaveCollectionName}
+        onSave={actions.saveCollection}
+        onCancel={actions.cancelSaveCollection}
       />
 
       <OpenCollectionDialog
         collectionNames={
           (collectionNames && collectionNames.map((c) => c.name)) || []
         }
-        isOpen={openDialogOpen}
-        collectionName={openCollectionName}
-        onCollectionNameChange={makeDispatch(
-          ExplorerActionType.OPEN_COLLECTION_NAME_CHANGE,
-        )}
-        onOpen={makeDispatchWithMiddleware(ExplorerActionType.OPEN_COLLECTION)}
-        onCancel={makeDispatch(ExplorerActionType.CANCEL_OPEN_COLLECTION)}
+        isOpen={state.openDialogOpen}
+        collectionName={state.openCollectionName}
+        onCollectionNameChange={actions.changeOpenCollectionName}
+        onOpen={actions.openCollection}
+        onCancel={actions.cancelOpenCollection}
       />
 
       <DeleteFSEntryDialog
-        entryName={deleteRequestedEntry?.name || ''}
-        isOpen={Boolean(deleteRequestedEntry)}
-        isFolder={deleteRequestedEntry?.kind === 'directory'}
-        onCancel={makeDispatch(ExplorerActionType.CANCEL_DELETE_ENTRY)}
-        onDelete={makeDispatchWithMiddleware(ExplorerActionType.DELETE_ENTRY)}
+        entryName={state.deleteRequestedEntry?.name || ''}
+        isOpen={Boolean(state.deleteRequestedEntry)}
+        isFolder={state.deleteRequestedEntry?.kind === 'directory'}
+        onDelete={actions.deleteEntry}
+        onCancel={actions.cancelDeleteEntry}
       />
 
       <Player
-        activeFile={activeFile}
-        collection={openCollectionName}
-        path={path.map((f) => f.name).join('/')}
-        onEnded={makeDispatch(PlayerActionType.END_CURRENT)}
-        onNext={makeDispatch(PlayerActionType.NEXT)}
-        onPrevious={makeDispatch(PlayerActionType.PREV)}
+        activeFile={state.activeFile}
+        collection={state.openCollectionName}
+        path={state.path.map((f) => f.name).join('/')}
+        onEnded={actions.handleTrackEnd}
+        onNext={actions.next}
+        onPrevious={actions.previous}
         onHistoricalEvent={db.history.add.bind(db.history)}
       />
 
       <Explorer
-        activeFile={activeFile}
-        onFolderOpen={makeDispatchWithMiddleware(
-          ExplorerActionType.OPEN_FOLDER,
-        )}
-        onFileOpen={makeDispatch(ExplorerActionType.OPEN_FILE)}
-        onEntryHide={makeDispatch(ExplorerActionType.HIDE_ENTRY)}
-        onEntryDelete={makeDispatch(ExplorerActionType.REQUEST_DELETE_ENTRY)}
-        onNavigateUp={makeDispatchWithMiddleware(
-          ExplorerActionType.NAVIGATE_UP,
-        )}
-        onNavigateHome={makeDispatch(ExplorerActionType.NAVIGATE_HOME)}
-        files={files}
-        folders={folders}
-        hidden={hidden[path.map((f) => f.name).join('/') || '_'] || []}
-        onFileFolderDrop={makeDispatchWithMiddleware(
-          ExplorerActionType.DROP_FILE_SYSTEM_ENTRY,
-        )}
-        onCollectionSave={makeDispatch(
-          ExplorerActionType.REQUEST_SAVE_COLLECTION,
-        )}
-        onCollectionOpen={makeDispatch(
-          ExplorerActionType.REQUEST_OPEN_COLLECTION,
-        )}
+        activeFile={state.activeFile}
+        onFolderOpen={actions.openFolder}
+        onFileOpen={actions.openFile}
+        onEntryHide={actions.hideEntry}
+        onEntryDelete={actions.deleteEntry}
+        onNavigateUp={actions.navigateUp}
+        onNavigateHome={actions.navigateHome}
+        files={state.files}
+        folders={state.folders}
+        hidden={
+          state.hidden[state.path.map((f) => f.name).join('/') || '_'] || []
+        }
+        onFileFolderDrop={actions.dropFileSystemEntry}
+        onCollectionSave={actions.requestSaveCollection}
+        onCollectionOpen={actions.requestOpenCollection}
       />
 
       <History />
