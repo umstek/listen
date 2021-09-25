@@ -50,7 +50,7 @@ Some of the tools and design decisions might be different from what you are fami
 
 1. Unbundled development: Snowpack is used instead of webpack/parcel and the output is not a single bundled JavaScript file like we used to see.
 2. Using PNPM instead of NPM/Yarn.
-3. No external state management libraries: No Redux/Mobx/XState/...; the main reducer uses the useReducer hook provided by React, and middleware is handled using high-order functions.
+3. No state management libraries such as Redux/Mobx/XState/...; RxJS is used to create a redux + redux-observable/saga like environment.
 4. Using TailwindCSS: trying to minimize CSS use and completely avoiding CSS-in-JS. Utility class names are used and when necessary, class names are combined to make a new selector/class name in a PostCSS file. These class names are used semantically like how interfaces are used in OOP.
 5. `components` are organized in a tree based on where they are used. The logic required for each component is stored with the component semantically unless they impact the global state. New components are created to avoid deep prop-drilling, to avoid tree going too deep and when new features are introduced. Logic for cross-cutting concerns are in the `util` folder. `reducer` and `middleware` handle most of the top level application logic and need refactoring. Only `App` has direct access to global state, so there is no presentational vs. container component separation.
 
