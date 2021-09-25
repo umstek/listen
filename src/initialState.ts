@@ -1,4 +1,4 @@
-export const initialState = {
+const initialState = {
   rootFolders: [] as FileSystemDirectoryHandle[],
   rootFiles: [] as FileSystemFileHandle[],
   folders: [] as FileSystemDirectoryHandle[],
@@ -13,4 +13,7 @@ export const initialState = {
   saveCollectionName: '',
 };
 
-export type State = typeof initialState;
+type State = typeof initialState;
+
+export default initialState;
+export { State };

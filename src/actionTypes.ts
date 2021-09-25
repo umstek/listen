@@ -16,6 +16,7 @@ export enum ExplorerActionType {
   OPEN_FILE = 'explorer/openFile',
   PATH_CHANGE = 'explorer/pathChange',
   HIDE_ENTRY = 'explorer/hideEntry',
+  SHOW_ENTRY = 'explorer/showEntry',
   REQUEST_DELETE_ENTRY = 'explorer/requestDeleteEntry',
   CANCEL_DELETE_ENTRY = 'explorer/cancelDeleteEntry',
   DELETE_ENTRY = 'explorer/deleteEntry',
