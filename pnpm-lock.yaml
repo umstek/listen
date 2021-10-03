@@ -26,7 +26,7 @@ specifiers:
   prettier: 2.4.1
   react: 17.0.2
   react-dom: 17.0.2
-  react-icons: 4.2.0
+  react-icons: 4.3.1
   rxjs: 7.3.0
   snowpack: 3.8.8
   tailwindcss: 2.2.15
@@ -42,7 +42,7 @@ dependencies:
   music-metadata-browser: 2.5.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
-  react-icons: 4.2.0_react@17.0.2
+  react-icons: 4.3.1_react@17.0.2
   rxjs: 7.3.0
 
 devDependencies:
@@ -5848,8 +5848,8 @@ packages:
       scheduler: 0.20.2
     dev: false
 
-  /react-icons/4.2.0_react@17.0.2:
-    resolution: {integrity: sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==}
+  /react-icons/4.3.1_react@17.0.2:
+    resolution: {integrity: sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==}
     peerDependencies:
       react: '*'
     dependencies:
