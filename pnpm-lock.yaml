@@ -27,7 +27,7 @@ specifiers:
   react: 17.0.2
   react-dom: 17.0.2
   react-icons: 4.2.0
-  rxjs: 7.3.0
+  rxjs: 7.4.0
   snowpack: 3.8.8
   tailwindcss: 2.2.15
   typescript: 4.4.3
@@ -43,7 +43,7 @@ dependencies:
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-icons: 4.2.0_react@17.0.2
-  rxjs: 7.3.0
+  rxjs: 7.4.0
 
 devDependencies:
   '@snowpack/plugin-dotenv': 2.2.0
@@ -6185,8 +6185,8 @@ packages:
       tslib: 1.14.1
     dev: true
 
-  /rxjs/7.3.0:
-    resolution: {integrity: sha512-p2yuGIg9S1epc3vrjKf6iVb3RCaAYjYskkO+jHIaV0IjOPlJop4UnodOoFb2xeNwlguqLYvGw1b1McillYb5Gw==}
+  /rxjs/7.4.0:
+    resolution: {integrity: sha512-7SQDi7xeTMCJpqViXh8gL/lebcwlp3d831F05+9B44A4B0WfsEwUQHR64gsH1kvJ+Ep/J9K2+n1hVl1CsGN23w==}
     dependencies:
       tslib: 2.1.0
     dev: false
