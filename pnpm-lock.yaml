@@ -18,7 +18,7 @@ specifiers:
   '@web/test-runner': 0.13.20
   autoprefixer: 10.4.0
   chai: 4.3.4
-  dexie: 3.2.0-rc.1
+  dexie: 3.2.0-rc.3
   dexie-react-hooks: 1.0.7
   luxon: 2.0.2
   music-metadata-browser: 2.5.0
@@ -36,8 +36,8 @@ specifiers:
 dependencies:
   '@headlessui/react': 1.4.1_react-dom@17.0.2+react@17.0.2
   '@types/wicg-file-system-access': 2020.9.4
-  dexie: 3.2.0-rc.1
-  dexie-react-hooks: 1.0.7_5ad8c542f83c15937af4e92f25ba512f
+  dexie: 3.2.0-rc.3
+  dexie-react-hooks: 1.0.7_b59f7ac23781c9fecf2ce3748479a922
   luxon: 2.0.2
   music-metadata-browser: 2.5.0
   react: 17.0.2
@@ -3245,7 +3245,7 @@ packages:
     resolution: {integrity: sha512-4INMPwNm9XRpBukhNbF7OB6fNTTCaI8pzy/fXg0xQzAy5h3zL1P8xT3QazgKqBrb/hAYwIBizqDBZ7GtJE74QQ==}
     dev: true
 
-  /dexie-react-hooks/1.0.7_5ad8c542f83c15937af4e92f25ba512f:
+  /dexie-react-hooks/1.0.7_b59f7ac23781c9fecf2ce3748479a922:
     resolution: {integrity: sha512-hqXGFbfgu1rdfcGHQUPwW2G0iWyupoNWnk3ODvqr+HdZt2ip3y1e/dcWIOsEnlUWWCWk6a3+ok0fvECU05eE2A==}
     peerDependencies:
       '@types/react': '>=16'
@@ -3253,12 +3253,12 @@ packages:
       react: '>=16'
     dependencies:
       '@types/react': 17.0.33
-      dexie: 3.2.0-rc.1
+      dexie: 3.2.0-rc.3
       react: 17.0.2
     dev: false
 
-  /dexie/3.2.0-rc.1:
-    resolution: {integrity: sha512-G8KmAt27MsD8Cdh3lzYUSU0dunBeUPHHsWsG0Ax0BHFozuSeHxMb+D5hnucG34spwAj7qXkupnsF7SDudjrBhw==}
+  /dexie/3.2.0-rc.3:
+    resolution: {integrity: sha512-4DdArnU3AWfCWRFz+7lkgZMjTvhPgYvQ5vGA4nHdTWvi+Gh5hLIeF/vGa7MjgeXLae82uquWixihXqyuheQSTA==}
     engines: {node: '>=6.0'}
     dev: false
 

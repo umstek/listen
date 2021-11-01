@@ -10,7 +10,7 @@
   "dependencies": {
     "@headlessui/react": "1.4.1",
     "@types/wicg-file-system-access": "2020.9.4",
-    "dexie": "3.2.0-rc.1",
+    "dexie": "3.2.0-rc.3",
     "dexie-react-hooks": "1.0.7",
     "luxon": "2.0.2",
     "music-metadata-browser": "2.5.0",
