@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@headlessui/react': 1.4.1
+  '@headlessui/react': 1.4.2
   '@snowpack/plugin-dotenv': 2.2.0
   '@snowpack/plugin-postcss': 1.4.3
   '@snowpack/plugin-react-refresh': 2.5.0
@@ -34,7 +34,7 @@ specifiers:
   workbox-cli: 6.3.0
 
 dependencies:
-  '@headlessui/react': 1.4.1_react-dom@17.0.2+react@17.0.2
+  '@headlessui/react': 1.4.2_react-dom@17.0.2+react@17.0.2
   '@types/wicg-file-system-access': 2020.9.4
   dexie: 3.2.0-rc.3
   dexie-react-hooks: 1.0.7_b59f7ac23781c9fecf2ce3748479a922
@@ -1199,8 +1199,8 @@ packages:
     resolution: {integrity: sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==}
     dev: true
 
-  /@headlessui/react/1.4.1_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-gL6Ns5xQM57cZBzX6IVv6L7nsam8rDEpRhs5fg28SN64ikfmuuMgunc+Rw5C1cMScnvFM+cz32ueVrlSFEVlSg==}
+  /@headlessui/react/1.4.2_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-N8tv7kLhg9qGKBkVdtg572BvKvWhmiudmeEpOCyNwzOsZHCXBtl8AazGikIfUS+vBoub20Fse3BjawXDVPPdug==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16 || ^17 || ^18
