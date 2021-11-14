@@ -21,3 +21,5 @@ export const state$ = action$.pipe(
 );
 rootEpic(action$, state$).subscribe(action$);
 export const actions = createActions(action$);
+
+// Container components -> Actions Creators -> Middleware -> Reducer -> State -> Epics (e.g.: Effect) -> Actions
