@@ -8,7 +8,7 @@ specifiers:
   '@snowpack/plugin-typescript': 1.2.1
   '@snowpack/web-test-runner-plugin': 0.2.2
   '@testing-library/react': 12.1.2
-  '@types/chai': 4.2.22
+  '@types/chai': 4.3.0
   '@types/luxon': 2.0.7
   '@types/mocha': 9.0.0
   '@types/react': 17.0.35
@@ -52,7 +52,7 @@ devDependencies:
   '@snowpack/plugin-typescript': 1.2.1_typescript@4.5.2
   '@snowpack/web-test-runner-plugin': 0.2.2_74732e45f4e467eece732f6e967d04b2
   '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
-  '@types/chai': 4.2.22
+  '@types/chai': 4.3.0
   '@types/luxon': 2.0.7
   '@types/mocha': 9.0.0
   '@types/react': 17.0.35
@@ -1703,8 +1703,8 @@ packages:
       '@types/responselike': 1.0.0
     dev: true
 
-  /@types/chai/4.2.22:
-    resolution: {integrity: sha512-tFfcE+DSTzWAgifkjik9AySNqIyNoYwmR+uecPwwD/XRNfvOjmC/FjCxpiUGDkDVDphPfCUecSQVFw+lN3M3kQ==}
+  /@types/chai/4.3.0:
+    resolution: {integrity: sha512-/ceqdqeRraGolFTcfoXNiqjyQhZzbINDngeoAq9GoHa8PPK1yNzTaxWjA6BFWp5Ua9JpXEMSS4s5i9tS0hOJtw==}
     dev: true
 
   /@types/co-body/6.1.0:
