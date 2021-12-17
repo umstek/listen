@@ -19,7 +19,7 @@ specifiers:
   autoprefixer: 10.4.0
   chai: 4.3.4
   dexie: 3.2.0
-  dexie-react-hooks: 1.0.7
+  dexie-react-hooks: 1.1.1
   luxon: 2.1.1
   music-metadata-browser: 2.5.0
   postcss: 8.3.11
@@ -37,7 +37,7 @@ dependencies:
   '@headlessui/react': 1.4.2_react-dom@17.0.2+react@17.0.2
   '@types/wicg-file-system-access': 2020.9.4
   dexie: 3.2.0
-  dexie-react-hooks: 1.0.7_14fb2f790a9ba1fc7957469152962530
+  dexie-react-hooks: 1.1.1_14fb2f790a9ba1fc7957469152962530
   luxon: 2.1.1
   music-metadata-browser: 2.5.0
   react: 17.0.2
@@ -3298,11 +3298,11 @@ packages:
     resolution: {integrity: sha512-4INMPwNm9XRpBukhNbF7OB6fNTTCaI8pzy/fXg0xQzAy5h3zL1P8xT3QazgKqBrb/hAYwIBizqDBZ7GtJE74QQ==}
     dev: true
 
-  /dexie-react-hooks/1.0.7_14fb2f790a9ba1fc7957469152962530:
-    resolution: {integrity: sha512-hqXGFbfgu1rdfcGHQUPwW2G0iWyupoNWnk3ODvqr+HdZt2ip3y1e/dcWIOsEnlUWWCWk6a3+ok0fvECU05eE2A==}
+  /dexie-react-hooks/1.1.1_14fb2f790a9ba1fc7957469152962530:
+    resolution: {integrity: sha512-Cam5JP6PxHN564RvWEoe8cqLhosW0O4CAZ9XEVYeGHJBa6KEJlOpd9CUpV3kmU9dm2MrW97/lk7qkf1xpij7gA==}
     peerDependencies:
       '@types/react': '>=16'
-      dexie: ~3.1.0-alpha.1 || ~3.2.0-beta.1
+      dexie: '>=3.1.0-alpha.1 <5.0.0'
       react: '>=16'
     dependencies:
       '@types/react': 17.0.35

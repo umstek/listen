@@ -12,7 +12,7 @@
     "@headlessui/react": "1.4.2",
     "@types/wicg-file-system-access": "2020.9.4",
     "dexie": "3.2.0",
-    "dexie-react-hooks": "1.0.7",
+    "dexie-react-hooks": "1.1.1",
     "luxon": "2.1.1",
     "music-metadata-browser": "2.5.0",
     "react": "17.0.2",
