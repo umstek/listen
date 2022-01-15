@@ -24,7 +24,7 @@ specifiers:
   dexie-react-hooks: 1.1.1
   events: ^3.3.0
   luxon: 2.3.0
-  music-metadata-browser: 2.5.0
+  music-metadata-browser: 2.5.1
   postcss: 8.4.5
   prettier: 2.5.1
   react: 17.0.2
@@ -43,7 +43,7 @@ dependencies:
   dexie-react-hooks: 1.1.1_f526c1d26017d2e94d4a7ec83e666024
   events: 3.3.0
   luxon: 2.3.0
-  music-metadata-browser: 2.5.0
+  music-metadata-browser: 2.5.1
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-icons: 4.3.1_react@17.0.2
@@ -2148,7 +2148,7 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
     dependencies:
-      debug: 4.3.2
+      debug: 4.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3522,7 +3522,7 @@ packages:
     engines: {node: '>= 10.17.0'}
     hasBin: true
     dependencies:
-      debug: 4.3.2
+      debug: 4.3.3
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -4016,7 +4016,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.2
+      debug: 4.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5016,8 +5016,8 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: true
 
-  /music-metadata-browser/2.5.0:
-    resolution: {integrity: sha512-g5TdRq+wN1VvgBk3wtieY87E8n/niH5bHI4r8YIpM7x0lMru3Ub17Oa5o4mA0MGvm4T5BfjmYHxfMGsH4pbCng==}
+  /music-metadata-browser/2.5.1:
+    resolution: {integrity: sha512-xLB/ovqBLaMFz1nwXduZYhHcQZgSP3/QUGH0A48EsV/H9SGo6QZXm9+3FKUWhnUpKhIHGy1LMZLQZTLjIj/VQg==}
     dependencies:
       buffer: 6.0.3
       debug: 4.3.3
