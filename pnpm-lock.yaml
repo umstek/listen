@@ -1152,7 +1152,7 @@ packages:
       babel-plugin-polyfill-corejs2: 0.3.0_@babel+core@7.16.7
       babel-plugin-polyfill-corejs3: 0.5.0_@babel+core@7.16.7
       babel-plugin-polyfill-regenerator: 0.3.0_@babel+core@7.16.7
-      core-js-compat: 3.20.2
+      core-js-compat: 3.20.3
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -1534,7 +1534,7 @@ packages:
       normalize-path: 3.0.0
       postcss: 8.4.5
       postcss-load-config: 3.1.1
-      workerpool: 6.1.5
+      workerpool: 6.2.0
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -2148,7 +2148,7 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
     dependencies:
-      debug: 4.3.3
+      debug: 4.3.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2380,7 +2380,7 @@ packages:
     dependencies:
       '@babel/core': 7.16.7
       '@babel/helper-define-polyfill-provider': 0.3.0_@babel+core@7.16.7
-      core-js-compat: 3.20.2
+      core-js-compat: 3.20.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2942,8 +2942,8 @@ packages:
       keygrip: 1.1.0
     dev: true
 
-  /core-js-compat/3.20.2:
-    resolution: {integrity: sha512-qZEzVQ+5Qh6cROaTPFLNS4lkvQ6mBzE3R6A6EEpssj7Zr2egMHgsy4XapdifqJDGC9CBiNv7s+ejI96rLNQFdg==}
+  /core-js-compat/3.20.3:
+    resolution: {integrity: sha512-c8M5h0IkNZ+I92QhIpuSijOxGAcj3lgpsWdkCqmUTZNwidujF4r3pi6x1DCN+Vcs5qTS2XWWMfWSuCqyupX8gw==}
     dependencies:
       browserslist: 4.19.1
       semver: 7.0.0
@@ -3522,7 +3522,7 @@ packages:
     engines: {node: '>= 10.17.0'}
     hasBin: true
     dependencies:
-      debug: 4.3.3
+      debug: 4.3.2
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -4016,7 +4016,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.3
+      debug: 4.3.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7100,7 +7100,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 4.2.3
+      string-width: 1.0.2
     dev: true
 
   /widest-line/3.1.0:
@@ -7290,8 +7290,8 @@ packages:
       workbox-core: 6.4.2
     dev: true
 
-  /workerpool/6.1.5:
-    resolution: {integrity: sha512-XdKkCK0Zqc6w3iTxLckiuJ81tiD/o5rBE/m+nXpRCB+/Sq4DqkfXZ/x0jW02DG1tGsfUGXbTJyZDP+eu67haSw==}
+  /workerpool/6.2.0:
+    resolution: {integrity: sha512-Rsk5qQHJ9eowMH28Jwhe8HEbmdYDX4lwoMWshiCXugjtHqMD9ZbiqSDLxcsfdqsETPzVUtX5s1Z5kStiIM6l4A==}
     dev: true
 
   /wrap-ansi/6.2.0:
