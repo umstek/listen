@@ -15,7 +15,7 @@
     "dexie-react-hooks": "1.1.1",
     "events": "^3.3.0",
     "luxon": "2.3.0",
-    "music-metadata-browser": "2.5.0",
+    "music-metadata-browser": "2.5.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "4.3.1",
