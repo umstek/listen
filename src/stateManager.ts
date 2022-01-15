@@ -1,25 +1,26 @@
-import { scan, share, Subject, tap } from 'rxjs';
+import { filter, scan, share, Subject, tap } from 'rxjs';
 
 import type { Action } from './actionTypes';
 import createActions from './actions';
-import initialState, { State } from './initialState';
+import initialState from './initialState';
 import reducer from './reducer';
+import rootMiddleware from './middleware';
 import rootEpic from './epics';
 
 const action$ = new Subject<Action<any>>();
 export const state$ = action$.pipe(
+  rootMiddleware,
+  filter(Boolean),
   tap((action) => {
-    console.groupCollapsed('action', action.type);
-    console.log(action.payload);
+    console.log('%c %s', 'background: steelblue; color: black; font-weight: bold;', `${action.type} `, action.payload);
   }),
   scan(reducer, initialState),
   tap((state) => {
-    console.log(state);
-    console.groupEnd();
+    console.dir(state);
   }),
   share(),
 );
-rootEpic(action$, state$).subscribe(action$);
+rootEpic(action$.pipe(filter(Boolean)), state$).subscribe(action$);
 export const actions = createActions(action$);
 
 // Container components -> Actions Creators -> Middleware -> Reducer -> State -> Epics (e.g.: Effect) -> Actions
