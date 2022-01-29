@@ -33,3 +33,7 @@
 .menu-item {
   @apply sm:text-left flex flex-row space-x-2 outline-none focus:outline-none focus:ring-offset-1 focus:ring-2 focus:ring-gray-500 rounded-md items-center w-full px-2 py-2 text-sm font-bold;
 }
+
+.responsive-menu-items-container {
+  @apply fixed sm:absolute p-2 space-y-2 bottom-0 right-0 left-0 sm:left-auto border mt-2 origin-bottom-right bg-white sm:rounded-md shadow-xl focus:outline-none;
+}
