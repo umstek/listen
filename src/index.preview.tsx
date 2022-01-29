@@ -4,10 +4,11 @@ import ReactDOM from 'react-dom';
 import MiniPlayerPreview from './components/Player/MiniPlayer.preview';
 
 import './index.preview.css';
+import checkboard from './checkboard.svg';
 
 const BreakpointsWidget = () => {
   return (
-    <div className="fixed m-1 p-1 rounded bg-black text-xs text-white shadow-md">
+    <div className="fixed top-0 m-1 p-1 rounded bg-black dark:bg-white text-xs text-white dark:text-black shadow-md">
       <div className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
         SMALL
       </div>
@@ -32,8 +33,17 @@ const BreakpointsWidget = () => {
 
 ReactDOM.render(
   <React.StrictMode>
+    <div
+      style={{
+        backgroundImage: `url(${checkboard})`,
+        backgroundSize: '3em 3em',
+      }}
+      className="bg-repeat"
+    >
+      <div className='h-screen w-full'></div>
+      <MiniPlayerPreview />
+    </div>
     <BreakpointsWidget />
-    <MiniPlayerPreview />
   </React.StrictMode>,
   document.getElementById('root'),
 );
