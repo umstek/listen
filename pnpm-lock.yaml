@@ -8,7 +8,7 @@ specifiers:
   '@snowpack/plugin-typescript': 1.2.1
   '@snowpack/web-test-runner-plugin': 0.2.2
   '@testing-library/react': 12.1.2
-  '@types/chai': 4.3.0
+  '@types/chai': 4.3.1
   '@types/events': 3.0.0
   '@types/luxon': 2.0.9
   '@types/mocha': 9.0.0
@@ -19,7 +19,7 @@ specifiers:
   '@types/wicg-file-system-access': 2020.9.4
   '@web/test-runner': 0.13.25
   autoprefixer: 10.4.2
-  chai: 4.3.4
+  chai: 4.3.6
   dexie: 3.2.0
   dexie-react-hooks: 1.1.1
   events: 3.3.0
@@ -56,7 +56,7 @@ devDependencies:
   '@snowpack/plugin-typescript': 1.2.1_typescript@4.5.4
   '@snowpack/web-test-runner-plugin': 0.2.2_11780d363836178eb7472f6c69c20421
   '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
-  '@types/chai': 4.3.0
+  '@types/chai': 4.3.1
   '@types/events': 3.0.0
   '@types/luxon': 2.0.9
   '@types/mocha': 9.0.0
@@ -66,7 +66,7 @@ devDependencies:
   '@types/snowpack-env': 2.3.4
   '@web/test-runner': 0.13.25
   autoprefixer: 10.4.2_postcss@8.4.5
-  chai: 4.3.4
+  chai: 4.3.6
   postcss: 8.4.5
   prettier: 2.5.1
   snowpack: 3.8.8
@@ -1663,8 +1663,8 @@ packages:
       '@types/responselike': 1.0.0
     dev: true
 
-  /@types/chai/4.3.0:
-    resolution: {integrity: sha512-/ceqdqeRraGolFTcfoXNiqjyQhZzbINDngeoAq9GoHa8PPK1yNzTaxWjA6BFWp5Ua9JpXEMSS4s5i9tS0hOJtw==}
+  /@types/chai/4.3.1:
+    resolution: {integrity: sha512-/zPMqDkzSZ8t3VtxOa4KPq7uzzW978M9Tvh+j7GHKuo6k6GTLxPJ4J5gE5cjfJ26pnXst0N5Hax8Sr0T2Mi9zQ==}
     dev: true
 
   /@types/co-body/6.1.0:
@@ -2645,14 +2645,15 @@ packages:
     resolution: {integrity: sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=}
     dev: true
 
-  /chai/4.3.4:
-    resolution: {integrity: sha512-yS5H68VYOCtN1cjfwumDSuzn/9c+yza4f3reKXlE5rUg7SFcCEy90gJvydNgOYtblyf4Zi6jIWRnXOgErta0KA==}
+  /chai/4.3.6:
+    resolution: {integrity: sha512-bbcp3YfHCUzMOvKqsztczerVgBKSsEijCySNlHHbX3VG1nskvqjz5Rfso1gGwD6w6oOV3eI60pKuMOV5MV7p3Q==}
     engines: {node: '>=4'}
     dependencies:
       assertion-error: 1.1.0
       check-error: 1.0.2
       deep-eql: 3.0.1
       get-func-name: 2.0.0
+      loupe: 2.3.4
       pathval: 1.1.1
       type-detect: 4.0.8
     dev: true
@@ -4739,6 +4740,12 @@ packages:
     dependencies:
       js-tokens: 4.0.0
     dev: false
+
+  /loupe/2.3.4:
+    resolution: {integrity: sha512-OvKfgCC2Ndby6aSTREl5aCCPTNIzlDfQZvZxNUrBrihDhL3xcrYegTblhmEiCrg2kKQz4XsFIaemE5BF4ybSaQ==}
+    dependencies:
+      get-func-name: 2.0.0
+    dev: true
 
   /lowercase-keys/1.0.1:
     resolution: {integrity: sha512-G2Lj61tXDnVFFOi8VZds+SoQjtQC3dgokKdDG2mTm1tx4m50NUHBOZSBwQQHyy0V12A0JTG4icfZQH+xPyh8VA==}
