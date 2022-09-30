@@ -37,32 +37,38 @@ function App({}: AppProps) {
 
   return (
     <div className="w-full h-full font-semibold">
-      <SaveCollectionDialog
-        isOpen={state.saveDialogOpen}
-        collectionName={state.saveCollectionName}
-        onCollectionNameChange={actions.changeSaveCollectionName}
-        onSave={actions.saveCollection}
-        onCancel={actions.cancelSaveCollection}
-      />
+      {state.saveDialogOpen && (
+        <SaveCollectionDialog
+          isOpen={state.saveDialogOpen}
+          collectionName={state.saveCollectionName}
+          onCollectionNameChange={actions.changeSaveCollectionName}
+          onSave={actions.saveCollection}
+          onCancel={actions.cancelSaveCollection}
+        />
+      )}
 
-      <OpenCollectionDialog
-        collectionNames={
-          (collectionNames && collectionNames.map((c) => c.name)) || []
-        }
-        isOpen={state.openDialogOpen}
-        collectionName={state.openCollectionName}
-        onCollectionNameChange={actions.changeOpenCollectionName}
-        onOpen={actions.openCollection}
-        onCancel={actions.cancelOpenCollection}
-      />
+      {state.openDialogOpen && (
+        <OpenCollectionDialog
+          collectionNames={
+            (collectionNames && collectionNames.map((c) => c.name)) || []
+          }
+          isOpen={state.openDialogOpen}
+          collectionName={state.openCollectionName}
+          onCollectionNameChange={actions.changeOpenCollectionName}
+          onOpen={actions.openCollection}
+          onCancel={actions.cancelOpenCollection}
+        />
+      )}
 
-      <DeleteFSEntryDialog
-        entryName={state.deleteRequestedEntry?.name || ''}
-        isOpen={Boolean(state.deleteRequestedEntry)}
-        isFolder={state.deleteRequestedEntry?.kind === 'directory'}
-        onDelete={actions.deleteEntry}
-        onCancel={actions.cancelDeleteEntry}
-      />
+      {Boolean(state.deleteRequestedEntry) && (
+        <DeleteFSEntryDialog
+          entryName={state.deleteRequestedEntry?.name || ''}
+          isOpen={Boolean(state.deleteRequestedEntry)}
+          isFolder={state.deleteRequestedEntry?.kind === 'directory'}
+          onDelete={actions.deleteEntry}
+          onCancel={actions.cancelDeleteEntry}
+        />
+      )}
 
       <Player
         activeFile={state.activeFile}
