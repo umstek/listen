@@ -48,7 +48,7 @@ When complete, ths should be able to:
 
 Some of the tools and design decisions might be different from what you are familiar when working with React. These might be replaced/abandoned in the future depending on how they will match the requirements.
 
-1. Unbundled development: Snowpack is used instead of webpack/parcel and the output is not a single bundled JavaScript file like we used to see.
+1. Vite is used as the bundler which uses esbuild for compilation and rollup for bundling.
 2. Using PNPM instead of NPM/Yarn.
 3. No state management libraries such as Redux/Mobx/XState/Recoil...; RxJS is used to create a redux + redux-observable/saga like environment which is more flexible and powerful.
 4. Using TailwindCSS: trying to minimize CSS use and completely avoiding CSS-in-JS. Utility class names are used and when necessary, class names are combined to make a new selector/class name in a PostCSS file. These class names are used semantically like how interfaces are used in OOP.

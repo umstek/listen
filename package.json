@@ -1,16 +1,20 @@
 {
-  "version": "0.1.0",
+  "name": "@umstek/listen",
+  "version": "0.2.0",
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7"
+  },
   "scripts": {
-    "start": "NODE_ENV=development TAILWIND_DISABLE_TOUCH=true snowpack dev",
-    "build": "NODE_ENV=production TAILWIND_DISABLE_TOUCH=true snowpack build && workbox generateSW workbox-config.js",
-    "test": "web-test-runner \"src/**/*.test.tsx\"",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
-    "clean": "rm -rf node_modules/.cache build"
+    "clean": "rimraf dist",
+    "start": "vite --host",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "format": "prettier --write .",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@headlessui/react": "1.7.2",
-    "@types/wicg-file-system-access": "2020.9.5",
     "dexie": "3.2.2",
     "dexie-react-hooks": "1.1.1",
     "events": "^3.3.0",
@@ -19,31 +23,30 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.4.0",
-    "rxjs": "7.5.6"
+    "rxjs": "7.5.7"
   },
   "devDependencies": {
-    "@snowpack/plugin-dotenv": "2.2.0",
-    "@snowpack/plugin-postcss": "1.4.3",
-    "@snowpack/plugin-react-refresh": "2.5.0",
-    "@snowpack/plugin-typescript": "1.2.1",
-    "@snowpack/web-test-runner-plugin": "0.2.2",
-    "@testing-library/react": "13.4.0",
-    "@types/chai": "4.3.3",
+    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
     "@types/events": "^3.0.0",
     "@types/luxon": "3.0.1",
-    "@types/mocha": "9.1.1",
-    "@types/node": "^18.7.21",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
-    "@types/snowpack-env": "2.3.4",
-    "@web/test-runner": "0.14.0",
+    "@types/wicg-file-system-access": "2020.9.5",
+    "@vitejs/plugin-react": "^2.1.0",
     "autoprefixer": "10.4.12",
-    "chai": "4.3.6",
-    "postcss": "8.4.16",
+    "esbuild": "^0.15.10",
+    "eslint": "^8.24.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "postcss": "8.4.17",
+    "postcss-import": "^15.0.0",
     "prettier": "2.7.1",
-    "snowpack": "3.8.8",
+    "rimraf": "^3.0.2",
+    "rollup-plugin-node-polyfills": "^0.2.1",
     "tailwindcss": "3.1.8",
     "typescript": "4.8.3",
-    "workbox-cli": "6.5.4"
+    "vite": "^3.1.4",
+    "vite-tsconfig-paths": "^3.5.1"
   }
 }

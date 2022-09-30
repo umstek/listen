@@ -1,7 +1,7 @@
-import { parseBlob } from 'music-metadata-browser';
+import * as mmb from 'music-metadata-browser';
 
 export async function getMetadata(file: File) {
-  const metadata = await parseBlob(file, { duration: true });
+  const metadata = await mmb.parseBlob(file, { duration: true });
   return metadata;
 }
 
@@ -22,6 +22,6 @@ export async function getBasicMetadata(file: File): Promise<BasicMetadata> {
       title,
     },
     format: { duration },
-  } = await parseBlob(file);
+  } = await mmb.parseBlob(file);
   return { artist, album, trackNumber, title, duration };
 }
