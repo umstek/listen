@@ -4,6 +4,7 @@
     "Millis"
   ],
   "conventionalCommits.scopes": [
-    "ui"
+    "ui",
+    "deps"
   ]
 }
