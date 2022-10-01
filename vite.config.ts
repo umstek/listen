@@ -15,19 +15,18 @@ export default defineConfig({
   },
   optimizeDeps: {
     esbuildOptions: {
-      // Node.js global to browser globalThis
+      // Node.js global to browser window
       define: {
-        global: 'globalThis',
+        global: 'window',
       },
       // Enable esbuild polyfill plugins
       plugins: [
         NodeGlobalsPolyfillPlugin({
-          process: true,
           buffer: true,
         }),
         NodeModulesPolyfillPlugin(),
       ],
     },
   },
-  plugins: [tsconfigPaths(), react(), rollupNodePolyFill()],
+  plugins: [tsconfigPaths(), react(), { ...rollupNodePolyFill(), enforce: 'post' }],
 });
