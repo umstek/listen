@@ -16,4 +16,4 @@ const initialState = {
 type State = typeof initialState;
 
 export default initialState;
-export { State };
+export type { State };

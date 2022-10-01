@@ -9,7 +9,7 @@ import {
   MdForward10 as FastForwardIcon,
   MdReplay10 as RewindIcon,
 } from 'react-icons/md';
-import type { IAudioMetadata } from 'music-metadata-browser';
+import * as mmb from 'music-metadata-browser';
 
 import type { HistoricalEvent } from '../../util/persistence';
 import { requestPermission } from '../../util/fileSystem';
@@ -72,7 +72,7 @@ const PlayerControls = ({
   const [playStatus, setPlayStatus] = useState(PlayStatus.STOPPED);
   const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
   const [audioMetadata, setAudioMetadata] = useState<
-    IAudioMetadata | undefined
+    mmb.IAudioMetadata | undefined
   >(undefined);
 
   const audioElement = useRef<HTMLAudioElement>(null);

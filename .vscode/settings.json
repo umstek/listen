@@ -2,5 +2,9 @@
   "cSpell.words": [
     "Dexie",
     "Millis"
+  ],
+  "conventionalCommits.scopes": [
+    "ui",
+    "deps"
   ]
 }
