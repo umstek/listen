@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
@@ -28,5 +28,5 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [tsconfigPaths(), react(), { ...rollupNodePolyFill(), enforce: 'post' }],
+  plugins: [tsconfigPaths(), react(), { ...rollupNodePolyFill(), enforce: 'post' }, splitVendorChunkPlugin()],
 });
