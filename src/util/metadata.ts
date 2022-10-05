@@ -1,25 +1,78 @@
-export async function getMetadata(file: File) {
-  const metadata = (await import('music-metadata-browser')).parseBlob(file, { duration: true });
-  return metadata;
+import { IAudioMetadata } from 'music-metadata-browser';
+
+export interface FileMetadata {
+  path: string;
+  name: string;
+  type: string;
+  size: number;
+  hash: string;
+  lastModified: number;
 }
 
-export interface BasicMetadata {
-  artist?: string;
-  album?: string;
-  trackNumber?: number | null;
-  title?: string;
-  duration?: number;
+export interface BasicAudioMetadata {
+  genre: string[];
+  artists: string[];
+  album: string;
+  title: string;
+  trackNumber: number;
+  duration: number;
 }
 
-export async function getBasicMetadata(file: File): Promise<BasicMetadata> {
+const kiB = 2 ** 10;
+const MiB = kiB * 2 ** 10;
+
+async function getFileHash(file: File) {
+  const hashingDataStart = file.size > 2 * MiB ? 1 * MiB : 0;
+  const hashingDataEnd = hashingDataStart + 1 * kiB;
+  const hashingData = await file
+    .slice(hashingDataStart, hashingDataEnd)
+    .arrayBuffer();
+
+  const hashAsArrayBuffer = await crypto.subtle.digest('SHA-256', hashingData);
+  return Buffer.from(hashAsArrayBuffer).toString('base64');
+}
+
+async function getFileMetadata(file: File): Promise<FileMetadata> {
+  const { name, type, size, lastModified, webkitRelativePath } = file;
+  const hash = await getFileHash(file);
+  return { path: webkitRelativePath, name, type, size, lastModified, hash };
+}
+
+async function getAudioMetadata(
+  file: File,
+): Promise<[BasicAudioMetadata, IAudioMetadata]> {
+  const mmb = await import('music-metadata-browser');
+  const metadata = await mmb.parseBlob(file, {
+    duration: true,
+    includeChapters: true,
+  });
   const {
     common: {
-      artist,
-      album,
-      track: { no: trackNumber },
-      title,
+      genre = [],
+      artists = [],
+      album = '',
+      title = '',
+      track: { no },
     },
-    format: { duration },
-  } = await (await import('music-metadata-browser')).parseBlob(file);
-  return { artist, album, trackNumber, title, duration };
+    format: { duration = 0 },
+  } = metadata;
+
+  return [
+    {
+      genre,
+      artists,
+      album,
+      trackNumber: no || 0,
+      title,
+      duration,
+    },
+    metadata,
+  ];
+}
+
+export async function getMetadata(file: File) {
+  const fileMetadata = await getFileMetadata(file);
+  const [basicAudioMetadata, rawAudioMetadata] = await getAudioMetadata(file);
+
+  return { fileMetadata, basicAudioMetadata, rawAudioMetadata };
 }
