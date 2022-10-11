@@ -21,7 +21,7 @@ specifiers:
   esbuild: 0.15.10
   eslint: 8.25.0
   eslint-plugin-prettier: 4.2.1
-  eslint-plugin-react: 7.31.8
+  eslint-plugin-react: 7.31.10
   events: 3.3.0
   luxon: 3.0.4
   music-metadata-browser: 2.5.9
@@ -69,7 +69,7 @@ devDependencies:
   esbuild: 0.15.10
   eslint: 8.25.0
   eslint-plugin-prettier: 4.2.1_znq2sm4m5bonjw4qqm6mwhbe2q
-  eslint-plugin-react: 7.31.8_eslint@8.25.0
+  eslint-plugin-react: 7.31.10_eslint@8.25.0
   postcss: 8.4.17
   postcss-import: 15.0.0_postcss@8.4.17
   prettier: 2.7.1
@@ -1293,8 +1293,8 @@ packages:
       prettier-linter-helpers: 1.0.0
     dev: true
 
-  /eslint-plugin-react/7.31.8_eslint@8.25.0:
-    resolution: {integrity: sha512-5lBTZmgQmARLLSYiwI71tiGVTLUuqXantZM6vlSY39OaDSV0M7+32K5DnLkmFrwTe+Ksz0ffuLUC91RUviVZfw==}
+  /eslint-plugin-react/7.31.10_eslint@8.25.0:
+    resolution: {integrity: sha512-e4N/nc6AAlg4UKW/mXeYWd3R++qUano5/o+t+wnWxIf+bLsOaH3a4q74kX3nDjYym3VBN4HyO9nEn1GcAqgQOA==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
