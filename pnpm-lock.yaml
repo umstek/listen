@@ -30,7 +30,7 @@ specifiers:
   prettier: 2.7.1
   react: 18.2.0
   react-dom: 18.2.0
-  react-icons: 4.4.0
+  react-icons: 4.6.0
   rimraf: 3.0.2
   rollup-plugin-node-polyfills: 0.2.1
   rxjs: 7.5.7
@@ -48,7 +48,7 @@ dependencies:
   music-metadata-browser: 2.5.9
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-icons: 4.4.0_react@18.2.0
+  react-icons: 4.6.0_react@18.2.0
   rxjs: 7.5.7
 
 devDependencies:
@@ -2297,8 +2297,8 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-icons/4.4.0_react@18.2.0:
-    resolution: {integrity: sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==}
+  /react-icons/4.6.0_react@18.2.0:
+    resolution: {integrity: sha512-rR/L9m9340yO8yv1QT1QurxWQvWpbNHqVX0fzMln2HEb9TEIrQRGsqiNFQfiv9/JEUbyHmHPlNTB2LWm2Ttz0g==}
     peerDependencies:
       react: '*'
     dependencies:
