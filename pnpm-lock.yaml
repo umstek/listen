@@ -7,7 +7,7 @@ specifiers:
   '@testing-library/react': 13.4.0
   '@types/chai': 4.3.3
   '@types/events': 3.0.0
-  '@types/luxon': 3.0.1
+  '@types/luxon': 3.0.2
   '@types/mocha': 10.0.0
   '@types/node': 18.7.23
   '@types/react': 18.0.21
@@ -57,7 +57,7 @@ devDependencies:
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@types/chai': 4.3.3
   '@types/events': 3.0.0
-  '@types/luxon': 3.0.1
+  '@types/luxon': 3.0.2
   '@types/mocha': 10.0.0
   '@types/node': 18.7.23
   '@types/react': 18.0.21
@@ -547,8 +547,8 @@ packages:
     resolution: {integrity: sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==}
     dev: true
 
-  /@types/luxon/3.0.1:
-    resolution: {integrity: sha512-/LAvk1cMOJt0ghzMFrZEvByUhsiEfeeT2IF53Le+Ki3A538yEL9pRZ7a6MuCxdrYK+YNqNIDmrKU/r2nnw04zQ==}
+  /@types/luxon/3.0.2:
+    resolution: {integrity: sha512-HM2OVWckUMmXbWYZufmWT2XMURGDZ6XbyNyQ+Lx+gCFGFqbZaIjsz7b+AGeGP/AuVYHBiuGY+wXfweP1RremnA==}
     dev: true
 
   /@types/mocha/10.0.0:
