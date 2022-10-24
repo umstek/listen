@@ -10,7 +10,7 @@ specifiers:
   '@types/luxon': 3.0.2
   '@types/mocha': 10.0.0
   '@types/node': 18.7.23
-  '@types/react': 18.0.21
+  '@types/react': 18.0.22
   '@types/react-dom': 18.0.6
   '@types/wicg-file-system-access': 2020.9.5
   '@vitejs/plugin-react': 2.1.0
@@ -42,7 +42,7 @@ specifiers:
 dependencies:
   '@headlessui/react': 1.7.3_biqbaboplfbrettd7655fr4n2y
   dexie: 3.2.2
-  dexie-react-hooks: 1.1.1_bbz3477la5rogmola7edrq4k64
+  dexie-react-hooks: 1.1.1_4ubt4s3665wph6qwnkuxhgoudm
   events: 3.3.0
   luxon: 3.0.4
   music-metadata-browser: 2.5.9
@@ -60,7 +60,7 @@ devDependencies:
   '@types/luxon': 3.0.2
   '@types/mocha': 10.0.0
   '@types/node': 18.7.23
-  '@types/react': 18.0.21
+  '@types/react': 18.0.22
   '@types/react-dom': 18.0.6
   '@types/wicg-file-system-access': 2020.9.5
   '@vitejs/plugin-react': 2.1.0_vite@3.1.8
@@ -565,11 +565,11 @@ packages:
   /@types/react-dom/18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
-      '@types/react': 18.0.21
+      '@types/react': 18.0.22
     dev: true
 
-  /@types/react/18.0.21:
-    resolution: {integrity: sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==}
+  /@types/react/18.0.22:
+    resolution: {integrity: sha512-4yWc5PyCkZN8ke8K9rQHkTXxHIWHxLzzW6RI1kXVoepkD3vULpKzC2sDtAMKn78h92BRYuzf+7b/ms7ajE6hFw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -948,14 +948,14 @@ packages:
       minimist: 1.2.6
     dev: true
 
-  /dexie-react-hooks/1.1.1_bbz3477la5rogmola7edrq4k64:
+  /dexie-react-hooks/1.1.1_4ubt4s3665wph6qwnkuxhgoudm:
     resolution: {integrity: sha512-Cam5JP6PxHN564RvWEoe8cqLhosW0O4CAZ9XEVYeGHJBa6KEJlOpd9CUpV3kmU9dm2MrW97/lk7qkf1xpij7gA==}
     peerDependencies:
       '@types/react': '>=16'
       dexie: '>=3.1.0-alpha.1 <5.0.0'
       react: '>=16'
     dependencies:
-      '@types/react': 18.0.21
+      '@types/react': 18.0.22
       dexie: 3.2.2
       react: 18.2.0
     dev: false
