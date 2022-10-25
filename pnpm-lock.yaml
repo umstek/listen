@@ -9,7 +9,7 @@ specifiers:
   '@types/events': 3.0.0
   '@types/luxon': 3.0.2
   '@types/mocha': 10.0.0
-  '@types/node': 18.7.23
+  '@types/node': 18.11.5
   '@types/react': 18.0.22
   '@types/react-dom': 18.0.7
   '@types/wicg-file-system-access': 2020.9.5
@@ -59,7 +59,7 @@ devDependencies:
   '@types/events': 3.0.0
   '@types/luxon': 3.0.2
   '@types/mocha': 10.0.0
-  '@types/node': 18.7.23
+  '@types/node': 18.11.5
   '@types/react': 18.0.22
   '@types/react-dom': 18.0.7
   '@types/wicg-file-system-access': 2020.9.5
@@ -555,8 +555,8 @@ packages:
     resolution: {integrity: sha512-rADY+HtTOA52l9VZWtgQfn4p+UDVM2eDVkMZT1I6syp0YKxW2F9v+0pbRZLsvskhQv/vMb6ZfCay81GHbz5SHg==}
     dev: true
 
-  /@types/node/18.7.23:
-    resolution: {integrity: sha512-DWNcCHolDq0ZKGizjx2DZjR/PqsYwAcYUJmfMWqtVU2MBMG5Mo+xFZrhGId5r/O5HOuMPyQEcM6KUBp5lBZZBg==}
+  /@types/node/18.11.5:
+    resolution: {integrity: sha512-3JRwhbjI+cHLAkUorhf8RnqUbFXajvzX4q6fMn5JwkgtuwfYtRQYI3u4V92vI6NJuTsbBQWWh3RZjFsuevyMGQ==}
     dev: true
 
   /@types/prop-types/15.7.5:
