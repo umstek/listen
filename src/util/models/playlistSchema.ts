@@ -19,7 +19,7 @@ const jsonSchema = Type.Object(properties, {
   additionalProperties: false,
 });
 
-const playlistSchema: RxJsonSchema<Static<typeof jsonSchema>> = {
+export const playlistSchema: RxJsonSchema<Static<typeof jsonSchema>> = {
   ...jsonSchema,
   version: 0,
   primaryKey: { key: 'name', fields: ['name'], separator: '' },
@@ -27,5 +27,3 @@ const playlistSchema: RxJsonSchema<Static<typeof jsonSchema>> = {
   indexes: [],
   additionalProperties: false,
 };
-
-export default playlistSchema;

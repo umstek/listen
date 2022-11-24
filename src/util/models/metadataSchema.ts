@@ -9,7 +9,7 @@ const properties = {
   artists: Type.Array(Type.String()),
   duration: convertNumericTypeV6ToV4(Type.Number()),
   genre: Type.Array(Type.String()),
-  hash: hash,
+  hash,
   lastModified: convertNumericTypeV6ToV4(Type.Number()),
   name: Type.String(),
   path: Type.String(),

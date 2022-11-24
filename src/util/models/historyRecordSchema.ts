@@ -8,6 +8,7 @@ const properties = {
   ...metadataProxyProperties,
   position: convertNumericTypeV6ToV4(Type.Number()),
   time: convertNumericTypeV6ToV4(Type.Number()),
+  finished: Type.Boolean(),
 };
 
 const fields = Object.keys(properties) as (keyof typeof properties)[];
@@ -18,7 +19,9 @@ const jsonSchema = Type.Object(properties, {
   additionalProperties: false,
 });
 
-const historyRecordSchema: RxJsonSchema<Static<typeof jsonSchema>> = {
+export type HistoryRecord = Static<typeof jsonSchema>;
+
+export const historyRecordSchema: RxJsonSchema<HistoryRecord> = {
   ...jsonSchema,
   version: 0,
   primaryKey: { key: 'time', fields: [], separator: '' },
@@ -26,5 +29,3 @@ const historyRecordSchema: RxJsonSchema<Static<typeof jsonSchema>> = {
   indexes: fields.filter((k) => k !== 'handle'),
   additionalProperties: false,
 };
-
-export default historyRecordSchema;

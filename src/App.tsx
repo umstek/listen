@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useLiveQuery } from 'dexie-react-hooks';
+import { useEffect, useState } from 'react';
 
-import { db } from './util/persistence';
+import { collections } from '~util/persistence';
 
-import Explorer from './components/Explorer';
-import Player from './components/Player';
-import SaveCollectionDialog from './components/modals/SaveCollectionDialog';
-import OpenCollectionDialog from './components/modals/OpenCollectionDialog';
-import DeleteFSEntryDialog from './components/modals/DeleteFSEntryDialog';
+import Explorer from '::Explorer';
+import Player from '::Player';
+import History from '::History';
+import SaveCollectionDialog from '::modals/SaveCollectionDialog';
+import OpenCollectionDialog from '::modals/OpenCollectionDialog';
+import DeleteFSEntryDialog from '::modals/DeleteFSEntryDialog';
 
 import './App.css';
-import History from './components/History';
 import { actions, state$ } from './stateManager';
 import type { State } from './initialState';
 import initialState from './initialState';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface AppProps {}
 
+// eslint-disable-next-line no-empty-pattern
 function App({}: AppProps) {
   const [state, setState] = useState<State>(initialState);
+  const [playlists, setPlaylists] = useState<any>(null);
 
   useEffect(() => {
     const subscription = state$.subscribe(setState);
@@ -31,9 +33,10 @@ function App({}: AppProps) {
     [state.path],
   );
 
-  const collectionNames = useLiveQuery(() =>
-    db.collections.toCollection().toArray(),
-  );
+  useEffect(() => {
+    const subscription = collections.playlist.$.subscribe(setPlaylists);
+    return () => subscription.unsubscribe();
+  });
 
   return (
     <div className="w-full h-full font-semibold">
@@ -49,9 +52,7 @@ function App({}: AppProps) {
 
       {state.openDialogOpen && (
         <OpenCollectionDialog
-          collectionNames={
-            (collectionNames && collectionNames.map((c) => c.name)) || []
-          }
+          collectionNames={playlists?.map((playlist: any) => playlist) || []}
           isOpen={state.openDialogOpen}
           collectionName={state.openCollectionName}
           onCollectionNameChange={actions.changeOpenCollectionName}
@@ -77,7 +78,7 @@ function App({}: AppProps) {
         onEnded={actions.handleTrackEnd}
         onNext={actions.next}
         onPrevious={actions.previous}
-        onHistoricalEvent={db.history.add.bind(db.history)}
+        onHistoricalEvent={collections.historyRecord.insert.bind(history)}
       />
 
       <Explorer

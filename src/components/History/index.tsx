@@ -6,16 +6,9 @@ import { MdRestore as Resume } from 'react-icons/md';
 import { MdPlayArrow as Play } from 'react-icons/md';
 import { MdDelete as Delete } from 'react-icons/md';
 
-import { db, HistoricalEvent } from '../../util/persistence';
+import { HistoryRecord } from '~util/models/historyRecordSchema';
 
-const HistoryEntry = ({
-  title,
-  collection,
-  path,
-  position,
-  time,
-  finished = false,
-}: HistoricalEvent & { finished?: boolean }) => {
+const HistoryEntry = (hr: HistoryRecord) => {
   return (
     <div
       className={[
@@ -26,16 +19,14 @@ const HistoryEntry = ({
     >
       <div className="flex flex-row justify-between items-start rounded-lg">
         <div>
-          <span className="text-gray-500 font-medium">
-            {collection}/{path ? path + '/' : ''}
-          </span>
-          <h3 className="inline-block">{title}</h3>
+          <span className="text-gray-500 font-medium">{hr.path}</span>
+          <h3 className="inline-block">{hr.title}</h3>
         </div>
         <div className="flex flex-row space-x-4 sm:invisible group-hover:visible">
           <button className="pushable outline-none rounded-full p-1">
             <Play className="h-6 w-6" />
           </button>
-          {!finished && (
+          {!hr.finished && (
             <button className="pushable primary outline-none rounded-full p-1">
               <Resume className="h-6 w-6" />
             </button>
@@ -47,10 +38,10 @@ const HistoryEntry = ({
       </div>
       <div className="mt-1 text-gray-600 flex flex-row justify-between items-end">
         <div className="text-sm">
-          {Duration.fromMillis(position * 1000).toFormat('h:mm:ss')}
+          {Duration.fromMillis(hr.position * 1000).toFormat('h:mm:ss')}
         </div>
         <div className="text-xs text-right">
-          {DateTime.fromMillis(time).toRelative()}
+          {DateTime.fromMillis(hr.time).toRelative()}
         </div>
       </div>
     </div>
@@ -71,8 +62,10 @@ const HistorySection = ({ children, sectionName }: HistorySectionProps) => {
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HistoryProps {}
 
+// eslint-disable-next-line no-empty-pattern
 const History = ({}: HistoryProps) => {
   const history = useLiveQuery(() => db.history.reverse().toArray()) || [];
 

@@ -9,7 +9,7 @@ import {
   scanDroppedItems,
   separateFileSystemEntries,
 } from './util/fileSystem';
-import { db } from './util/persistence';
+
 import type { ObservableInput } from 'rxjs';
 
 async function deleteEntryEffect({

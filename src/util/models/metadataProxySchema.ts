@@ -7,7 +7,7 @@ export const metadataProxyProperties = {
   name: Type.String(),
   title: Type.String(),
   artist: Type.String(),
-  hash: hash,
+  hash,
   handle: Type.Any(),
 };
 

@@ -5,6 +5,7 @@
   ],
   "conventionalCommits.scopes": [
     "ui",
-    "deps"
+    "deps",
+    "metadata"
   ]
 }

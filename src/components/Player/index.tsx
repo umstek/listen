@@ -89,6 +89,8 @@ const PlayerControls = ({
 
       const fileData: File = await activeFile.getFile();
       const metadata = await getMetadata(fileData);
+      console.log(metadata);
+
       setAudioMetadata(metadata);
       const source = URL.createObjectURL(fileData);
       setAudioSource(source);
