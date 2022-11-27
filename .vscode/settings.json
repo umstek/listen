@@ -6,6 +6,8 @@
   "conventionalCommits.scopes": [
     "ui",
     "deps",
-    "metadata"
-  ]
+    "metadata",
+    "storybook"
+  ],
+  "dotenv.enableAutocloaking": true
 }
