@@ -8,7 +8,8 @@
     "deps",
     "metadata",
     "storybook",
-    "database"
+    "database",
+    "general"
   ],
   "dotenv.enableAutocloaking": true
 }

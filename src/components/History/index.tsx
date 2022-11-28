@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLiveQuery } from 'dexie-react-hooks';
 
 import { HistoryEntry } from './HistoryEntry';
 
@@ -22,7 +21,6 @@ interface HistoryProps {}
 
 // eslint-disable-next-line no-empty-pattern
 const History = ({}: HistoryProps) => {
-  const history = useLiveQuery(() => db.history.reverse().toArray()) || [];
 
   return (
     <div id="history">
@@ -31,9 +29,9 @@ const History = ({}: HistoryProps) => {
       </div>
       <div className="mt-8">
         <HistorySection sectionName="A short while ago">
-          {history.map((entry) => (
+          {/* {history.map((entry) => (
             <HistoryEntry {...entry} key={entry.time} />
-          ))}
+          ))} */}
         </HistorySection>
         <HistorySection sectionName="Earlier today"></HistorySection>
         <HistorySection sectionName="Yesterday"></HistorySection>

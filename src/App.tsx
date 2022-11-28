@@ -78,7 +78,9 @@ function App({}: AppProps) {
         onEnded={actions.handleTrackEnd}
         onNext={actions.next}
         onPrevious={actions.previous}
-        onHistoricalEvent={collections.historyRecord.insert.bind(history)}
+        onHistoricalEvent={() => {
+          //
+        }}
       />
 
       <Explorer
