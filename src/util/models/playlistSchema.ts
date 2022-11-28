@@ -5,7 +5,7 @@ import { convertNumericTypeV6ToV4 } from '~util/typeboxExtensions';
 import { metadataProxyJsonSchema } from './metadataProxySchema';
 
 const properties = {
-  name: Type.String(),
+  name: Type.String({ maxLength: 1023 }),
   items: Type.Array(metadataProxyJsonSchema),
   lastPlayedItem: Type.String(),
   lastPlayedPosition: convertNumericTypeV6ToV4(Type.Number()),

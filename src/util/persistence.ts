@@ -22,7 +22,7 @@ export const collections = await mainDb.addCollections({
   playlist: {
     schema: playlistSchema,
   },
-  historyRecord: {
+  'history-record': {
     schema: historyRecordSchema,
   },
 });

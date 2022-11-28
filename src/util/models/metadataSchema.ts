@@ -5,18 +5,40 @@ import { convertNumericTypeV6ToV4 } from '~util/typeboxExtensions';
 import hash from './hash';
 
 const properties = {
-  album: Type.String(),
-  artists: Type.Array(Type.String()),
-  duration: convertNumericTypeV6ToV4(Type.Number()),
-  genre: Type.Array(Type.String()),
+  album: Type.String({ maxLength: 255 }),
+  artists: Type.Array(Type.String({ maxLength: 1023 })),
+  artist: Type.String({ maxLength: 65535 }),
+  duration: convertNumericTypeV6ToV4(
+    Type.Number({
+      multipleOf: 0.001,
+      minimum: 0,
+      maximum: Number.MAX_SAFE_INTEGER,
+    }),
+  ),
+  genres: Type.Array(Type.String({ maxLength: 255 })),
+  genre: Type.String({ maxLength: 255 }),
   hash,
-  lastModified: convertNumericTypeV6ToV4(Type.Number()),
-  name: Type.String(),
-  path: Type.String(),
-  size: convertNumericTypeV6ToV4(Type.Integer()),
-  title: Type.String(),
-  trackNumber: convertNumericTypeV6ToV4(Type.Integer()),
-  type: Type.String(),
+  lastModified: convertNumericTypeV6ToV4(
+    Type.Number({
+      multipleOf: 1,
+      minimum: 0,
+      maximum: Number.MAX_SAFE_INTEGER,
+    }),
+  ),
+  name: Type.String({ maxLength: 1023 }),
+  path: Type.String({ maxLength: 65535 }),
+  size: convertNumericTypeV6ToV4(
+    Type.Integer({
+      multipleOf: 1,
+      minimum: 0,
+      maximum: Number.MAX_SAFE_INTEGER,
+    }),
+  ),
+  title: Type.String({ maxLength: 1023 }),
+  trackNumber: convertNumericTypeV6ToV4(
+    Type.Integer({ multipleOf: 1, minimum: 0, maximum: 65535 }),
+  ),
+  type: Type.String({ maxLength: 255 }),
   handle: Type.Any(),
 };
 
@@ -32,6 +54,6 @@ export const metadataSchema: RxJsonSchema<Static<typeof jsonSchema>> = {
   version: 0,
   primaryKey: { key: 'hash', fields: [], separator: '' },
   required: fields,
-  indexes: fields.filter((k) => k !== 'handle'),
+  indexes: fields.filter((k) => !['handle', 'artists', 'genres'].includes(k)),
   additionalProperties: false,
 };

@@ -6,8 +6,21 @@ import { metadataProxyProperties } from './metadataProxySchema';
 
 const properties = {
   ...metadataProxyProperties,
-  position: convertNumericTypeV6ToV4(Type.Number()),
-  time: convertNumericTypeV6ToV4(Type.Number()),
+  position: convertNumericTypeV6ToV4(
+    Type.Number({
+      multipleOf: 1,
+      maximum: Number.MAX_SAFE_INTEGER,
+      minimum: 0,
+    }),
+  ),
+  time: convertNumericTypeV6ToV4(
+    Type.Number({
+      maxLength: 255,
+      multipleOf: 1,
+      minimum: 0,
+      maximum: Number.MAX_SAFE_INTEGER,
+    }),
+  ),
   finished: Type.Boolean(),
 };
 
@@ -26,6 +39,6 @@ export const historyRecordSchema: RxJsonSchema<HistoryRecord> = {
   version: 0,
   primaryKey: { key: 'time', fields: [], separator: '' },
   required: fields,
-  indexes: fields.filter((k) => k !== 'handle'),
+  indexes: fields.filter((k) => !['handle', 'finished'].includes(k)),
   additionalProperties: false,
 };
