@@ -9,7 +9,8 @@
     "metadata",
     "storybook",
     "database",
-    "general"
+    "general",
+    "fs"
   ],
   "dotenv.enableAutocloaking": true
 }

@@ -1,9 +1,9 @@
 import type {} from './persistence';
 
 import config from '../config';
-import { getMetadata, BasicAudioMetadata, FileMetadata } from './metadata';
+import { getMetadata, BasicAudioMetadata } from './metadata';
 
-export async function getFile(box: 'new' | 'existing') {
+export async function getFiles() {
   try {
     const fileHandles = await window.showOpenFilePicker({
       multiple: true,
@@ -15,19 +15,17 @@ export async function getFile(box: 'new' | 'existing') {
       ],
     });
 
-    return { box, items: fileHandles };
+    return fileHandles;
   } catch (error) {
-    return { box: '', items: [] };
+    return [];
   }
 }
 
 export async function getFolder() {
   try {
-    const fileSystemDirectoryHandle = await window.showDirectoryPicker();
-
-    return { box: 'scan', items: [fileSystemDirectoryHandle] };
+    return await window.showDirectoryPicker();
   } catch (error) {
-    return { box: '', items: [] };
+    return undefined;
   }
 }
 
@@ -205,7 +203,7 @@ export async function deleteEntry(
   parent: FileSystemDirectoryHandle,
   toDelete: FileSystemHandle,
 ) {
-  await parent.removeEntry(toDelete.name, {
+  return parent.removeEntry(toDelete.name, {
     recursive: toDelete.kind === 'directory',
   });
 }

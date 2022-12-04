@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { Popover, Transition } from '@headlessui/react';
 import {
@@ -7,25 +7,28 @@ import {
   MdLibraryAdd as LibraryAddIcon,
 } from 'react-icons/md';
 
-import { getFile, getFolder } from '../../../util/fileSystem';
+import { getFiles, getFolder } from '../../../util/fileSystem';
 
 const solutions = [
   {
     name: 'New playlist',
     description: 'Create a new playlist and add to it',
-    action: () => getFile('new'),
+    action: async () => ({ box: 'new', items: await getFiles() }),
     icon: AddIcon,
   },
   {
     name: 'Add to playlist',
     description: 'Add to current playlist',
-    action: () => getFile('existing'),
+    action: async () => ({ box: 'existing', items: await getFiles() }),
     icon: PlaylistAddIcon,
   },
   {
     name: 'Scan',
     description: 'Scan folder and make playlists automatically',
-    action: getFolder,
+    action: async () => ({
+      box: 'scan',
+      items: [await getFolder()].filter((f): f is NonNullable<typeof f> => !!f),
+    }),
     icon: LibraryAddIcon,
   },
 ];

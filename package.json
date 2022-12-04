@@ -7,7 +7,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "start": "vite --host",
+    "start": "vite --host --open",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "format": "prettier --write .",
