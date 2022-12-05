@@ -1,5 +1,5 @@
 import { collections } from './persistence';
-import { type Playlist } from '../models/playlistSchema';
+import { type Playlist } from '../../models/playlistSchema';
 import { MangoQuery } from 'rxdb';
 
 async function insert(data: Playlist) {

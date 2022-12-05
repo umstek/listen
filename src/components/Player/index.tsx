@@ -11,7 +11,7 @@ import {
 } from 'react-icons/md';
 import { type IAudioMetadata } from 'music-metadata-browser';
 
-import { HistoryRecord } from '~util/models/historyRecordSchema';
+import { HistoryRecord } from '~models/historyRecordSchema';
 import { requestPermission } from '~util/fileSystem';
 import { getMetadata } from '~util/metadata';
 import { clamp } from '~util/math';

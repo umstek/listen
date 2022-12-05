@@ -3,7 +3,7 @@ import { MdRestore as Resume } from 'react-icons/md';
 import { MdPlayArrow as Play } from 'react-icons/md';
 import { MdDelete as Delete } from 'react-icons/md';
 
-import { HistoryRecord } from '~util/models/historyRecordSchema';
+import { HistoryRecord } from '~models/historyRecordSchema';
 
 export function HistoryEntry(hr: HistoryRecord & { albumArt: string }) {
   return (

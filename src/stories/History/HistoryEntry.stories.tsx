@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { HistoryEntry } from '../components/History/HistoryEntry';
-import albumArt from './assets/albumArt.jpg';
+import { HistoryEntry } from '::History/HistoryEntry';
+
+import albumArt from '../assets/albumArt.jpg';
 
 const meta: Meta<typeof HistoryEntry> = {
-  title: 'HighLevel/HistoryEntry',
+  title: 'History/HistoryEntry',
   component: HistoryEntry,
 };
 export default meta;
