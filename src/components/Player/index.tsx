@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Duration } from 'luxon';
 import {
   MdPlayArrow as PlayIcon,
@@ -11,10 +11,10 @@ import {
 } from 'react-icons/md';
 import { type IAudioMetadata } from 'music-metadata-browser';
 
-import type { HistoricalEvent } from '../../util/persistence';
-import { requestPermission } from '../../util/fileSystem';
-import { getMetadata } from '../../util/metadata';
-import { clamp } from '../../util/math';
+import { HistoryRecord } from '~util/models/historyRecordSchema';
+import { requestPermission } from '~util/fileSystem';
+import { getMetadata } from '~util/metadata';
+import { clamp } from '~util/math';
 
 import './styles.css';
 
@@ -48,17 +48,17 @@ const PlayButton = ({ status, onClick: handleClick }: IPlayButtonProps) => {
 
 interface IPlayerControlsProps {
   activeFile?: FileSystemFileHandle;
-  collection: string;
+  playlist: string;
   path: string;
   autoplay?: boolean;
   onPrevious: () => void;
   onNext: () => void;
   onEnded: () => void;
-  onHistoricalEvent: (event: HistoricalEvent) => void;
+  onHistoricalEvent: (event: HistoryRecord) => void;
 }
 
 const PlayerControls = ({
-  collection,
+  playlist,
   path,
   activeFile,
   autoplay = true,
@@ -89,9 +89,8 @@ const PlayerControls = ({
 
       const fileData: File = await activeFile.getFile();
       const metadata = await getMetadata(fileData);
-      console.log(metadata);
 
-      setAudioMetadata(metadata);
+      setAudioMetadata(metadata.rawAudioMetadata);
       const source = URL.createObjectURL(fileData);
       setAudioSource(source);
     };
@@ -104,20 +103,10 @@ const PlayerControls = ({
   }, [activeFile]);
 
   useEffect(() => {
-    activeFile &&
-      audioMetadata &&
-      onHistoricalEvent({
-        collection,
-        path,
-        fileName: activeFile.name,
-        file: activeFile,
-        title: audioMetadata.common.title || activeFile.name,
-        position: Math.floor(position / 60) * 60,
-        time: Date.now(),
-      });
+    // Add history record here
   }, [
     onHistoricalEvent,
-    collection,
+    playlist,
     path,
     activeFile,
     audioMetadata,
@@ -209,7 +198,7 @@ const PlayerControls = ({
 
         <div className="md:text-right mt-2">
           <div className="text-gray-600 ml-4 md:ml-0 md:mr-4 truncate overflow-ellipsis">
-            {collection}
+            {playlist}
           </div>
           <div className="text-gray-600 ml-4 md:ml-0 md:mr-4 truncate overflow-ellipsis">
             {path}

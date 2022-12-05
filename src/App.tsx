@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { collections } from '~util/persistence';
+import { collections } from '~util/database/persistence';
 
 import Explorer from '::Explorer';
 import Player from '::Player';
@@ -73,7 +73,7 @@ function App({}: AppProps) {
 
       <Player
         activeFile={state.activeFile}
-        collection={state.openCollectionName}
+        playlist={state.openCollectionName}
         path={state.path.map((f) => f.name).join('/')}
         onEnded={actions.handleTrackEnd}
         onNext={actions.next}

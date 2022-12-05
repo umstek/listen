@@ -1,7 +1,8 @@
-import type {} from './persistence';
+import type {} from './database/persistence';
 
 import config from '../config';
-import { getMetadata, BasicAudioMetadata } from './metadata';
+import { getMetadata } from './metadata';
+import { isPromiseFulfilled } from './typeUtils';
 
 export async function getFiles() {
   try {
@@ -42,7 +43,7 @@ export async function getFileSystemEntries(
   return handles.filter((h): h is FileSystemHandle => Boolean(h));
 }
 
-export async function iterateDirectory(
+export async function getDirectoryEntries(
   directoryHandle: FileSystemDirectoryHandle,
 ) {
   const values = [];
@@ -54,12 +55,10 @@ export async function iterateDirectory(
 }
 
 export async function scanEntries(queue: FileSystemDirectoryHandle[]) {
-  const collections: ICollection[] = [];
+  const collections: any[] = [];
 
-  while (queue.length > 0) {
-    const directory = queue.shift()!;
-
-    const entries = await iterateDirectory(directory);
+  for (let directory = queue.shift(); directory; directory = queue.shift()) {
+    const entries = await getDirectoryEntries(directory);
     const { files, folders } = separateFileSystemEntries(entries);
 
     const audioFiles = filterAudioFiles(files);
@@ -68,10 +67,7 @@ export async function scanEntries(queue: FileSystemDirectoryHandle[]) {
         audioFiles.map(async (h) => getMetadata(await h.getFile())),
       )
     )
-      .filter(
-        (r): r is PromiseFulfilledResult<BasicAudioMetadata> =>
-          r.status === 'fulfilled',
-      )
+      .filter(isPromiseFulfilled)
       .map((r) => r.value);
 
     if (audioFiles.length > 0) {
@@ -92,7 +88,7 @@ export async function scanEntries(queue: FileSystemDirectoryHandle[]) {
 }
 
 export async function scanDroppedItems(handles: FileSystemHandle[]) {
-  const collections: ICollection[] = [];
+  const collections: any[] = [];
 
   const { files: rootFiles, folders: rootFolders } =
     separateFileSystemEntries(handles);
@@ -103,10 +99,7 @@ export async function scanDroppedItems(handles: FileSystemHandle[]) {
       rootAudioFiles.map(async (h) => getMetadata(await h.getFile())),
     )
   )
-    .filter(
-      (r): r is PromiseFulfilledResult<BasicAudioMetadata> =>
-        r.status === 'fulfilled',
-    )
+    .filter(isPromiseFulfilled)
     .map((r) => r.value);
   if (rootAudioFiles.length > 0) {
     collections.push({
@@ -122,8 +115,6 @@ export async function scanDroppedItems(handles: FileSystemHandle[]) {
   collections.push(...(await scanEntries(rootFolders)));
   return collections;
 }
-
-// -----------------------------------------------------------------------------
 
 /**
  * Traverses through a directory and yields files and folders (in undefined

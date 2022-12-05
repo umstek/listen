@@ -10,7 +10,8 @@
     "storybook",
     "database",
     "general",
-    "fs"
+    "fs",
+    "syntax"
   ],
   "dotenv.enableAutocloaking": true
 }
