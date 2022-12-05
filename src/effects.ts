@@ -1,29 +1,33 @@
-import { Action, ExplorerActionType } from './actionTypes';
-import type { ActionType } from './actionTypes';
+import type { ObservableInput } from 'rxjs';
+
+import { Action, ExplorerActionType, type ActionType } from './actionTypes';
 import type { State } from './initialState';
 import {
   deleteEntry,
   filterAudioFiles,
-  iterateDirectory,
+  getDirectoryEntries,
   requestPermission,
   scanDroppedItems,
   separateFileSystemEntries,
-} from './util/fileSystem';
-import { db } from './util/persistence';
-import type { ObservableInput } from 'rxjs';
+} from '~util/fileSystem';
+import * as playlists from '~util/database/playlists';
 
 async function deleteEntryEffect({
   path,
   deleteRequestedEntry,
 }: State): Promise<Action<any> | undefined> {
   if (
+    !deleteEntryEffect ||
     !path[path.length - 1] ||
     (await requestPermission(path[path.length - 1], 'readwrite'))
   ) {
     return;
   }
 
-  await deleteEntry(path[path.length - 1], deleteRequestedEntry);
+  await deleteEntry(
+    path[path.length - 1],
+    deleteRequestedEntry as FileSystemHandle,
+  );
   return { type: ExplorerActionType.DELETE_ENTRY_DONE };
 }
 
@@ -32,7 +36,7 @@ async function openFolderEffect(
   payload: FileSystemDirectoryHandle,
 ): Promise<Action<any> | undefined> {
   const { folders, files } = separateFileSystemEntries(
-    await iterateDirectory(payload),
+    await getDirectoryEntries(payload),
   );
 
   return {
@@ -51,7 +55,7 @@ async function navigateUpEffect({ path, rootFolders, rootFiles }: State) {
     newPath.length === 0
       ? { folders: rootFolders, files: rootFiles }
       : separateFileSystemEntries(
-          await iterateDirectory(newPath[newPath.length - 1]),
+          await getDirectoryEntries(newPath[newPath.length - 1]),
         );
 
   return {
@@ -94,27 +98,29 @@ async function dropFileSystemEntryEffect(
     };
   } else if (box === 'scan') {
     const collections = await scanDroppedItems(items);
-    await db.collections.bulkPut(collections);
+    await playlists.bulkInsert(collections);
   }
 }
 
-async function openCollectionEffect({ openCollectionName }: State) {
-  const obj = await db.collections.get(openCollectionName);
+async function openPlaylistEffect({ openCollectionName }: State) {
+  const obj = (
+    await playlists.find({ selector: { name: openCollectionName }, limit: 1 })
+  ).pop();
 
-  if (obj) {
-    const { files, folders, hidden = {} } = obj;
+  // if (obj) {
+  //   const { files, folders, hidden = {} } = obj;
 
-    return {
-      type: ExplorerActionType.MERGE_STATE,
-      payload: {
-        rootFiles: filterAudioFiles(files),
-        rootFolders: folders,
-        files: filterAudioFiles(files),
-        folders,
-        hidden,
-      },
-    };
-  }
+  //   return {
+  //     type: ExplorerActionType.MERGE_STATE,
+  //     payload: {
+  //       rootFiles: filterAudioFiles(files),
+  //       rootFolders: folders,
+  //       files: filterAudioFiles(files),
+  //       folders,
+  //       hidden,
+  //     },
+  //   };
+  // }
 
   return {
     type: ExplorerActionType.MERGE_STATE,
@@ -125,23 +131,13 @@ async function openCollectionEffect({ openCollectionName }: State) {
   };
 }
 
-async function saveCollectionEffect({
+async function savePlaylistEffect({
   saveCollectionName,
   folders,
   files,
   hidden,
 }: State) {
-  await db.collections.put(
-    {
-      name: saveCollectionName,
-      folders,
-      files,
-      hidden,
-      ordered: {},
-      metadata: [],
-    },
-    saveCollectionName,
-  );
+  // await playlists.insert({});
 
   return {
     type: ExplorerActionType.MERGE_STATE,
@@ -159,8 +155,8 @@ const effectsMap: {
   [ExplorerActionType.OPEN_FOLDER]: openFolderEffect,
   [ExplorerActionType.NAVIGATE_UP]: navigateUpEffect,
   [ExplorerActionType.DROP_FILE_SYSTEM_ENTRY]: dropFileSystemEntryEffect,
-  [ExplorerActionType.OPEN_COLLECTION]: openCollectionEffect,
-  [ExplorerActionType.SAVE_COLLECTION]: saveCollectionEffect,
+  [ExplorerActionType.OPEN_COLLECTION]: openPlaylistEffect,
+  [ExplorerActionType.SAVE_COLLECTION]: savePlaylistEffect,
 };
 
 export default effectsMap;

@@ -80,7 +80,7 @@ const Explorer = ({
         });
       } else {
         // Use DataTransfer interface to access the file(s)
-        for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+        for (let i = 0; i < ev.dataTransfer.files.length; i++) {
           console.log('files:', ev.dataTransfer.files[i]);
         }
       }

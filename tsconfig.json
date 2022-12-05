@@ -1,7 +1,5 @@
 {
-  "include": [
-    "src",
-  ],
+  "include": ["src"],
   "references": [
     {
       "path": "./tsconfig.node.json"
@@ -12,11 +10,7 @@
     "moduleResolution": "Node",
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -28,13 +22,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "experimentalDecorators": true,
     "paths": {
-      "~*": [
-        "./src/*"
-      ],
-      "::*": [
-        "./src/components/*"
-      ]
+      "~*": ["./src/*"],
+      "::*": ["./src/components/*"]
     }
   }
 }

@@ -5,6 +5,14 @@
   ],
   "conventionalCommits.scopes": [
     "ui",
-    "deps"
-  ]
+    "deps",
+    "metadata",
+    "storybook",
+    "database",
+    "general",
+    "fs",
+    "syntax",
+    "compat"
+  ],
+  "dotenv.enableAutocloaking": true
 }
