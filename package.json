@@ -1,12 +1,12 @@
 {
   "name": "@umstek/listen",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "engines": {
     "node": ">=16",
     "pnpm": ">=7"
   },
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist storybook-static",
     "start": "vite --host --open",
     "build": "tsc && vite build",
     "serve": "vite preview",
