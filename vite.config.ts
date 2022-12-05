@@ -7,6 +7,9 @@ import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    target: 'esnext',
+  },
   resolve: {
     alias: {
       // e.g.: util: 'rollup-plugin-node-polyfills/polyfills/util',
@@ -28,5 +31,10 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [tsconfigPaths(), react(), { ...rollupNodePolyFill(), enforce: 'post' }, splitVendorChunkPlugin()],
+  plugins: [
+    tsconfigPaths(),
+    react(),
+    { ...rollupNodePolyFill(), enforce: 'post' },
+    splitVendorChunkPlugin(),
+  ],
 });

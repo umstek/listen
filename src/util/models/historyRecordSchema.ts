@@ -22,6 +22,7 @@ const properties = {
     }),
   ),
   finished: Type.Boolean(),
+  playlist: Type.String({ maxLength: 1023 }),
 };
 
 const fields = Object.keys(properties) as (keyof typeof properties)[];

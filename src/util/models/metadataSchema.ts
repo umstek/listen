@@ -49,7 +49,9 @@ const jsonSchema = Type.Object(properties, {
   $id: 'metadata',
 });
 
-export const metadataSchema: RxJsonSchema<Static<typeof jsonSchema>> = {
+export type Metadata = Static<typeof jsonSchema>;
+
+export const metadataSchema: RxJsonSchema<Metadata> = {
   ...jsonSchema,
   version: 0,
   primaryKey: { key: 'hash', fields: [], separator: '' },
