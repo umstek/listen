@@ -1,0 +1,122 @@
+.DropdownMenuContent,
+.DropdownMenuSubContent {
+  @apply min-w-[220px] bg-white dark:bg-black p-2 transition-all duration-300 rounded-lg shadow-lg;
+}
+.DropdownMenuContent[data-side='top'],
+.DropdownMenuSubContent[data-side='top'] {
+  /* animation-name: slideDownAndFade; */
+}
+.DropdownMenuContent[data-side='right'],
+.DropdownMenuSubContent[data-side='right'] {
+  /* animation-name: slideLeftAndFade; */
+}
+.DropdownMenuContent[data-side='bottom'],
+.DropdownMenuSubContent[data-side='bottom'] {
+  /* animation-name: slideUpAndFade; */
+}
+.DropdownMenuContent[data-side='left'],
+.DropdownMenuSubContent[data-side='left'] {
+  /* animation-name: slideRightAndFade; */
+}
+
+.DropdownMenuItem,
+.DropdownMenuCheckboxItem,
+.DropdownMenuRadioItem,
+.DropdownMenuSubTrigger {
+  @apply flex items-center outline-none text-sm select-none text-orange-600 rounded p-1 pl-6 relative;
+}
+.DropdownMenuSubTrigger[data-state='open'] {
+  @apply text-orange-100 bg-orange-600;
+}
+.DropdownMenuItem[data-disabled],
+.DropdownMenuCheckboxItem[data-disabled],
+.DropdownMenuRadioItem[data-disabled],
+.DropdownMenuSubTrigger[data-disabled] {
+  @apply pointer-events-none opacity-50;
+}
+.DropdownMenuItem[data-highlighted],
+.DropdownMenuCheckboxItem[data-highlighted],
+.DropdownMenuRadioItem[data-highlighted],
+.DropdownMenuSubTrigger[data-highlighted] {
+  @apply text-orange-100 bg-orange-600;
+}
+
+.DropdownMenuLabel {
+  @apply text-orange-900 text-xs leading-3 pl-6;
+}
+
+.DropdownMenuSeparator {
+  @apply m-2 border-b border-orange-300;
+}
+
+.DropdownMenuItemIndicator {
+  @apply absolute left-0 w-6 inline-flex items-center justify-center;
+}
+
+.DropdownMenuArrow {
+  @apply fill-white dark:fill-black;
+}
+
+.IconButton {
+  @apply outline-none ring-offset-1 ring-offset-white ring-orange-300 font-sans rounded-full h-8 w-8 inline-flex items-center justify-center text-orange-600 bg-white shadow-sm;
+}
+.IconButton:hover {
+  @apply bg-orange-600 text-orange-100;
+}
+.IconButton:focus {
+  @apply ring-2;
+}
+
+.RightSlot {
+  @apply ml-auto pl-6 text-orange-900 opacity-70;
+}
+[data-highlighted] > .RightSlot {
+  color: white;
+}
+[data-disabled] .RightSlot {
+  @apply text-orange-600;
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

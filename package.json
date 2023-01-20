@@ -18,6 +18,9 @@
   "dependencies": {
     "@headlessui/react": "1.7.4",
     "@mdx-js/react": "^2.1.5",
+    "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-dropdown-menu": "^2.0.1",
+    "@radix-ui/react-icons": "^1.1.1",
     "@sinclair/typebox": "^0.25.10",
     "@storybook/addon-docs": "^6.5.14",
     "dexie": "3.2.2",

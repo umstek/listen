@@ -1,9 +1,10 @@
-import { DateTime, Duration } from 'luxon';
+import { DateTime } from 'luxon';
 import { MdRestore as Resume } from 'react-icons/md';
 import { MdPlayArrow as Play } from 'react-icons/md';
 import { MdDelete as Delete } from 'react-icons/md';
 
 import { HistoryRecord } from '~models/historyRecordSchema';
+import { formatDuration } from '~util/formatting';
 
 export function HistoryEntry(hr: HistoryRecord & { albumArt: string }) {
   return (
@@ -29,7 +30,7 @@ export function HistoryEntry(hr: HistoryRecord & { albumArt: string }) {
       </div>
       <div className="flex flex-col justify-between space-y-2">
         <div className="text-right">
-          {Duration.fromMillis(hr.position * 1000).toFormat('h:mm:ss')}
+          {formatDuration(hr.position)}
         </div>
         <div className="flex flex-row space-x-4 sm:invisible group-hover:visible">
           <button className="pushable outline-none rounded-full p-1">
