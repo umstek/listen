@@ -1,4 +1,4 @@
-import EventEmitter from "events";
+import EventEmitter from 'events';
 
 export default class AudioPlayer extends EventEmitter {
   private audioContext: AudioContext;
@@ -13,7 +13,9 @@ export default class AudioPlayer extends EventEmitter {
     this.gainNode = this.audioContext.createGain();
     this.pannerNode = this.audioContext.createStereoPanner();
     this.audioElement = new Audio();
-    const source = this.audioContext.createMediaElementSource(this.audioElement);
+    const source = this.audioContext.createMediaElementSource(
+      this.audioElement,
+    );
     source
       .connect(this.pannerNode)
       .connect(this.gainNode)

@@ -12,7 +12,12 @@ export const state$ = action$.pipe(
   rootMiddleware,
   filter(Boolean),
   tap((action) => {
-    console.log('%c %s', 'background: steelblue; color: black; font-weight: bold;', `${action.type} `, action.payload);
+    console.log(
+      '%c %s',
+      'background: steelblue; color: black; font-weight: bold;',
+      `${action.type} `,
+      action.payload,
+    );
   }),
   scan(reducer, initialState),
   tap((state) => {

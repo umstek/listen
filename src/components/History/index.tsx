@@ -21,7 +21,6 @@ interface HistoryProps {}
 
 // eslint-disable-next-line no-empty-pattern
 const History = ({}: HistoryProps) => {
-
   return (
     <div id="history">
       <div>

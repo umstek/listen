@@ -1,6 +1,6 @@
 /**
  * Sets the correct type for a fulfilled promise result
- * 
+ *
  * @param item A settled promise
  * @returns Whether the promise has been fulfilled (resolved)
  */

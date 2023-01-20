@@ -29,9 +29,7 @@ export function HistoryEntry(hr: HistoryRecord & { albumArt: string }) {
         </div>
       </div>
       <div className="flex flex-col justify-between space-y-2">
-        <div className="text-right">
-          {formatDuration(hr.position)}
-        </div>
+        <div className="text-right">{formatDuration(hr.position)}</div>
         <div className="flex flex-row space-x-4 sm:invisible group-hover:visible">
           <button className="pushable outline-none rounded-full p-1">
             <Play className="h-6 w-6" />

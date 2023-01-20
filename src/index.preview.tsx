@@ -40,7 +40,7 @@ ReactDOM.render(
       }}
       className="bg-repeat"
     >
-      <div className='h-screen w-full'></div>
+      <div className="h-screen w-full"></div>
       <MiniPlayerPreview />
     </div>
     <BreakpointsWidget />
