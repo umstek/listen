@@ -32,7 +32,7 @@
     "rxjs": "7.6.0"
   },
   "devDependencies": {
-    "@esbuild-plugins/node-globals-polyfill": "0.1.1",
+    "@esbuild-plugins/node-globals-polyfill": "0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "0.1.4",
     "@storybook/addon-essentials": "^7.0.0-alpha.54",
     "@storybook/addon-interactions": "^7.0.0-alpha.54",
