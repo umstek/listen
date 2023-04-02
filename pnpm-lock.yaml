@@ -17,8 +17,8 @@ dependencies:
     specifier: 3.2.3
     version: 3.2.3
   dexie-react-hooks:
-    specifier: 1.1.1
-    version: 1.1.1(@types/react@18.0.32)(dexie@3.2.3)(react@18.2.0)
+    specifier: 1.1.3
+    version: 1.1.3(@types/react@18.0.32)(dexie@3.2.3)(react@18.2.0)
   events:
     specifier: 3.3.0
     version: 3.3.0
@@ -6751,8 +6751,8 @@ packages:
       minimist: 1.2.7
     dev: true
 
-  /dexie-react-hooks@1.1.1(@types/react@18.0.32)(dexie@3.2.3)(react@18.2.0):
-    resolution: {integrity: sha512-Cam5JP6PxHN564RvWEoe8cqLhosW0O4CAZ9XEVYeGHJBa6KEJlOpd9CUpV3kmU9dm2MrW97/lk7qkf1xpij7gA==}
+  /dexie-react-hooks@1.1.3(@types/react@18.0.32)(dexie@3.2.3)(react@18.2.0):
+    resolution: {integrity: sha512-bXXE1gfYtfuVYTNiOlyam+YVaO8KaqacgRuxFuP37YtpS6o/jxT6KOl5h+hhqY36s0UavlHWbL+HWJFMcQumIg==}
     peerDependencies:
       '@types/react': '>=16'
       dexie: '>=3.1.0-alpha.1 <5.0.0'
