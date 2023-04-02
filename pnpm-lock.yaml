@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@headlessui/react':
-    specifier: 1.7.4
-    version: 1.7.4(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.7.13
+    version: 1.7.13(react-dom@18.2.0)(react@18.2.0)
   '@mdx-js/react':
     specifier: ^2.1.5
     version: 2.1.5(react@18.2.0)
@@ -2581,8 +2581,8 @@ packages:
       yargs: 16.2.0
     dev: false
 
-  /@headlessui/react@1.7.4(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-D8n5yGCF3WIkPsjEYeM8knn9jQ70bigGGb5aUvN6y4BGxcT3OcOQOKcM3zRGllRCZCFxCZyQvYJF6ZE7bQUOyQ==}
+  /@headlessui/react@1.7.13(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-9n+EQKRtD9266xIHXdY5MfiXPDfYwl7zBM7KOx2Ae3Gdgxy8QML1FkCMjq6AsOf0l6N9uvI4HcFtuFlenaldKg==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16 || ^17 || ^18
