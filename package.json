@@ -20,7 +20,7 @@
     "@mdx-js/react": "^2.1.5",
     "@sinclair/typebox": "^0.25.10",
     "@storybook/addon-docs": "^6.5.14",
-    "dexie": "3.2.2",
+    "dexie": "3.2.3",
     "dexie-react-hooks": "1.1.1",
     "events": "3.3.0",
     "luxon": "3.1.1",
