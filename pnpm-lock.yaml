@@ -39,10 +39,10 @@ dependencies:
     version: 4.7.1(react@18.2.0)
   rxdb:
     specifier: ^13.13.5
-    version: 13.13.5(rxjs@7.6.0)
+    version: 13.13.5(rxjs@7.8.0)
   rxjs:
-    specifier: 7.6.0
-    version: 7.6.0
+    specifier: 7.8.0
+    version: 7.8.0
 
 devDependencies:
   '@esbuild-plugins/node-globals-polyfill':
@@ -12117,7 +12117,7 @@ packages:
     dependencies:
       aproba: 1.2.0
 
-  /rxdb@13.13.5(rxjs@7.6.0):
+  /rxdb@13.13.5(rxjs@7.8.0):
     resolution: {integrity: sha512-ihKHKJA0PS59lGjDecwM/svs/x9jBPLHTYidnvFNL6dXX1yPGfEAys8amGaPBPlCbsTp96Y/dogFdNWtIwAyDQ==}
     requiresBuild: true
     peerDependencies:
@@ -12167,7 +12167,7 @@ packages:
       pouchdb-replication: 7.3.0
       pouchdb-selector-core: 7.3.0
       reconnecting-websocket: 4.4.0
-      rxjs: 7.6.0
+      rxjs: 7.8.0
       simple-peer: 9.11.1
       socket.io-client: 4.5.3
       threads: 1.7.0
@@ -12182,8 +12182,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /rxjs@7.6.0:
-    resolution: {integrity: sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==}
+  /rxjs@7.8.0:
+    resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
     dependencies:
       tslib: 2.4.1
     dev: false
