@@ -35,8 +35,8 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   react-icons:
-    specifier: 4.7.1
-    version: 4.7.1(react@18.2.0)
+    specifier: 4.8.0
+    version: 4.8.0(react@18.2.0)
   rxdb:
     specifier: ^13.13.5
     version: 13.13.5(rxjs@7.8.0)
@@ -11655,8 +11655,8 @@ packages:
       react-is: 18.1.0
     dev: true
 
-  /react-icons@4.7.1(react@18.2.0):
-    resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==}
+  /react-icons@4.8.0(react@18.2.0):
+    resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
     peerDependencies:
       react: '*'
     dependencies:
