@@ -39,10 +39,10 @@ dependencies:
     version: 4.8.0(react@18.2.0)
   rxdb:
     specifier: ^13.13.5
-    version: 13.13.5(rxjs@7.8.0)
+    version: 13.13.5(rxjs@7.8.1)
   rxjs:
-    specifier: 7.8.0
-    version: 7.8.0
+    specifier: 7.8.1
+    version: 7.8.1
 
 devDependencies:
   '@esbuild-plugins/node-globals-polyfill':
@@ -3092,7 +3092,7 @@ packages:
       '@storybook/components': 7.0.0-alpha.57(react-dom@18.2.0)(react@18.2.0)
       '@storybook/csf-plugin': 7.0.0-alpha.57
       '@storybook/csf-tools': 7.0.0-alpha.57
-      '@storybook/mdx2-csf': 1.0.0-next.8
+      '@storybook/mdx2-csf': 1.1.0-next.0
       '@storybook/node-logger': 7.0.0-alpha.57
       '@storybook/postinstall': 7.0.0-alpha.57
       '@storybook/preview-api': 7.0.0-alpha.57
@@ -4106,8 +4106,8 @@ packages:
     resolution: {integrity: sha512-dBAnEL4HfxxJmv7LdEYUoZlQbWj9APZNIbOaq0tgF8XkxiIbzqvgB0jhL/9UOrysSDbQWBiCRTu2wOVxedGfmw==}
     dev: true
 
-  /@storybook/mdx2-csf@1.0.0-next.8:
-    resolution: {integrity: sha512-t2O5s/HHTH5evZVHgVtCWTZgMZ/CaqDu3xVGgjVbKeTvpPAbi0Waab5SSX8T9PG5jNDei/x+jpAVCcNMOHoWzg==}
+  /@storybook/mdx2-csf@1.1.0-next.0:
+    resolution: {integrity: sha512-DeXEULA683XaoNJpAwqJU4lKnpCAACdIiSDqCuAfKzhHYAv11snQ8VjPrtR1I0WcWG4ATi+TawT1dWFnsYhhAQ==}
     dev: true
 
   /@storybook/node-logger@6.5.14:
@@ -12115,7 +12115,7 @@ packages:
     dependencies:
       aproba: 1.2.0
 
-  /rxdb@13.13.5(rxjs@7.8.0):
+  /rxdb@13.13.5(rxjs@7.8.1):
     resolution: {integrity: sha512-ihKHKJA0PS59lGjDecwM/svs/x9jBPLHTYidnvFNL6dXX1yPGfEAys8amGaPBPlCbsTp96Y/dogFdNWtIwAyDQ==}
     requiresBuild: true
     peerDependencies:
@@ -12165,7 +12165,7 @@ packages:
       pouchdb-replication: 7.3.0
       pouchdb-selector-core: 7.3.0
       reconnecting-websocket: 4.4.0
-      rxjs: 7.8.0
+      rxjs: 7.8.1
       simple-peer: 9.11.1
       socket.io-client: 4.5.3
       threads: 1.7.0
@@ -12180,8 +12180,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /rxjs@7.8.0:
-    resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
+  /rxjs@7.8.1:
+    resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
       tslib: 2.4.1
     dev: false
