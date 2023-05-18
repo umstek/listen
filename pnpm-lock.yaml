@@ -8,8 +8,8 @@ dependencies:
     specifier: ^2.1.5
     version: 2.1.5(react@18.2.0)
   '@sinclair/typebox':
-    specifier: ^0.27.0
-    version: 0.27.0
+    specifier: ^0.28.0
+    version: 0.28.0
   '@storybook/addon-docs':
     specifier: ^6.5.14
     version: 6.5.14(@babel/core@7.21.3)(eslint@8.40.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)(webpack@4.46.0)
@@ -2917,8 +2917,8 @@ packages:
     resolution: {integrity: sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==}
     dev: true
 
-  /@sinclair/typebox@0.27.0:
-    resolution: {integrity: sha512-nqCvfid613HckrkVcHw/OJv7Lbkd9PTQV3U/unOsUjdsoHhx9l7sEBNzdTfXxanreHOKV4tbmokLOGMXOQm4yw==}
+  /@sinclair/typebox@0.28.0:
+    resolution: {integrity: sha512-9Nk7ny/CiaManM7DZ+NAFqBpnNKEPjAzn+Fqb/xID2uaIYTlqsWrm6ph8x4wxhfQFdpDFF3qvToC6GD5xyCwsA==}
     dev: false
 
   /@sindresorhus/is@5.3.0:
