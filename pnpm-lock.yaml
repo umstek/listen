@@ -22,7 +22,7 @@ dependencies:
     version: 3.2.4
   dexie-react-hooks:
     specifier: 1.1.6
-    version: 1.1.6(@types/react@18.2.10)(dexie@3.2.4)(react@18.2.0)
+    version: 1.1.6(@types/react@18.2.11)(dexie@3.2.4)(react@18.2.0)
   events:
     specifier: 3.3.0
     version: 3.3.0
@@ -60,7 +60,7 @@ devDependencies:
     version: 7.0.0-alpha.57(@babel/core@7.21.3)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
   '@storybook/addon-interactions':
     specifier: ^7.0.0-alpha.54
-    version: 7.0.0-alpha.57(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
+    version: 7.0.0-alpha.57(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
   '@storybook/addon-links':
     specifier: ^7.0.0-alpha.54
     version: 7.0.0-alpha.57(react-dom@18.2.0)(react@18.2.0)
@@ -95,8 +95,8 @@ devDependencies:
     specifier: 18.16.17
     version: 18.16.17
   '@types/react':
-    specifier: 18.2.10
-    version: 18.2.10
+    specifier: 18.2.11
+    version: 18.2.11
   '@types/react-dom':
     specifier: 18.2.4
     version: 18.2.4
@@ -1749,7 +1749,7 @@ packages:
     resolution: {integrity: sha512-RpfLEtTlyIxeNPGKcokS+p3BZII/Q3bYxryFRglh5H3A3T8q9fsLYm72VYAMEOOIBLEa8o93kFLiBDUWKrwXZA==}
     dev: true
 
-  /@design-systems/utils@2.12.0(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0):
+  /@design-systems/utils@2.12.0(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Y/d2Zzr+JJfN6u1gbuBUb1ufBuLMJJRZQk+dRmw8GaTpqKx5uf7cGUYGTwN02dIb3I+Tf+cW8jcGBTRiFxdYFg==}
     peerDependencies:
       '@types/react': '*'
@@ -1757,7 +1757,7 @@ packages:
       react-dom: '>= 16.8.6'
     dependencies:
       '@babel/runtime': 7.20.6
-      '@types/react': 18.2.10
+      '@types/react': 18.2.11
       clsx: 1.1.0
       focus-lock: 0.8.1
       react: 18.2.0
@@ -1765,15 +1765,15 @@ packages:
       react-merge-refs: 1.1.0
     dev: true
 
-  /@devtools-ds/object-inspector@1.2.0(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0):
+  /@devtools-ds/object-inspector@1.2.0(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-VztcwqVwScSvYdvJVZBJYsVO/2Pew3JPpFV3T9fuCHQLlHcLYOV3aU/kBS2ScuE2O1JN0ZbobLqFLa3vQF54Fw==}
     peerDependencies:
       react: '>= 16.8.6'
     dependencies:
       '@babel/runtime': 7.7.2
       '@devtools-ds/object-parser': 1.2.0
-      '@devtools-ds/themes': 1.2.0(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0)
-      '@devtools-ds/tree': 1.2.0(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0)
+      '@devtools-ds/themes': 1.2.0(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
+      '@devtools-ds/tree': 1.2.0(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
       clsx: 1.1.0
       react: 18.2.0
     transitivePeerDependencies:
@@ -1787,13 +1787,13 @@ packages:
       '@babel/runtime': 7.5.5
     dev: true
 
-  /@devtools-ds/themes@1.2.0(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0):
+  /@devtools-ds/themes@1.2.0(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-LimEITorE6yWZWWuMc6OiBfLQgPrQqWbyMEmfRUDPa3PHXoAY4SpDxczfg31fgyRDUNWnZhjaJH5bBbu8VEbIw==}
     peerDependencies:
       react: '>= 16.8.6'
     dependencies:
       '@babel/runtime': 7.5.5
-      '@design-systems/utils': 2.12.0(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0)
+      '@design-systems/utils': 2.12.0(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
       clsx: 1.1.0
       react: 18.2.0
     transitivePeerDependencies:
@@ -1801,13 +1801,13 @@ packages:
       - react-dom
     dev: true
 
-  /@devtools-ds/tree@1.2.0(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0):
+  /@devtools-ds/tree@1.2.0(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-hC4g4ocuo2eg7jsnzKdauxH0sDQiPW3KSM2+uK3kRgcmr9PzpBD5Kob+Y/WFSVKswFleftOGKL4BQLuRv0sPxA==}
     peerDependencies:
       react: '>= 16.8.6'
     dependencies:
       '@babel/runtime': 7.7.2
-      '@devtools-ds/themes': 1.2.0(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0)
+      '@devtools-ds/themes': 1.2.0(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
       clsx: 1.1.0
       react: 18.2.0
     transitivePeerDependencies:
@@ -3024,7 +3024,7 @@ packages:
       react: '>=16'
     dependencies:
       '@types/mdx': 2.0.3
-      '@types/react': 18.2.10
+      '@types/react': 18.2.11
       react: 18.2.0
 
   /@mdx-js/util@1.6.22:
@@ -3350,7 +3350,7 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/addon-interactions@7.0.0-alpha.57(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5):
+  /@storybook/addon-interactions@7.0.0-alpha.57(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5):
     resolution: {integrity: sha512-kcIbDCCK4IEkRFAXK2eAQIQ0A/wolDAjmmOg8SFCv/Cxtss9XwbmDnDpqb0WNQLS/d3DoQ8Niy+NH+fYTusjVg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -3361,7 +3361,7 @@ packages:
       react-dom:
         optional: true
     dependencies:
-      '@devtools-ds/object-inspector': 1.2.0(@types/react@18.2.10)(react-dom@18.2.0)(react@18.2.0)
+      '@devtools-ds/object-inspector': 1.2.0(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
       '@storybook/client-logger': 7.0.0-alpha.57
       '@storybook/components': 7.0.0-alpha.57(react-dom@18.2.0)(react@18.2.0)
       '@storybook/core-common': 7.0.0-alpha.57(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
@@ -5035,11 +5035,11 @@ packages:
   /@types/react-dom@18.2.4:
     resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
     dependencies:
-      '@types/react': 18.2.10
+      '@types/react': 18.2.11
     dev: true
 
-  /@types/react@18.2.10:
-    resolution: {integrity: sha512-5UTpmDa5L+PgTLXhLPNolv7/Qh+1YQuy4fsh/IahJbvtaLz2g9qX0CKsE0rBQCvn9ymt9NpvZENZwclbLKc3EQ==}
+  /@types/react@18.2.11:
+    resolution: {integrity: sha512-+hsJr9hmwyDecSMQAmX7drgbDpyE+EgSF6t7+5QEBAn1tQK7kl1vWZ4iRf6SjQ8lk7dyEULxUmZOIpN0W5baZA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -7023,14 +7023,14 @@ packages:
       defined: 1.0.1
     dev: false
 
-  /dexie-react-hooks@1.1.6(@types/react@18.2.10)(dexie@3.2.4)(react@18.2.0):
+  /dexie-react-hooks@1.1.6(@types/react@18.2.11)(dexie@3.2.4)(react@18.2.0):
     resolution: {integrity: sha512-xSblWtmPwhafWNWMECsW7zMMmBu8goH3QqTxEfwBNoNG1mgsM0oFclippev7ss9HhKICqBwTjgqpscci5Ed4mA==}
     peerDependencies:
       '@types/react': '>=16'
       dexie: ^3.2 || ^4.0.1-alpha
       react: '>=16'
     dependencies:
-      '@types/react': 18.2.10
+      '@types/react': 18.2.11
       dexie: 3.2.4
       react: 18.2.0
     dev: false
