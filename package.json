@@ -46,7 +46,7 @@
     "@types/events": "3.0.0",
     "@types/luxon": "3.3.0",
     "@types/mocha": "10.0.1",
-    "@types/node": "18.16.17",
+    "@types/node": "18.16.18",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
     "@types/wicg-file-system-access": "2020.9.6",
