@@ -40,7 +40,7 @@
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/react": "^7.0.0-alpha.54",
     "@storybook/react-vite": "7.0.22",
-    "@storybook/testing-library": "^0.1.0",
+    "@storybook/testing-library": "^0.2.0",
     "@testing-library/react": "13.4.0",
     "@types/chai": "4.3.5",
     "@types/events": "3.0.0",
