@@ -16,7 +16,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@headlessui/react": "1.7.15",
+    "@headlessui/react": "1.7.17",
     "@mdx-js/react": "^2.1.5",
     "@sinclair/typebox": "^0.29.0",
     "@storybook/addon-docs": "^6.5.14",
