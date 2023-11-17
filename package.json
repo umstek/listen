@@ -21,7 +21,7 @@
     "@sinclair/typebox": "^0.29.0",
     "@storybook/addon-docs": "^6.5.14",
     "dexie": "3.2.4",
-    "dexie-react-hooks": "1.1.6",
+    "dexie-react-hooks": "1.1.7",
     "events": "3.3.0",
     "luxon": "3.3.0",
     "music-metadata-browser": "2.5.10",
