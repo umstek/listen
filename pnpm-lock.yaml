@@ -27,8 +27,8 @@ dependencies:
     specifier: 3.3.0
     version: 3.3.0
   luxon:
-    specifier: 3.3.0
-    version: 3.3.0
+    specifier: 3.4.4
+    version: 3.4.4
   music-metadata-browser:
     specifier: 2.5.10
     version: 2.5.10
@@ -86,8 +86,8 @@ devDependencies:
     specifier: 3.0.3
     version: 3.0.3
   '@types/luxon':
-    specifier: 3.3.0
-    version: 3.3.0
+    specifier: 3.3.4
+    version: 3.3.4
   '@types/mocha':
     specifier: 10.0.4
     version: 10.0.4
@@ -5030,8 +5030,8 @@ packages:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
     dev: false
 
-  /@types/luxon@3.3.0:
-    resolution: {integrity: sha512-uKRI5QORDnrGFYgcdAVnHvEIvEZ8noTpP/Bg+HeUzZghwinDlIS87DEenV5r1YoOF9G4x600YsUXLWZ19rmTmg==}
+  /@types/luxon@3.3.4:
+    resolution: {integrity: sha512-H9OXxv4EzJwE75aTPKpiGXJq+y4LFxjpsdgKwSmr503P5DkWc3AG7VAFYrFNVvqemT5DfgZJV9itYhqBHSGujA==}
     dev: true
 
   /@types/mdast@3.0.10:
@@ -10547,8 +10547,8 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /luxon@3.3.0:
-    resolution: {integrity: sha512-An0UCfG/rSiqtAIiBPO0Y9/zAnHUZxAMiCpTd5h2smgsj7GGmcenvrvww2cqNA8/4A5ZrD1gJpHN2mIHZQF+Mg==}
+  /luxon@3.4.4:
+    resolution: {integrity: sha512-zobTr7akeGHnv7eBOXcRgMeCP6+uyYsczwmeRCauvpvaAltgNyTbLH/+VaEAPUeWBT+1GuNmz4wC/6jtQzbbVA==}
     engines: {node: '>=12'}
     dev: false
 
