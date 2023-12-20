@@ -86,8 +86,8 @@ devDependencies:
     specifier: 3.0.3
     version: 3.0.3
   '@types/luxon':
-    specifier: 3.3.4
-    version: 3.3.4
+    specifier: 3.3.7
+    version: 3.3.7
   '@types/mocha':
     specifier: 10.0.4
     version: 10.0.4
@@ -5030,8 +5030,8 @@ packages:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
     dev: false
 
-  /@types/luxon@3.3.4:
-    resolution: {integrity: sha512-H9OXxv4EzJwE75aTPKpiGXJq+y4LFxjpsdgKwSmr503P5DkWc3AG7VAFYrFNVvqemT5DfgZJV9itYhqBHSGujA==}
+  /@types/luxon@3.3.7:
+    resolution: {integrity: sha512-gKc9P2d4g5uYwmy4s/MO/yOVPmvHyvzka1YH6i5dM03UrFofHSmgc0D0ymbDRStFWHusk6cwwF6nhLm/ckBbbQ==}
     dev: true
 
   /@types/mdast@3.0.10:
