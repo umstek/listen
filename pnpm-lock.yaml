@@ -80,8 +80,8 @@ devDependencies:
     specifier: 13.4.0
     version: 13.4.0(react-dom@18.2.0)(react@18.2.0)
   '@types/chai':
-    specifier: 4.3.11
-    version: 4.3.11
+    specifier: 4.3.14
+    version: 4.3.14
   '@types/events':
     specifier: 3.0.3
     version: 3.0.3
@@ -116,8 +116,8 @@ devDependencies:
     specifier: 10.4.19
     version: 10.4.19(postcss@8.4.38)
   chai:
-    specifier: 4.3.10
-    version: 4.3.10
+    specifier: 4.4.1
+    version: 4.4.1
   esbuild:
     specifier: 0.19.10
     version: 0.19.10
@@ -5105,8 +5105,8 @@ packages:
       '@types/node': 18.19.31
     dev: true
 
-  /@types/chai@4.3.11:
-    resolution: {integrity: sha512-qQR1dr2rGIHYlJulmr8Ioq3De0Le9E4MJ5AiaeAETJJpndT1uUNHsGFK3L/UIu+rbkQSdj8J/w2bCsBZc/Y5fQ==}
+  /@types/chai@4.3.14:
+    resolution: {integrity: sha512-Wj71sXE4Q4AkGdG9Tvq1u/fquNz9EdG4LIJMwVVII7ashjD/8cf8fyIfJAjRr6YcsXnSE8cOGQPq1gqeR8z+3w==}
     dev: true
 
   /@types/clone@2.1.1:
@@ -6882,8 +6882,8 @@ packages:
     resolution: {integrity: sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg==}
     dev: false
 
-  /chai@4.3.10:
-    resolution: {integrity: sha512-0UXG04VuVbruMUYbJ6JctvH0YnC/4q3/AkT18q4NaITo91CUm0liMS9VqzT9vZhVQ/1eqPanMWjBM+Juhfb/9g==}
+  /chai@4.4.1:
+    resolution: {integrity: sha512-13sOfMv2+DWduEU+/xbun3LScLoqN17nBeTLUsmDfKdoiC1fr0n9PU4guu4AhRcOVFk/sW8LyZWHuhWtQZiF+g==}
     engines: {node: '>=4'}
     dependencies:
       assertion-error: 1.1.0
@@ -10888,6 +10888,7 @@ packages:
 
   /loupe@2.3.6:
     resolution: {integrity: sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA==}
+    deprecated: Please upgrade to 2.3.7 which fixes GHSA-4q6p-r6v2-jvc5
     dependencies:
       get-func-name: 2.0.2
     dev: true
