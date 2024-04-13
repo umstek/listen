@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.1.5
     version: 2.3.0(react@18.2.0)
   '@sinclair/typebox':
-    specifier: ^0.31.0
-    version: 0.31.26
+    specifier: ^0.32.0
+    version: 0.32.20
   '@storybook/addon-docs':
     specifier: ^6.5.14
     version: 6.5.16(@babel/core@7.24.4)(eslint@8.57.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)(webpack@5.91.0)
@@ -3822,8 +3822,8 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@sinclair/typebox@0.31.26:
-    resolution: {integrity: sha512-0S5BGB/Tle1kVa1pT2k2sc+wHTCB28+ivuetmZDCRV8I0iFKaNfk6HbvVyLEFBzZy56dp0dw+YDJ9Ed+YAAL7A==}
+  /@sinclair/typebox@0.32.20:
+    resolution: {integrity: sha512-ziK497ILSIYMxD/thl496idIb03IZPlha04itLQu1xAFQbumWZ+Dj4PMMCkDRpAYhvVSdmRlTjGu2B2MA5RplQ==}
     dev: false
 
   /@socket.io/component-emitter@3.1.0:
