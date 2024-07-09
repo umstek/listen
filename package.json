@@ -45,7 +45,7 @@
     "@types/chai": "4.3.16",
     "@types/events": "3.0.3",
     "@types/luxon": "3.4.2",
-    "@types/mocha": "10.0.6",
+    "@types/mocha": "10.0.7",
     "@types/node": "18.19.31",
     "@types/react": "18.2.79",
     "@types/react-dom": "18.2.25",
