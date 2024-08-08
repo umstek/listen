@@ -33,8 +33,8 @@ importers:
         specifier: 3.4.4
         version: 3.4.4
       music-metadata-browser:
-        specifier: 2.5.10
-        version: 2.5.10
+        specifier: 2.5.11
+        version: 2.5.11
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -6272,8 +6272,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  music-metadata-browser@2.5.10:
-    resolution: {integrity: sha512-03UnAmsSJoZZ5kK2BnEnd2zpH8LXRWQ6xlc7akKudhc2d9FT+yAiqapnmOzjW3g4cxxvIsSK5MVBO2Gi+Ymjfw==}
+  music-metadata-browser@2.5.11:
+    resolution: {integrity: sha512-Khq5nYapffIet0PUVb5J69pZPgqgn+/yoEr0jkO/OjH5xwfdz6rdwj0zsWPaqo3ylv+OthXoGjT6EegVHbMkJQ==}
     deprecated: No longer support, superseded by music-metadata
 
   music-metadata@7.13.4:
@@ -7060,10 +7060,6 @@ packages:
 
   readable-stream@2.3.8:
     resolution: {integrity: sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA==}
-
-  readable-stream@3.6.0:
-    resolution: {integrity: sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==}
-    engines: {node: '>= 6'}
 
   readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
@@ -8440,7 +8436,7 @@ snapshots:
       '@babel/traverse': 7.24.1
       '@babel/types': 7.24.0
       convert-source-map: 2.0.0
-      debug: 4.3.4
+      debug: 4.3.5
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
@@ -10229,7 +10225,7 @@ snapshots:
       '@babel/helper-split-export-declaration': 7.22.6
       '@babel/parser': 7.24.4
       '@babel/types': 7.24.0
-      debug: 4.3.4
+      debug: 4.3.5
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -10244,7 +10240,7 @@ snapshots:
       '@babel/helper-split-export-declaration': 7.22.6
       '@babel/parser': 7.24.4
       '@babel/types': 7.24.0
-      debug: 4.3.4
+      debug: 4.3.5
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -12705,7 +12701,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@4.9.5)
       '@typescript-eslint/utils': 5.62.0(eslint@8.57.0)(typescript@4.9.5)
-      debug: 4.3.4
+      debug: 4.3.5
       eslint: 8.57.0
       tsutils: 3.21.0(typescript@4.9.5)
     optionalDependencies:
@@ -12719,7 +12715,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
-      debug: 4.3.4
+      debug: 4.3.5
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.6.0
@@ -12990,7 +12986,7 @@ snapshots:
   are-we-there-yet@2.0.0:
     dependencies:
       delegates: 1.0.0
-      readable-stream: 3.6.0
+      readable-stream: 3.6.2
 
   arg@5.0.2: {}
 
@@ -14129,7 +14125,7 @@ snapshots:
   engine.io-client@6.2.3:
     dependencies:
       '@socket.io/component-emitter': 3.1.1
-      debug: 4.3.4
+      debug: 4.3.5
       engine.io-parser: 5.0.7
       ws: 8.2.3
       xmlhttprequest-ssl: 2.0.0
@@ -16266,10 +16262,10 @@ snapshots:
 
   ms@2.1.3: {}
 
-  music-metadata-browser@2.5.10:
+  music-metadata-browser@2.5.11:
     dependencies:
       buffer: 6.0.3
-      debug: 4.3.4
+      debug: 4.3.5
       music-metadata: 7.13.4
       readable-stream: 4.3.0
       readable-web-to-node-stream: 3.0.2
@@ -16280,7 +16276,7 @@ snapshots:
     dependencies:
       '@tokenizer/token': 0.3.0
       content-type: 1.0.5
-      debug: 4.3.4
+      debug: 4.3.5
       file-type: 16.5.4
       media-typer: 1.1.0
       strtok3: 6.3.0
@@ -17206,12 +17202,6 @@ snapshots:
       string_decoder: 1.1.1
       util-deprecate: 1.0.2
 
-  readable-stream@3.6.0:
-    dependencies:
-      inherits: 2.0.4
-      string_decoder: 1.3.0
-      util-deprecate: 1.0.2
-
   readable-stream@3.6.2:
     dependencies:
       inherits: 2.0.4
@@ -17739,7 +17729,7 @@ snapshots:
   simple-peer@9.11.1:
     dependencies:
       buffer: 6.0.3
-      debug: 4.3.4
+      debug: 4.3.5
       err-code: 3.0.1
       get-browser-rtc: 1.1.0
       queue-microtask: 1.2.3
@@ -17778,7 +17768,7 @@ snapshots:
   socket.io-client@4.5.4:
     dependencies:
       '@socket.io/component-emitter': 3.1.1
-      debug: 4.3.4
+      debug: 4.3.5
       engine.io-client: 6.2.3
       socket.io-parser: 4.2.4
     transitivePeerDependencies:
@@ -17789,7 +17779,7 @@ snapshots:
   socket.io-parser@4.2.4:
     dependencies:
       '@socket.io/component-emitter': 3.1.1
-      debug: 4.3.4
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
 
@@ -18144,7 +18134,7 @@ snapshots:
   threads@1.7.0:
     dependencies:
       callsites: 3.1.0
-      debug: 4.3.4
+      debug: 4.3.5
       is-observable: 2.1.0
       observable-fns: 0.6.1
     optionalDependencies:
