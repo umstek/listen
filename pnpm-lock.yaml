@@ -16,7 +16,7 @@ importers:
         version: 2.3.0(react@18.3.1)
       '@sinclair/typebox':
         specifier: ^0.33.0
-        version: 0.33.0
+        version: 0.33.1
       '@storybook/addon-docs':
         specifier: ^6.5.14
         version: 6.5.16(@babel/core@7.12.9)(eslint@8.57.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@4.9.5)(webpack@4.47.0)
@@ -2677,8 +2677,8 @@ packages:
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
 
-  '@sinclair/typebox@0.33.0':
-    resolution: {integrity: sha512-y4wDeA3hHRpUtHlTDpWEtAnU8wTVzOuDJfn1Q7t42TXXHBrhHOK+Ij7y1zJAyXnDuIrEBVw8sLW1Uzl2WCyz+A==}
+  '@sinclair/typebox@0.33.1':
+    resolution: {integrity: sha512-Ph9TbUwyKZFqKpR2oG+WX+yC5R0Il9IwmzsBFOmEGsbkOayNfkJu2M0O15yL5rsl2UjPvrQa36ukjejqwTvhvQ==}
 
   '@socket.io/component-emitter@3.1.1':
     resolution: {integrity: sha512-dzJtaDAAoXx4GCOJpbB2eG/Qj8VDpdwkLsWGzGm+0L7E8/434RyMbAHmk9ubXWVAb9nXmc44jUf8GKqVDiKezg==}
@@ -12020,7 +12020,7 @@ snapshots:
 
   '@sinclair/typebox@0.27.8': {}
 
-  '@sinclair/typebox@0.33.0': {}
+  '@sinclair/typebox@0.33.1': {}
 
   '@socket.io/component-emitter@3.1.1': {}
 
