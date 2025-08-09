@@ -55,7 +55,7 @@
     "@vitejs/plugin-react": "2.2.0",
     "autoprefixer": "10.4.21",
     "chai": "4.5.0",
-    "esbuild": "0.24.0",
+    "esbuild": "0.25.8",
     "eslint": "8.57.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "4.2.5",
