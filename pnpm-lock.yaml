@@ -30,8 +30,8 @@ importers:
         specifier: 3.3.0
         version: 3.3.0
       luxon:
-        specifier: 3.5.0
-        version: 3.5.0
+        specifier: 3.7.1
+        version: 3.7.1
       music-metadata-browser:
         specifier: 2.5.11
         version: 2.5.11
@@ -88,8 +88,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       '@types/luxon':
-        specifier: 3.4.2
-        version: 3.4.2
+        specifier: 3.7.1
+        version: 3.7.1
       '@types/mocha':
         specifier: 10.0.10
         version: 10.0.10
@@ -3159,8 +3159,8 @@ packages:
   '@types/long@4.0.2':
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
 
-  '@types/luxon@3.4.2':
-    resolution: {integrity: sha512-TifLZlFudklWlMBfhubvgqTXRzLDI5pCbGa4P8a3wPyUQSW+1xQ5eDsreP9DWHX3tjq1ke96uYG/nwundroWcA==}
+  '@types/luxon@3.7.1':
+    resolution: {integrity: sha512-H3iskjFIAn5SlJU7OuxUmTEpebK6TKB8rxZShDslBMZJ5u9S//KM1sbdAisiSrqwLQncVjnpi2OK2J51h+4lsg==}
 
   '@types/mdast@3.0.15':
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
@@ -6230,8 +6230,8 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  luxon@3.5.0:
-    resolution: {integrity: sha512-rh+Zjr6DNfUYR3bPwJEnuwDdqMbxZW7LOQfUN4B54+Cl+0o5zaU9RJ6bcidfDtC1cWCZXQ+nvX8bf6bAji37QQ==}
+  luxon@3.7.1:
+    resolution: {integrity: sha512-RkRWjA926cTvz5rAb1BqyWkKbbjzCGchDUIKMCUvNi17j6f6j8uHGDV82Aqcqtzd+icoYpELmG3ksgGiFNNcNg==}
     engines: {node: '>=12'}
 
   lz-string@1.4.4:
@@ -13429,7 +13429,7 @@ snapshots:
 
   '@types/long@4.0.2': {}
 
-  '@types/luxon@3.4.2': {}
+  '@types/luxon@3.7.1': {}
 
   '@types/mdast@3.0.15':
     dependencies:
@@ -17223,7 +17223,7 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  luxon@3.5.0: {}
+  luxon@3.7.1: {}
 
   lz-string@1.4.4: {}
 
