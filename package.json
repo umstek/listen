@@ -49,7 +49,7 @@
     "@types/node": "18.19.130",
     "@types/react": "18.3.27",
     "@types/react-dom": "18.3.7",
-    "@types/wicg-file-system-access": "2020.9.8",
+    "@types/wicg-file-system-access": "2023.10.7",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "@vitejs/plugin-react": "2.2.0",

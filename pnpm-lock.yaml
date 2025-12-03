@@ -103,8 +103,8 @@ importers:
         specifier: 18.3.7
         version: 18.3.7(@types/react@18.3.27)
       '@types/wicg-file-system-access':
-        specifier: 2020.9.8
-        version: 2020.9.8
+        specifier: 2023.10.7
+        version: 2023.10.7
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.45.0
         version: 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(typescript@4.9.5)
@@ -3266,8 +3266,8 @@ packages:
   '@types/webpack-env@1.18.4':
     resolution: {integrity: sha512-I6e+9+HtWADAWeeJWDFQtdk4EVSAbj6Rtz4q8fJ7mSr1M0jzlFcs8/HZ+Xb5SHzVm1dxH7aUiI+A8kA8Gcrm0A==}
 
-  '@types/wicg-file-system-access@2020.9.8':
-    resolution: {integrity: sha512-ggMz8nOygG7d/stpH40WVaNvBwuyYLnrg5Mbyf6bmsj/8+gb6Ei4ZZ9/4PNpcPNTT8th9Q8sM8wYmWGjMWLX/A==}
+  '@types/wicg-file-system-access@2023.10.7':
+    resolution: {integrity: sha512-g49ijasEJvCd7ifmAY2D0wdEtt1xRjBbA33PJTiv8mKBr7DoMsPeISoJ8oQOTopSRi+FBWPpPW5ouDj2QPKtGA==}
 
   '@types/ws@8.5.3':
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
@@ -13405,7 +13405,7 @@ snapshots:
 
   '@types/webpack-env@1.18.4': {}
 
-  '@types/wicg-file-system-access@2020.9.8': {}
+  '@types/wicg-file-system-access@2023.10.7': {}
 
   '@types/ws@8.5.3':
     dependencies:
