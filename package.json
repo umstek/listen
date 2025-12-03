@@ -52,7 +52,7 @@
     "@types/wicg-file-system-access": "2020.9.8",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
-    "@vitejs/plugin-react": "2.2.0",
+    "@vitejs/plugin-react": "5.1.1",
     "autoprefixer": "10.4.22",
     "chai": "4.5.0",
     "esbuild": "0.27.0",
