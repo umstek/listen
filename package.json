@@ -54,7 +54,7 @@
     "@typescript-eslint/parser": "^5.45.0",
     "@vitejs/plugin-react": "2.2.0",
     "autoprefixer": "10.4.27",
-    "chai": "4.5.0",
+    "chai": "6.2.2",
     "esbuild": "0.27.4",
     "eslint": "8.57.1",
     "eslint-config-prettier": "^8.5.0",
